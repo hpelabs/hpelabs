@@ -52,6 +52,8 @@ layout: default
     {% endif %}
   </div>
 
+  <script src="{{ '/assets/js/step-time.js' | relative_url }}" defer></script>
+
   {% if site.giscus_repo != blank? and page.hide_comments != true %}
     <script src="https://giscus.app/client.js"
       data-repo="{{ site.giscus_repo }}"

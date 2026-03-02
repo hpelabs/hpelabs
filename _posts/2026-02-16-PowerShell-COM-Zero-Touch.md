@@ -790,7 +790,7 @@ sheet provided by your instructor. Enter:
 
     This command will power on all servers managed by COM. Since you currently have only one server onboarded, it will specifically start that device.
 
-## Task 2 -- Set device location and tags
+## Task 2 - Set device location and tags
 
 1. Next you need to set the device location. As indicated earlier, this step is important to ensure that support cases are automatically created in the event of device failures. To do so, enter:
 
@@ -1221,7 +1221,7 @@ Specifically, you can:
 
 These features collectively enable robust monitoring, efficient troubleshooting, and proactive resolution of server issues, ensuring optimal server performance and support coverage.
 
-## Task 1 -- Getting server health status, activities, jobs and alerts
+## Task 1 - Getting server health status, activities, jobs and alerts
 
 The first step in server troubleshooting is to confirm that the server is operational and verify the absence of any active alerts. 
 
@@ -1290,7 +1290,7 @@ The first step in server troubleshooting is to confirm that the server is operat
 
     This flexibility helps in managing and monitoring server operations more effectively, especially in large or complex environments.
 
-## Task 2 -- Getting server support details
+## Task 2 - Getting server support details
 
 The subsequent phase in server troubleshooting involves verifying the
 support details. This information is crucial for determining warranty
@@ -1326,7 +1326,7 @@ status and its duration.
     > 
     > `Get-HPECOMServer -Region $Region -ShowServersWithRecentSupportCases` can be used to list servers with recent support cases.
 
-## Task 3 -- Collecting and downloading server logs
+## Task 3 - Collecting and downloading server logs
 
 When encountering a critical server issue, HPE support may request the
 collection and submission of your server's Active Health System (AHS)
@@ -1390,7 +1390,7 @@ efficient and accessible.
 
     This makes it easy to inspect individual log files and share relevant data with support teams for further troubleshooting.
 
-## Task 4 -- Enabling email notification
+## Task 4 - Enabling email notification
 
 An essential aspect of effective server management is receiving timely
 alerts when issues arise. To address this, COM provides configurable
@@ -1436,7 +1436,7 @@ firmware deviations, and scheduling group firmware updates. Adhering to
 these steps will enhance the efficiency of monitoring and maintaining
 your server infrastructure.
 
-## Task 1 -- Checking group firmware compliance 
+## Task 1 - Checking group firmware compliance 
 
 The initial step in this process is to verify your group's firmware
 compliance status. This compliance report provides a clear assessment of
@@ -1488,7 +1488,7 @@ efficiently.
     >     
     > You may achieve a perfect 100% compliance score with no deviations depending on the status of your allocated server.
 
-## Task 2 -- Checking group firmware deviations
+## Task 2 - Checking group firmware deviations
 
 Before updating the server firmware, you can examine any deviations in
 firmware components from your group's established baseline. This step
@@ -1528,7 +1528,7 @@ in the TotalDownloadSize column of the firmware compliance report.
 > 
 > The Firmware Compliance feature does not monitor HPE driver and software versions.
 
-## Task 3 -- Scheduling group firmware update
+## Task 3 - Scheduling group firmware update
 
 After identifying the firmware deviation within the group definition,
 you may choose to perform a group firmware update. For this exercise,
@@ -1617,7 +1617,7 @@ reports. Streamline authentication for accessing iLO interfaces by
 implementing Single Sign-On (SSO), and confirm that your COM
 configuration of iLO settings is correct through practical verification.
 
-## Task 1 -- Server utilization insights
+## Task 1 - Server utilization insights
 
 Server utilization insights play a crucial role in optimizing data
 center efficiency and sustainability. Leveraging AI-powered analytics,
@@ -1684,7 +1684,7 @@ and issuing utilization alerts.
     > allowing you to make smart choices that boost performance and
     > efficiency.
 
-## Task 2 -- Server sustainability insights
+## Task 2 - Server sustainability insights
 
 The Server Sustainability Insights feature is essential for enhancing
 data center efficiency and promoting environmentally responsible

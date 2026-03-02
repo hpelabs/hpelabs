@@ -31,8 +31,6 @@ network:
 minima:
   skin: auto
   social_links:
-    - { platform: rss, user_url: "/feed.xml", user_title: "RSS Feed" }
- 
   #   - { platform: devto,          user_url: "https://dev.to/jekyll" }
   #   - { platform: dribbble,       user_url: "https://dribbble.com/jekyll" }
   #   - { platform: facebook,       user_url: "https://www.facebook.com/jekyll" }
@@ -72,8 +70,8 @@ defaults:
 
 
 # Build settings
+feed: false
 plugins:
-  - jekyll-feed
   - jekyll-paginate
   - jekyll-sitemap
   - jekyll-seo-tag
