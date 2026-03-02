@@ -323,12 +323,12 @@ Follow these rules when editing lab guides:
 
 Each numbered step in a lab guide can display a **step progress badge** showing the step number and an estimated reading/completion time.
 
-The badge is placed **directly below** the `# Step N` heading using:
+The badge is placed **directly below** the `# Task N` heading using:
 
 ```markdown
-# Step 2 - Get the exported commands
+# Task 6 - Configuration of Compute Ops Management
 
-<p class="step-meta">(Step 2 of 12) ⏱️ ~3 min</p>
+<p class="step-meta">(Task 6 of 12) ⏱️ ~9 min</p>
 ```
 
 Which renders as a styled badge like:
@@ -337,10 +337,10 @@ Which renders as a styled badge like:
 
 **Important rules:**
 
-- The `<p class="step-meta">` element **must immediately follow** the `# Step N` heading with no blank line between them.
-- The static time value (e.g., `~3 min`) you write in the markdown serves as a **fallback** when JavaScript is disabled.
+- The `<p class="step-meta">` element **must immediately follow** the `# Task N` heading with no blank line between them.
+- The static time value (e.g., `~9 min`) you write in the markdown serves as a **fallback** when JavaScript is disabled.
 - The time is **automatically recalculated** at page load based on the word count of the step section (at 140 words/minute). You do not need to manually maintain an accurate value.
-- Use the format `(Step X of Y) ⏱️ ~N min` to keep badge styling consistent across all lab guides.
+- Use the format `(Task X of Y) ⏱️ ~N min` to keep badge styling consistent across all lab guides.
 
 
 [↑ Back to Top](#)
