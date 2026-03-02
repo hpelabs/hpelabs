@@ -390,13 +390,14 @@ Metadata Fields Explained:
 
 - **room**
 
-    Assigns the lab to a room for session scheduling. Accepted values are `1` or `2`.
+    At events like **HPE Tech Jam**, lab sessions are typically split across two rooms, each running a different set of labs. The `room` field lets you assign each lab guide to a room so attendees can quickly find the labs available in their room.
 
-    Labs assigned to a room appear on the corresponding **Room 1** or **Room 2** page in the site navigation. The **homepage always shows all labs** regardless of room assignment.
+    The **homepage** ([https://hpelabs.github.io](https://hpelabs.github.io)) always shows all available labs, while two dedicated room pages show only the labs assigned to that room:
 
-    - Set `room: 1` to list the lab under Room 1 → [https://hpelabs.github.io/room-1/](https://hpelabs.github.io/room-1/)
-    - Set `room: 2` to list the lab under Room 2 → [https://hpelabs.github.io/room-2/](https://hpelabs.github.io/room-2/)
-    - Leave `room:` empty (or omit it entirely) if the lab should not appear on any room page.
+    - **Room 1**: [https://hpelabs.github.io/room-1/](https://hpelabs.github.io/room-1/)
+    - **Room 2**: [https://hpelabs.github.io/room-2/](https://hpelabs.github.io/room-2/)
+
+    To assign a lab to a room, set `room: 1` or `room: 2` in its front matter. Leave it empty to keep the lab on the homepage only.
 
     ```yaml
     room: 1   # Room 1 only
