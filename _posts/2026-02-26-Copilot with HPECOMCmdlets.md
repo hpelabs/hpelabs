@@ -198,8 +198,8 @@ Click the user icon at the bottom of the Activity bar
 
 [![]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image8.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image8.png){:class="img-100"}{: data-lightbox="gallery"}
 
-A menu should open with at the top bot-compute-labnn_hpeprod (GitHub)
-where nn is your team number. This is the user with which you are logged
+A menu should open with at the top bot-compute-lab<span style="color:red">nn</span>_hpeprod (GitHub)
+where <span style="color:red">nn</span> is your team number. This is the user with which you are logged
 into GitHub, ensuring your rights to Copilot.
 
 You should also look at the bottom right, just below the area where you
@@ -332,12 +332,10 @@ using this library) but we don't want that because we are going to
 create our own workspace.
 
 ```text
-Remove the workspace parameter, I want to connect without a workspace
-and create one later
+Remove the workspace parameter, I want to connect without a workspace and create one later
 ```
 
-Code removed in on [red background]{.mark}, code added is on [green
-background]{.mark}. As always, click Keep to accept the changes.
+Code removed in on <span style="background-color:red">red background</span>, code added is on <span style="background-color:green">green background</span>. As always, click Keep to accept the changes.
 
 [![]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image17.jpg){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image17.jpg){:class="img-600"}{: data-lightbox="gallery"}
 
@@ -350,7 +348,7 @@ specific projects or teams. Workspaces help separate and control access
 to different sets of resources, making it easier to manage permissions,
 monitor usage, and automate tasks within a defined scope.
 
-In the following prompt, replace nn with your team number, for example
+In the following prompt, replace <span style="color:red">nn</span> with your team number, for example
 09, before sending the prompt to Copilot
 
 ```text
@@ -445,7 +443,7 @@ Primary Contact Email the user's email
 ## Add a subscription
 
 To activate compute devices that will be added later to your workspace,
-you need to install a COM subscription key (a licence to use COM). Be
+you need to install a COM subscription key (a license to use COM). Be
 sure to replace the string \<key found on your login sheet\> before
 submitting your prompt to Copilot!
 
@@ -453,8 +451,10 @@ submitting your prompt to Copilot!
 Add subscription key <key found on your login sheet>
 ```
 
+```text
 Set automatic subscription assignment and reassignment for Compute. The
 COM subscription tier is STANDARD
+```
 
 # Onboarding devices
 
@@ -483,11 +483,12 @@ simple work we have to do
 [![]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image21.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image521.png){:class="img-400"}{: data-lightbox="gallery"}
 
 Copy the following data into the ilos.csv file and replace the
-placeholders in \<red\> with your team\'s information from the login
-sheet:\
-\
-IP, Username, Password\
-10.18.26.\<xx\>, Administrator, \<iLO's password\>
+placeholders in \<brackets\> with your team\'s information from the login
+sheet:
+```csv
+IP, Username, Password
+10.18.26.<xx>, Administrator, <iLO's password>
+```
 
 Make sure the data is on 2 lines like shown above, with no extra space
 at the beginning or end of either line (space after a comma is OK).
@@ -520,8 +521,7 @@ Generate a COM activation key
 And now we have everything we need to bring our server into COM
 
 ```text
-Connect all the iLOs from the CSV file to COM. Make sure the activation
-key is created before this step
+Connect all the iLOs from the CSV file to COM. Make sure the activation key is created before this step
 ```
 
 You can see how it created a loop
@@ -594,7 +594,7 @@ Create an internal storage setting with name RAID-1, RAID level 1, take the enti
 Create firmware settings
 
 ``` text
-Create firmware settings with the latest firmware bundles for Gen10 and Gen11
+Create firmware settings with the latest firmware bundles for Gen11 and Gen12
 ```
 
 ## Create a server group

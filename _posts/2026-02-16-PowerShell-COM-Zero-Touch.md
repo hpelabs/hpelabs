@@ -202,9 +202,9 @@ To access the HPE Compute BU Enablement Environment, we will use VMware Horizon.
 
 7. You can now leave the page and begin your zero-touch automation experience.
 
-# Step 1 - How to Install HPECOMCmdlets
+# Task 1 - How to Install HPECOMCmdlets
 
-<p class="step-meta">(Step 1 of 12) ⏱️ ~5 min</p>
+<p class="step-meta">(Task 1 of 12) ⏱️ ~5 min</p>
 
 - The first step is to install the library on your Windows virtual machine. Return to the PowerShell console and enter the following command:
 
@@ -223,9 +223,9 @@ To access the HPE Compute BU Enablement Environment, we will use VMware Horizon.
 
 [↑ Back to Top](#)
 
-# Step 2 - Get the exported commands
+# Task 2 - Get the exported commands
 
-<p class="step-meta">(Step 2 of 12) ⏱️ ~3 min</p>
+<p class="step-meta">(Task 2 of 12) ⏱️ ~3 min</p>
 
 - Now that the module is installed, you can get the list of commands exported by the module using:
 
@@ -282,9 +282,9 @@ example does.
 
 [↑ Back to Top](#)
 
-# Step 3 - Connection to HPE GreenLake
+# Task 3 - Connection to HPE GreenLake
 
-<p class="step-meta">(Step 3 of 12) ⏱️ ~15 min</p>
+<p class="step-meta">(Task 3 of 12) ⏱️ ~15 min</p>
 
 After the module is installed, the next first step is to connect to HPE GreenLake using the `Connect-HPEGL` command.
 
@@ -388,11 +388,11 @@ If you already have one or more workspaces available, the command will return a 
 
 [↑ Back to Top](#)
 
-# Step 4 - Configuration of your workspace
+# Task 4 - Configuration of your workspace
 
-<p class="step-meta">(Step 4 of 12) ⏱️ ~20 min</p>
+<p class="step-meta">(Task 4 of 12) ⏱️ ~20 min</p>
 
-## Task 1 -- Create your first workspace
+## Step 1 - Create your first workspace
 
 1. To create your initial workspace (or an extra one just for this lab --- don't worry, it will be deleted once the lab ends), you need to provide a unique name. Since the name must be unique across all workspaces on the HPE GreenLake platform, we will use a random number to generate the name. Enter:
 
@@ -477,7 +477,7 @@ If you already have one or more workspaces available, the command will return a 
     [![]( {{ site.baseurl }}/assets/images/HOLs/COM-ZeroTouch/image31.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/COM-ZeroTouch/image31.png){: data-lightbox="gallery"}
 
 
-## Task 2 -- Add a user to your workspace
+## Step 2 - Add a user to your workspace
 
 There are several commands that are available to configure a workspace and the different resources available in a workspace, such as adding users, settings roles, location, etc. In this task, you will simply add
 a new user with a specific role.
@@ -503,7 +503,7 @@ a new user with a specific role.
     Get-HPEGLUser
     ```
 
-## Task 3 -- Provision Compute Ops Management
+## Step 3 - Provision Compute Ops Management
 
 The following step involves setting up services. There are several kinds of services you can provision across different regions.
 
@@ -556,7 +556,7 @@ The following step involves setting up services. There are several kinds of serv
     Get-HPEGLUserRole -Email $NewUserEmail
     ```
 
-## Task 4 -- Set a location
+## Step 4 - Set a location
 
 Locations in Service Delivery Information (SDI) store addresses, contacts, and support details for automation. Assigning a device to a location links it physically for automated support, including ticket creation with HPE.
 
@@ -582,7 +582,7 @@ This step is essential for automatically creating a ticket with HPE support.
     Get-HPEGLLocation
     ```
 
-## Task 5 - Add a subscription to your workspace
+## Step 5 - Add a subscription to your workspace
 
 1. To activate compute devices that will be added later to your workspace, you need to add a COM subscription key. Enter:
 
@@ -626,9 +626,9 @@ This step is essential for automatically creating a ticket with HPE support.
 
 [↑ Back to Top](#)
 
-# Step 5 - Onboarding devices
+# Task 5 - Onboarding devices
 
-<p class="step-meta">(Step 5 of 12) ⏱️ ~15 min</p>
+<p class="step-meta">(Task 5 of 12) ⏱️ ~15 min</p>
 
 You can add devices to a workspace either one at a time or in bulk.
 Another option is to use a COM activation key, which lets you add single
@@ -648,7 +648,7 @@ instance. In this lab, you'll be using that specific method.
 > authentication, device registration, and early configuration for a
 > streamlined "zero-touch" setup.
 
-## Task 1 - Onboard one server
+## Step 1 - Onboard one server
 
 1. To generate an activation key for connecting your server to the Compute Ops Management instance in the region you provisioned earlier, use the following command:
 
@@ -790,7 +790,7 @@ sheet provided by your instructor. Enter:
 
     This command will power on all servers managed by COM. Since you currently have only one server onboarded, it will specifically start that device.
 
-## Task 2 - Set device location and tags
+## Step 2 - Set device location and tags
 
 1. Next you need to set the device location. As indicated earlier, this step is important to ensure that support cases are automatically created in the event of device failures. To do so, enter:
 
@@ -846,16 +846,16 @@ sheet provided by your instructor. Enter:
 
 [↑ Back to Top](#)
 
-# Step 6 - Configuration of Compute Ops Management
+# Task 6 - Configuration of Compute Ops Management
 
-<p class="step-meta">(Step 6 of 12) ⏱️ ~25 min</p>
+<p class="step-meta">(Task 6 of 12) ⏱️ ~25 min</p>
 
 The following step involves setting up Compute Ops Management. This
 process includes various tasks like setting up server configurations,
 forming groups, assigning servers to these groups and much more. The
 steps to complete this setup are outlined below:
 
-## Task 1 -- Create server settings
+## Step 1 - Create server settings
 
 A setting in COM is a collection of parameters that you can apply to one
 or more servers through groups. These settings include parameters such
@@ -984,7 +984,7 @@ ILO settings enable the configuration of specific parameters to standardize iLO 
 
     [![]( {{ site.baseurl }}/assets/images/HOLs/COM-ZeroTouch/image50.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/COM-ZeroTouch/image50.png){: data-lightbox="gallery"}
 
-## Task 2 -- Create a group
+## Step 2 - Create a group
 
 In this task you will create a new group incorporating the different settings created earlier. Groups enable you to organize your servers into custom-defined sets for easier monitoring and manageability. The server-related settings and policies you created earlier can be applied to a single group, as you will do in this lab, or to multiple groups as needed.
 
@@ -1036,7 +1036,7 @@ In this task you will create a new group incorporating the different settings cr
 
     Keep in mind that only the iLO settings take effect right away after you add servers to the group.
 
-## Task 3 -- Add servers to the group
+## Step 3 - Add servers to the group
 
 The next task is to add your server to the new group. According to the group policies, only the iLO settings will be applied immediately upon adding the servers to the group. 
 
@@ -1128,9 +1128,9 @@ The next task is to add your server to the new group. According to the group pol
 
 [↑ Back to Top](#)
 
-# Step 7 - Gathering Comprehensive Server Inventory Information
+# Task 7 - Gathering Comprehensive Server Inventory Information
 
-<p class="step-meta">(Step 7 of 12) ⏱️ ~5 min</p>
+<p class="step-meta">(Task 7 of 12) ⏱️ ~5 min</p>
 
 Keeping accurate server inventory is crucial for effective IT
 management---it enables quick troubleshooting, ensures compliance, and
@@ -1192,13 +1192,13 @@ To obtain detailed server inventory information, use the `Get-HPECOMServerInvent
 
 [↑ Back to Top](#)
 
-# Step 8 - Monitoring Server Health, Support, and Warranty Status
+# Task 8 - Monitoring Server Health, Support, and Warranty Status
 
-<p class="step-meta">(Step 8 of 12) ⏱️ ~10 min</p>
+<p class="step-meta">(Task 8 of 12) ⏱️ ~10 min</p>
 
 One of the key responsibilities in server management is troubleshooting
 issues, managing open cases, monitoring server health, and ensuring that
-servers remain under warranty coverage. In Step 8, effective server
+servers remain under warranty coverage. In Task 8, effective server
 management includes tasks such as confirming operational status,
 reviewing health summaries, monitoring current activities and alerts,
 retrieving support details and cases, and identifying servers with
@@ -1221,7 +1221,7 @@ Specifically, you can:
 
 These features collectively enable robust monitoring, efficient troubleshooting, and proactive resolution of server issues, ensuring optimal server performance and support coverage.
 
-## Task 1 - Getting server health status, activities, jobs and alerts
+## Step 1 - Getting server health status, activities, jobs and alerts
 
 The first step in server troubleshooting is to confirm that the server is operational and verify the absence of any active alerts. 
 
@@ -1290,7 +1290,7 @@ The first step in server troubleshooting is to confirm that the server is operat
 
     This flexibility helps in managing and monitoring server operations more effectively, especially in large or complex environments.
 
-## Task 2 - Getting server support details
+## Step 2 - Getting server support details
 
 The subsequent phase in server troubleshooting involves verifying the
 support details. This information is crucial for determining warranty
@@ -1326,7 +1326,7 @@ status and its duration.
     > 
     > `Get-HPECOMServer -Region $Region -ShowServersWithRecentSupportCases` can be used to list servers with recent support cases.
 
-## Task 3 - Collecting and downloading server logs
+## Step 3 - Collecting and downloading server logs
 
 When encountering a critical server issue, HPE support may request the
 collection and submission of your server's Active Health System (AHS)
@@ -1390,7 +1390,7 @@ efficient and accessible.
 
     This makes it easy to inspect individual log files and share relevant data with support teams for further troubleshooting.
 
-## Task 4 - Enabling email notification
+## Step 4 - Enabling email notification
 
 An essential aspect of effective server management is receiving timely
 alerts when issues arise. To address this, COM provides configurable
@@ -1425,9 +1425,9 @@ automatically applied.
 
 [↑ Back to Top](#)
 
-# Step 9 - Updating and Ensuring Server Firmware Compliance
+# Task 9 - Updating and Ensuring Server Firmware Compliance
 
-<p class="step-meta">(Step 9 of 12) ⏱️ ~10 min</p>
+<p class="step-meta">(Task 9 of 12) ⏱️ ~10 min</p>
 
 This section outlines the procedures for configuring key server
 management functions in COM. It covers maintaining server firmware
@@ -1436,7 +1436,7 @@ firmware deviations, and scheduling group firmware updates. Adhering to
 these steps will enhance the efficiency of monitoring and maintaining
 your server infrastructure.
 
-## Task 1 - Checking group firmware compliance 
+## Step 1 - Checking group firmware compliance 
 
 The initial step in this process is to verify your group's firmware
 compliance status. This compliance report provides a clear assessment of
@@ -1488,7 +1488,7 @@ efficiently.
     >     
     > You may achieve a perfect 100% compliance score with no deviations depending on the status of your allocated server.
 
-## Task 2 - Checking group firmware deviations
+## Step 2 - Checking group firmware deviations
 
 Before updating the server firmware, you can examine any deviations in
 firmware components from your group's established baseline. This step
@@ -1528,7 +1528,7 @@ in the TotalDownloadSize column of the firmware compliance report.
 > 
 > The Firmware Compliance feature does not monitor HPE driver and software versions.
 
-## Task 3 - Scheduling group firmware update
+## Step 3 - Scheduling group firmware update
 
 After identifying the firmware deviation within the group definition,
 you may choose to perform a group firmware update. For this exercise,
@@ -1605,9 +1605,9 @@ weekend (in four days).
 
 [↑ Back to Top](#)
 
-# Step 10 - Essential Next Steps for Server Management and Sustainability
+# Task 10 - Essential Next Steps for Server Management and Sustainability
 
-<p class="step-meta">(Step 10 of 12) ⏱️ ~15 min</p>
+<p class="step-meta">(Task 10 of 12) ⏱️ ~15 min</p>
 
 After completing setup and firmware updates, the next essential steps
 focus on ongoing server management and sustainability. Use HPE Compute
@@ -1617,7 +1617,7 @@ reports. Streamline authentication for accessing iLO interfaces by
 implementing Single Sign-On (SSO), and confirm that your COM
 configuration of iLO settings is correct through practical verification.
 
-## Task 1 - Server utilization insights
+## Step 1 - Server utilization insights
 
 Server utilization insights play a crucial role in optimizing data
 center efficiency and sustainability. Leveraging AI-powered analytics,
@@ -1684,7 +1684,7 @@ and issuing utilization alerts.
     > allowing you to make smart choices that boost performance and
     > efficiency.
 
-## Task 2 - Server sustainability insights
+## Step 2 - Server sustainability insights
 
 The Server Sustainability Insights feature is essential for enhancing
 data center efficiency and promoting environmentally responsible
@@ -1755,7 +1755,7 @@ operational expenses.
 
     This command returns projected CO2 emissions, allowing you to better assess and manage the environmental impact of your server operations.
 
-## Task 3: Interacting with iLOs using Compute Ops Management SSO
+## Step 3 - Interacting with iLOs using Compute Ops Management SSO
 
 Direct interaction with iLOs from this library is a key capability that
 enhances server management efficiency. Starting in January 2025, Compute
@@ -1833,7 +1833,7 @@ To authenticate to your server's iLO using single sign-on (SSO), follow these 4 
 
     These steps streamline the process of authenticating to iLO using Compute Ops Management SSO and enable you to manage your servers more efficiently with the PowerShell cmdlets.
 
-## Task 4: Testing ILO settings configuration
+## Step 4 - Testing ILO settings configuration
 
 In this task, you will verify that the iLO settings you configured in
 your group (Step6 -- Task 1) have been correctly applied to your server.
@@ -1841,7 +1841,7 @@ Specifically, you will check the AcceptThirdPartyFirmwareUpdates
 parameter, then change it and observe how COM detects the configuration
 drift and re-applies the correct settings.
 
-- **Step 1**: Verify the current iLO firmware policy setting
+1. Verify the current iLO firmware policy setting
 
     Begin by querying the iLO directly with the HPEiLOCmdlets and your connection object to check the current firmware update policy. Use the following command to retrieve the firmware policy from your iLO:
 
@@ -1856,7 +1856,7 @@ drift and re-applies the correct settings.
     This command should return **false**, indicating that the AcceptThirdPartyFirmwareUpdates option is set to Disabled as per your group's iLO policy. With this setting, installation of third-party firmware on your server is blocked, aligning with recommended security
 best practices.
 
-- **Step 2**: Simulate a configuration drift by changing the setting in COM
+2. Simulate a configuration drift by changing the setting in COM
 
     Now you will change the iLO setting in COM from ***Disabled*** to ***Enabled*** to simulate a configuration change. This will cause your server to become non-compliant with the group's iLO policy. Run this command to update the iLO setting:
 
@@ -1866,7 +1866,7 @@ best practices.
 
     [![]( {{ site.baseurl }}/assets/images/HOLs/COM-ZeroTouch/image88.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/COM-ZeroTouch/image88.png){: data-lightbox="gallery"}
 
-- **Step 3**: Check the compliance status
+3. Check the compliance status
 
     After changing the setting, check the group's compliance status. You should see that the iLO settings are now marked as not compliant because the group policy expects Disabled but the setting now says Enabled:
 
@@ -1878,7 +1878,7 @@ best practices.
 
     The compliance check will show that your server's iLO configuration no longer matches the group's iLO policy.
 
-- **Step 4**: Re-apply the correct iLO configuration
+4. Re-apply the correct iLO configuration
 
     Now you will use COM to re-apply the correct iLO configuration to your server. This will change the **AcceptThirdPartyFirmwareUpdates** parameter back to **Enabled** on the iLO itself. Run the following command using the Async parameter so you don't have to wait for the job to complete:
 
@@ -1890,7 +1890,7 @@ best practices.
 
     The command returns the job status, indicating that it is currently in a *Running* state.
 
-- **Step 5**: Monitor the job progress
+5. Monitor the job progress
 
     While the iLO configuration is being applied, you can check the job status using these commands:
 
@@ -1911,7 +1911,7 @@ best practices.
     
     [![]( {{ site.baseurl }}/assets/images/HOLs/COM-ZeroTouch/image93.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/COM-ZeroTouch/image93.png){: data-lightbox="gallery"}
 
-- **Step 6**: Verify the setting has been applied
+6. Verify the setting has been applied
 
     Once the job is completed, query the iLO again to verify that AcceptThirdPartyFirmwareUpdates has been changed back to Enabled on your iLO:
 
@@ -1942,14 +1942,15 @@ These points illustrate the effectiveness of COM's policy-based management appro
 
 [↑ Back to Top](#)
 
-# Step 11 - Clean the lab for the next participant 
+# Task 11 - Clean the lab for the next participant 
 
-<p class="step-meta">(Step 11 of 12) ⏱️ ~5 min</p>
+<p class="step-meta">(Task 11 of 12) ⏱️ ~5 min</p>
+
 Before concluding the lab, follow these steps to clean up your
 environment. Skipping these steps may leave resources locked to your
 workspace, which could affect future lab sessions.
 
-## Task 1: Remove your server from its service assignment
+## Step 1 - Remove your server from its service assignment
 
 It is essential to remove a server from its current service assignment
 before onboarding it to a different workspace. Failure to complete this
@@ -1974,7 +1975,7 @@ environment.
 
     [![]( {{ site.baseurl }}/assets/images/HOLs/COM-ZeroTouch/image96.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/COM-ZeroTouch/image96.png){: data-lightbox="gallery"}
 
-## Task 2: Remove the subscription key
+## Step 2 - Remove the subscription key
 
 Subscription keys are single-use on the HPE GreenLake platform, so it's
 also important to delete your key from your workspace.
@@ -1993,7 +1994,7 @@ also important to delete your key from your workspace.
     Get-HPEGLSubscription
     ```
 
-## Task 3: Remove the COM service instance
+## Step 3 - Remove the COM service instance
 
 Next, remove the COM service instance (the `$Region` you set earlier)
 from your workspace. This will permanently remove all the COM resources,
@@ -2020,7 +2021,7 @@ resources and lowers your carbon footprint.
     Get-HPEGLService -ShowProvisioned
     ```
 
-## Task 4: Disconnect from HPE GreenLake
+## Step 4 - Disconnect from HPE GreenLake
 
 The cleanup process is now complete. The final task, which cannot be
 performed within the lab, is the deletion of the workspace itself. This
@@ -2066,9 +2067,9 @@ your command line terminal.
 
 [↑ Back to Top](#)
 
-# Step 12 - Explore Zero Touch Automation with the Sample Script (Optional)
+# Task 12 - Explore Zero Touch Automation with the Sample Script (Optional)
 
-<p class="step-meta">(Step 12 of 12) ⏱️ ~</p>
+<p class="step-meta">(Task 12 of 12) ⏱️ ~</p>
 
 If you would like to see the true value of this library, you can run the
 Zero Touch Automation script available on GitHub:
