@@ -382,10 +382,27 @@ title: "HPE Compute Ops Management Zero-Touch Automation"
 image: /assets/images/HOLs/COM-ZeroTouch/banner.jpg
 post_end_promo: <i><b>Continue your journey with more HPE Compute Technical Enablement Hands-on Labs for infrastructure, security, technologies, and solutions.</b></i>
 excerpt: Learn to automate HPE server lifecycle management using the HPE Compute Ops Management PowerShell module—from workspace provisioning and device onboarding to policy enforcement, compliance monitoring, and sustainability insights within HPE GreenLake.
+room: 1
 ---
 ```
 
 Metadata Fields Explained:
+
+- **room**
+
+    Assigns the lab to a room for session scheduling. Accepted values are `1` or `2`.
+
+    Labs assigned to a room appear on the corresponding **Room 1** or **Room 2** page in the site navigation. The **homepage always shows all labs** regardless of room assignment.
+
+    - Set `room: 1` to list the lab under Room 1 → [https://hpelabs.github.io/room-1/](https://hpelabs.github.io/room-1/)
+    - Set `room: 2` to list the lab under Room 2 → [https://hpelabs.github.io/room-2/](https://hpelabs.github.io/room-2/)
+    - Leave `room:` empty (or omit it entirely) if the lab should not appear on any room page.
+
+    ```yaml
+    room: 1   # Room 1 only
+    room: 2   # Room 2 only
+    room:     # Not assigned to any room (homepage only)
+    ```
 
 - **post_end_promo**
     
