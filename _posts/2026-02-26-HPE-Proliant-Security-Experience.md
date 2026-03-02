@@ -1709,7 +1709,7 @@ remote management. With HPE ProLiant Compute, HPE empowers IT
 administrators with both the flexibility and security needed to maintain
 full control of their hardware, no matter where it’s located.
 
-## Want more?
+# Want more?
 
 Back home, you can head to the [HPE Demonstration Portal](https://hpedemoportal.ext.hpe.com) and request a time slot to demonstrate these products
 

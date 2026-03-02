@@ -172,6 +172,11 @@ main.page-content {
   margin-top: var(--header-height) !important;
 }
 
+/* Offset anchor scroll targets so fixed header doesn't cover headings */
+h1, h2, h3, h4, h5, h6 {
+  scroll-margin-top: calc(var(--header-height) + 12px);
+}
+
 /* Mobile optimization for site title */
 @media (max-width: 600px) {
   .site-title {

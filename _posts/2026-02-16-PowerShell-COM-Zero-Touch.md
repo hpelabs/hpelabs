@@ -86,7 +86,7 @@ These features collectively provide a comprehensive set of cmdlets to
 manage various aspects of your HPE GreenLake environment and any
 existing Compute Ops Management service instances.
 
-## Preparation for using the PowerShell library
+# Preparation for using the PowerShell library
 
 To use the HPE Compute Ops Management PowerShell Library, an HPE
 GreenLake account is required. The library supports two authentication
@@ -132,7 +132,7 @@ and click on **Create Account**:
 
 3. Once completed, you are ready to access the lab, then to install and use the library.
 
-## Connecting to the lab environment
+# Connecting to the lab environment
 
 To access the HPE Compute BU Enablement Environment, we will use VMware Horizon. Follow these steps:
 
