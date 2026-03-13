@@ -7,7 +7,37 @@ excerpt: Learn to automate HPE server lifecycle management using the HPE Compute
 room: 1 # Set to 1 or 2
 ---
 
-Living Lab experience
+Hands on Lab Guide
+
+# Introduction
+
+Welcome to this Hands-On Lab (HOL). For the next two hours you will
+complete a self-paced lab using the HPECOMCmdlets PowerShell library, 
+HPE ProLiant DL-series servers and HPE GreenLake Compute Ops Management.
+
+## Lab Objectives
+
+In this hands-on lab, you will discover how the HPE Compute Ops Management PowerShell library can transform the way you manage data center infrastructure. By working through real-world scenarios, you will learn how to replace time-consuming manual operations with automated, repeatable workflows—covering the full server lifecycle from initial provisioning and device onboarding to policy enforcement, compliance monitoring, and decommissioning. You will gain practical experience automating critical IT tasks such as workspace configuration, firmware management, and iLO settings enforcement, while also learning how to leverage sustainability and utilization insights to make smarter infrastructure decisions. By the end of this lab, you will have the skills and confidence to design and implement automation workflows that reduce human error, enforce consistent configurations at scale, and accelerate server deployments across your HPE GreenLake environment.
+
+## Team Assignments
+
+This lab has 25 stations. Each station will have its own HPE DL-series
+server to be onboarded into COM. You will be working in a Virtual
+Machine using Visual Studio Code with the PowerShell extension.
+
+Your team assignments will be on a separate sheet of paper issued to you
+by your lab proctor. Please return the team assignment sheet to your
+proctor when finished with this lab.
+
+## Virtual Lab Environment
+
+Upon access to the lab, you will be presented with a Windows desktop.
+
+Each team will have the following physical and virtual infrastructure:
+
+- Windows virtual machine with Visual Studio Code
+
+- One ProLiant DL-series server
 
 
 # HPE Compute Ops Management PowerShell Library
@@ -89,19 +119,15 @@ existing Compute Ops Management service instances.
 
 # Connecting to the lab environment
 
-Access the lab environment via VMware Omnissa Horizon by completing these steps:
+To access the Windows virtual machine in our VMware Omnissa Horizon lab environment complete these steps:
 
-1. Navigate to the appropriate URL based on your network location to open the Omnissa Horizon Web Client:
-
-   - **External to HPE** (not connected to HPE VPN): <https://labs.compute.cloud.hpe.com>
-
-   - **Internal to HPE** (or connected to HPE VPN): <https://techenablement.hpecorp.net>
+1. Navigate to <https://labs.compute.cloud.hpe.com>
 
 2. On the Horizon login screen, click the **Omnissa Horizon Web Client** button.
 
     [![]( {{ site.baseurl }}/assets/images/HOLs/COM-ZeroTouch/image6.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/COM-ZeroTouch/image6.png){:class="img-600"}{: data-lightbox="gallery"}
 
-3. Login with the credentials provided in your login sheet.
+3. Login with the Horizon login username and password provided in your login sheet.
 
     [![]( {{ site.baseurl }}/assets/images/HOLs/COM-ZeroTouch/image7.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/COM-ZeroTouch/image7.png){:class="img-500"}{: data-lightbox="gallery"}
 
@@ -240,31 +266,25 @@ After the module is installed, the next step is to connect to HPE GreenLake usin
 
 The library supports two authentication methods:
 
-**1. HPE Account Credentials (Single or Multi-Factor Authentication)**
+1. **HPE Account Authentication (Single or Multi-Factor)**
 
-- Authenticate using your HPE Account email and password
-- Optional multi-factor authentication (MFA) for enhanced security (requires [v1.0.12+](https://github.com/jullienl/HPE-COM-PowerShell-Library/releases/tag/v1.0.12) )
-- Supports standard password-based authentication flows
+    Authenticate using your HPE account email and password. Multi-factor authentication (MFA) is optionally supported for enhanced security (requires [v1.0.12+](https://github.com/jullienl/HPE-COM-PowerShell-Library/releases/tag/v1.0.12)).
 
+2. **SAML Single Sign-On (SSO)**
 
-**2. SAML Single Sign-On (SSO) with Passwordless Authentication**
+    Connect using your organization's identity provider (IdP) — Okta, PingIdentity, or Microsoft Entra ID are supported. This method enables passwordless authentication via push notifications or Time-based One-Time Passwords (TOTP), aligning with your existing enterprise SSO setup for centralized identity management.
 
-- **Integrate with Your Organization's Identity Provider**: Seamlessly connect with Okta, PingIdentity, or Microsoft Entra ID (exclusively!) for enterprise-wide authentication alignment.
+    **Prerequisites** (requires [v1.0.18+](https://github.com/jullienl/HPE-COM-PowerShell-Library/releases/tag/v1.0.18)):
+    - Passwordless authentication (push notifications or TOTP) must be enabled on your identity provider. Without it, `Connect-HPEGL` with SSO will fail. For configuration guidance, refer to [Configuring SAML SSO with HPE GreenLake and Passwordless Authentication](https://jullienl.github.io/Configuring-SAML-SSO-with-HPE-GreenLake-and-Passwordless-Authentication-for-HPECOMCmdlets/).
+    - Identity providers other than Okta, PingIdentity, and Microsoft Entra ID are not supported for SSO — use standard HPE account credentials instead.
 
-- **Passwordless Authentication Methods**: Leverage push notifications or Time-based One-Time Password (TOTP) for secure, user-friendly access without traditional passwords.
+If you already have an HPE account or workspace with SSO configured for passwordless access, proceed directly to [Step 2 - Authenticate to HPE GreenLake](#step-2---authenticate-to-hpe-greenlake).
 
-- **Streamlined SSO Configuration**: Align authentication with your organization's existing SSO setup for consistent, centralized identity management.
-
-- **Prerequisites** (requires [v1.0.18+](https://github.com/jullienl/HPE-COM-PowerShell-Library/releases/tag/v1.0.18)):
-    - Passwordless authentication must be enabled on your identity provider (Okta, Microsoft Entra ID, or PingIdentity)—such as push notifications or TOTP. Without these, `Connect-HPEGL` with SSO will fail. For detailed guidance on configuring SSO and enabling passwordless authentication, refer to [Configuring-SAML-SSO-with-HPE-GreenLake-and-Passwordless-Authentication-for-HPECOMCmdlets](https://jullienl.github.io/Configuring-SAML-SSO-with-HPE-GreenLake-and-Passwordless-Authentication-for-HPECOMCmdlets/)
-
-    - Unsupported identity providers require standard HPE account credentials instead of SSO.
-
-
+If you don't have an HPE account yet, you can create one in the next section. The process takes only a few minutes to complete.
 
 ## Step 1 - Create Your HPE Account
 
-If you already have an HPE account or workspace with SSO properly configured for passwordless access, proceed directly to [Step 2 - Authenticate to HPE GreenLake](#step-2---authenticate-to-hpe-greenlake).
+🔔 If you already have an HPE account, go to [Step 2 - Authenticate to HPE GreenLake](#step-2---authenticate-to-hpe-greenlake).
 
 1. To create your HPE account for this library, go to the HPE GreenLake interface at <https://common.cloud.hpe.com> and click on **Sign up**:
 
@@ -290,6 +310,12 @@ Select the authentication method that applies to you: follow the steps below for
      $MyEmail = "your_email@your_domain.com"
      $credentials = Get-Credential -UserName $MyEmail
      ```
+
+     > **💡 Note**  
+     >
+     >{: .small-space}
+     >
+     > Do not confuse the **Horizon credentials** you used at the beginning to connect to the lab environment with the **HPE GreenLake credentials** you are using now—they are not the same.
 
   2. Once executed, the command prompts you for the password.
   
@@ -329,6 +355,11 @@ Select the authentication method that applies to you: follow the steps below for
     ```powershell
     $MyEmail = "your_email@your_domain.com"
     ```
+     > **💡 Note**  
+     >
+     >{: .small-space}
+     >
+     > Do not confuse the **Horizon credentials** you used at the beginning to connect to the lab environment with the **HPE GreenLake credentials** you are using now—they are not the same.
 
   - To connect with SAML SSO through your organization's identity provider (IdP), enter the following command in your terminal:
 
@@ -406,12 +437,12 @@ You may now leave this page open and begin your zero-touch automation experience
     
     For example, **team 5** should use: `$WorkspaceName = "HPEWorkspaceT05_$(Get-Random)"`
 
-    > ### ⚠️ CRITICAL REQUIREMENT ⚠️
+    > #### ⚠️ CRITICAL REQUIREMENT ⚠️
     > {: .no_toc }
     >
     > You **MUST** follow the naming convention **HPEWorkspaceTxx_** (with xx your team number) exactly. This is essential for the lab reset scripts to identify and clean up your workspace automatically.
     > <br>   
-    > **⚠️ Failure to use this naming format will prevent automatic cleanup and may require manual intervention.**
+    > **❌ Failure to use this naming format will prevent automatic cleanup and may require manual intervention.**
 
 2. This command generates a name such as *HPEWorkspaceT01_12345678* for team 1. You can verify your workspace name by executing:
 
@@ -481,13 +512,12 @@ a new user with a specific role.
     New-HPEGLUser -Email $NewUserEmail -RoleName 'Workspace Administrator'
     ```
 
-    > ### ⚠️ CRITICAL REQUIREMENT ⚠️
+    > #### ⚠️ CRITICAL REQUIREMENT ⚠️
     > {: .no_toc }
     >
-    > You **MUST** add this admin user (**admin@hpelabs.us**) to your workspace. This is essential for the lab reset scripts to function properly at the end of your session.
+    > You **MUST** add **admin@hpelabs.us** to your workspace. This is essential for the lab reset scripts to function properly at the end of your session.
     > <br>  
-    > **⚠️ Failure to add this user will prevent cleanup and break the lab for the next participant.**
-
+    > **❌ Failure to add this user will prevent cleanup and break the lab for the next participant.**
 
 2. To verify the new user, execute the following command:
 
