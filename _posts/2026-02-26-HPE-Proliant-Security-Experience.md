@@ -7,7 +7,7 @@ excerpt: Explore HPE ProLiant Gen12 security with iLO 7 embedded management, Gre
 room: # Set to 1 or 2
 ---
 
-Living Lab experience
+Hands on Lab Guide
 
 # Overview
 HPE ProLiant Gen12 servers are designed with a security‑first approach and deep remote manageability. In this lab, you will:

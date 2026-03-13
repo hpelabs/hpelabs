@@ -72,7 +72,7 @@ PowerShell modules and scripts. It's a community-driven platform that
 provides access to various PowerShell resources, enabling you to easily
 discover, install, and publish your own PowerShell content. The
 PowerShell Gallery can be accessed through the PowerShellGet module
-(includes **Install-Module**, **Find-Module**, etc.), which comes
+(includes `Install-Module`, `Find-Module`, etc.), which comes
 pre-installed with Windows PowerShell 5.0 and above.
 
 This project is also associated with a public GitHub
@@ -153,19 +153,20 @@ setup for this lab.
 1.  Open a Chrome or similar HTML5 capable browser and navigate to:
     <https://labs.compute.cloud.hpe.com/>
 
-2.  Choose "VMware Horizon HTML Access"
+2.  Choose **Omnissa Horizon Web Client**:
 
-[![]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image4.jpg){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image4.jpg){:class="img-300"}{: data-lightbox="gallery"}
-3.  Login with your provided credentials from the team assignment sheet
+    [![]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image4.jpg){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image4.jpg){:class="img-300"}{: data-lightbox="gallery"}
 
-4.  Click the "GitHub Copilot" icon
+3.  Login with your provided credentials from the team assignment sheet.
+
+4.  Click the **GitHub Copilot** icon.
 
 5.  At the warning message "You need to grant microphone and camera
-    permission to use RTAV", click OK
+    permission to use RTAV", click **OK**.
 
 6.  At the Fullscreen message: "Click OK to grant permission for full
-    screen", you can click OK or not, based on your preference and the
-    display setup in front of you, and you can click on "Allow" at the
+    screen", you can click **OK** or not, based on your preference and the
+    display setup in front of you, and you can click on **Allow** at the
     message "labs.compute.cloud.hpe.com wants to manage windows on all
     your displays".
 
@@ -181,34 +182,31 @@ like syntax highlighting, intelligent code completion, integrated
 terminal, version control, and a rich ecosystem of extensions. It is
 available for all major operating systems, Windows, MacOS and Linux.
 
-To start VS Code, click its icon in the taskbar
+- To start VS Code, click its icon in the taskbar:
 
-[![]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image5.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image5.png){:class="img-600"}{: data-lightbox="gallery"}
+  [![]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image5.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image5.png){:class="img-600"}{: data-lightbox="gallery"}
 
-This is what the window should look like:
+- This is what the window should look like:
 
-[![]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image6.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image6.png){:class="img-900"}{: data-lightbox="gallery"}
+  [![]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image6.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image6.png){:class="img-900"}{: data-lightbox="gallery"}
 
-Most of your work will be to type or paste text in the Copilot prompt
-field at the bottom right
+- Most of your work will be to type or paste text in the Copilot prompt
+field at the bottom right:
 
-[![]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image7.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image7.png){:class="img-400"}{: data-lightbox="gallery"}
+  [![]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image7.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image7.png){:class="img-400"}{: data-lightbox="gallery"}
 
-But first, let's make sure VS Code is properly configured for Copilot.
-Click the user icon at the bottom of the Activity bar
+- But first, let's make sure VS Code is properly configured for Copilot. Click the user icon at the bottom of the Activity bar:
 
-[![]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image8.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image8.png){:class="img-100"}{: data-lightbox="gallery"}
+  [![]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image8.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image8.png){:class="img-100"}{: data-lightbox="gallery"}
 
-A menu should open with at the top bot-compute-lab<span style="color:red">nn</span>_hpeprod (GitHub)
-where <span style="color:red">nn</span> is your team number. This is the user with which you are logged
+  A menu should open with at the top bot-compute-lab<span style="color:red">nn</span>_hpeprod (GitHub) where <span style="color:red">nn</span> is your team number. This is the user with which you are logged
 into GitHub, ensuring your rights to Copilot.
 
-You should also look at the bottom right, just below the area where you
-will enter Copilot prompts
+- You should also look at the bottom right, just below the area where you will enter Copilot prompts:
 
-[![]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image9.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image9.png){:class="img-400"}{: data-lightbox="gallery"}
+  [![]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image9.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image9.png){:class="img-400"}{: data-lightbox="gallery"}
 
-It shows the mode you will be using (Agent) and the LLM (Large Language
+  It shows the mode you will be using (Agent) and the LLM (Large Language
 Model) set to Claude Sonnet 4.5. An LLM, or Large Language Model, is a
 type of artificial intelligence that uses deep learning to understand
 and generate human-like text. LLMs are trained on massive amounts of
@@ -242,39 +240,39 @@ prompts slightly, but this lab has been tested with the prompts
 provided. Results will be different with other prompts, and could also
 be different even with the exact same prompts, that is the nature of AI.
 
-Here is our first prompt:
+- Here is our first prompt:
 
-```text
-I want to write PowerShell code that connects to HPE Greenlake and COM
-using the HPECOMcmdlets library. The code should take a username (email)
-as a parameter and prompt for a password
-```
+  ```text
+  I want to write PowerShell code that connects to HPE Greenlake and COM
+  using the HPECOMcmdlets library. The code should take a username (email)
+  as a parameter and prompt for a password
+  ```
 
-After a few seconds, you should see your Copilot's response in plain
+- After a few seconds, you should see your Copilot's response in plain
 English, explaining what it did. But the code itself is in a file that
 Copilot created. Click on the tab it created in the main editing window,
 as depicted below:
 
-[![]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image10.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image10.png){:class="img-900"}{: data-lightbox="gallery"}
+  [![]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image10.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image10.png){:class="img-900"}{: data-lightbox="gallery"}
 
-The ![](/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image11.png) icon next to the file name means the file
+- The ![](/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image11.png) icon next to the file name means the file
 has pending changes from Copilot.
 
-[![]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image12.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image12.png){:class="img-900"}{: data-lightbox="gallery"}
+  [![]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image12.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image12.png){:class="img-900"}{: data-lightbox="gallery"}
 
-The generated code is on green background. Click on Keep (either at the
+- The generated code is on green background. Click on **Keep** (either at the
 top or at the bottom) to accept the changes. Later when Copilot wants to
-make multiple changes in one strike, the Keep/Undo at the top relates to
+make multiple changes in one strike, the **Keep**/**Undo** at the top relates to
 the particular change where it is displayed, and the one at the bottom
 relates to all the changes (that's why here it says 1 of 1 at the
-bottom, later you will see 1 of n). So, you will click Keep at the
+bottom, later you will see 1 of n). So, you will click **Keep** at the
 bottom to accept all changes.
 
-[![]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image13.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image13.png){:class="img-100"}{: data-lightbox="gallery"}
+  [![]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image13.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image13.png){:class="img-100"}{: data-lightbox="gallery"}
 
-The green background will go away, as well as the icon next to the file
+- The green background will go away, as well as the icon next to the file
 name in the tab header. If you are ever unhappy with the changes
-proposed by Copilot, you can click Undo instead of Keep, to ignore the
+proposed by Copilot, you can click **Undo** instead of **Keep**, to ignore the
 latest suggested change and write another prompt.
 
 You can see that with this simple first prompt, Copilot wrote fairly
@@ -304,41 +302,41 @@ Your cmdlets are not correct. Use the HPECOMcmdlets source code and
 examples at <https://github.com/jullienl/HPE-COM-PowerShell-Library>
 ```
 
-Whenever you instruct Copilot to fetch information from the Internet, it
+- Whenever you instruct Copilot to fetch information from the Internet, it
 may ask you for permission to do so with something like this in the
-prompt area. Click the down arrow next to Allow and click the response
+prompt area. Click the down arrow next to **Allow** and click the response
 highlighted in red to give Copilot the widest permission so it hopefully
 does not ask you again.
 
-[![]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image14.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image14.png){:class="img-900"}{: data-lightbox="gallery"}
+  [![]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image14.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image14.png){:class="img-900"}{: data-lightbox="gallery"}
 
-This will take slightly longer as Copilot fetches information from the
+  This will take slightly longer as Copilot fetches information from the
 repository. You should see it changes the cmdlet to connect to Greenlake
-to the proper one Connect-HPEGL. Click Keep to accept the changes.
+to the proper one `Connect-HPEGL`. Click **Keep** to accept the changes.
 
-Get used to watching the bottom right of the prompt area, this will give
+- Get used to watching the bottom right of the prompt area, this will give
 you a clue whether Copilot is still thinking or if it's ready to accept
 the next prompt. When it's thinking it will show this icon:
 
-[![]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image15.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image15.png){:class="img-300"}{: data-lightbox="gallery"}
+  [![]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image15.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image15.png){:class="img-300"}{: data-lightbox="gallery"}
 
-When it's ready for your next prompt, it will show this icon instead,
-that you can click to submit your prompt (pressing Enter has the same
-effect)
+- When it's ready for your next prompt, it will show this icon instead,
+that you can click to submit your prompt (pressing **Enter** has the same
+effect):
 
-[![]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image16.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image16.png){:class="img-300"}{: data-lightbox="gallery"}
+  [![]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image16.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image16.png){:class="img-300"}{: data-lightbox="gallery"}
 
-Copilot has added a Workspace parameter (which is indeed common when
+- Copilot has added a Workspace parameter (which is indeed common when
 using this library) but we don't want that because we are going to
 create our own workspace.
 
-```text
-Remove the workspace parameter, I want to connect without a workspace and create one later
-```
+  ```text
+  Remove the workspace parameter, I want to connect without a workspace and create one later
+  ```
 
-Code removed in on <span style="background-color:red">red background</span>, code added is on <span style="background-color:green">green background</span>. As always, click Keep to accept the changes.
+- Code removed in on <span style="background-color:red">red background</span>, code added is on <span style="background-color:green">green background</span>. As always, click **Keep** to accept the changes.
 
-[![]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image17.jpg){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image17.jpg){:class="img-600"}{: data-lightbox="gallery"}
+  [![]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image17.jpg){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image17.jpg){:class="img-600"}{: data-lightbox="gallery"}
 
 
 # Create a workspace
@@ -349,81 +347,89 @@ specific projects or teams. Workspaces help separate and control access
 to different sets of resources, making it easier to manage permissions,
 monitor usage, and automate tasks within a defined scope.
 
-In the following prompt, replace <span style="color:red">nn</span> with your team number, for example
-09, before sending the prompt to Copilot
+- In the following prompt, replace <span style="color:red">nn</span> with your team number, for example
+09, before sending the prompt to Copilot:
 
-```text
-Create a workspace with name GHCPWorkspaceTnn_random where random is a random number. Use the following parameters:
-Type: Standard enterprise workspace
-Email: the email address used to connect
-Street: make up an address
-City: make up a city
-Country: Austria
-```
+  ```text
+  Create a workspace with name GHCPWorkspaceTnn_random where random is a random number. Use the following parameters:
+  Type: Standard enterprise workspace
+  Email: the email address used to connect
+  Street: make up an address
+  City: make up a city
+  Country: Austria
+  ```
 
-Copilot might want to make another script for the create workspace
+  Copilot might want to make another script for the create workspace
 script. We want everything in the same script that we will execute at
 the end. If it did create another script, tell it not to:
 
-```text
-Do not create a second script, integrate everything into the existing script
-```
+  ```text
+  Do not create a second script, integrate everything into the existing script
+  ```
 
-Make sure you close the tab for the second script
-Create-HPEWorkspace.ps1 to avoid confusion, and delete the file
-(right-click it in the left-hand sidebar and click Delete). Copilot
+- Make sure you close the tab for the second script
+`Create-HPEWorkspace.ps1` to avoid confusion, and delete the file
+(right-click it in the left-hand sidebar and click **Delete**). Copilot
 might also offer to delete the file itself, but it will ask for
 permission before doing so. If you see a question "Run pwsh command?"
-with a command like Remove-Item followed by the path to the second
-script file, click Allow and Copilot will delete the file.
+with a command like `Remove-Item` followed by the path to the second
+script file, click **Allow** and Copilot will delete the file.
 
-It may also want to make the workspace creation optional with a script
+- It may also want to make the workspace creation optional with a script
 parameter. We want to create a workspace on every run. If you see lines
 like this in the changes near the top of the file:
 
-> \[Parameter(Mandatory = \$false)\]\
-> \[switch\]\$CreateWorkspace
+  > \[Parameter(Mandatory = \$false)\]\
+  > \[switch\]\$CreateWorkspace
 
-Tell it we do not want the workspace creation to be optional
+  Tell it we do not want the workspace creation to be optional:
 
-```text
-Do not make the workspace creation optional
-```
+  ```text
+  Do not make the workspace creation optional
+  ```
 
-We also want to reconnect to Greenlake after creating the workspace,
+- We also want to reconnect to Greenlake after creating the workspace,
 this is specific to how the HPECOMcmdlets library works (and it displays
-a message saying this is necessary when you create a workspace)
+a message saying this is necessary when you create a workspace):
 
-```text
-Reconnect to Greenlake after the workspace creation if successful
-```
+  ```text
+  Reconnect to Greenlake after the workspace creation if successful
+  ```
 
 ## Invite another user to the workspace
 
-We want to invite another user to our workspace. In this lab context, it
+- We want to invite another user to our workspace. In this lab context, it
 also ensures that we can reset the lab and perform the necessary actions
-once your lab is complete, so please do not miss this step
+once your lab is complete, so **please do not miss this step**:
 
-```text
-Add user admin@hpelabs.ddnsfree.com to the workspace
-```
+  ```text
+  Add user admin@hpelabs.ddnsfree.com to the workspace
+  ```
+
+  > #### ⚠️ CRITICAL REQUIREMENT ⚠️
+  > {: .no_toc }
+  >
+  > You **MUST** add **admin@hpelabs.ddnsfree.com** to your workspace. This is essential for the lab reset scripts to function properly at the end of your session.
+  > <br>  
+  > **❌ Failure to add this user will prevent cleanup and break the lab for the next participant.**
+
 
 ## Provision Compute Ops Management in the workspace
 
-We need to make Compute Ops Management available in our workspace, this
+- We need to make Compute Ops Management available in our workspace, this
 is called provisioning a service in Greenlake. All services can be
 provisioned in multiple regions and we need to specify which region we
 want.
 
-```text
-Provision service Compute Ops Management in region eu-central
-```
+  ```text
+  Provision service Compute Ops Management in region eu-central
+  ```
 
-We also need to give our 2 users Administrator roles for the COM service
+- We also need to give our 2 users Administrator roles for the COM service:
 
-```text
-Add Compute Ops Management Administrator role to the 2 users in the workspace
-```
+  ```text
+  Add Compute Ops Management Administrator role to the 2 users in the workspace
+  ```
 
 ## Create a location
 
@@ -434,103 +440,103 @@ and commerce. Assigning a device to a location is the process of
 attaching a device to a physical location to automate support and
 services for this device.
 
-```text
-Create a location with name LocationTnn and these parameters
-Country, Street, City and PostalCode the same as the workspace
-State "none"
-Primary Contact Email the user's email
-```
+- Use the following prompt to create your location:
+
+  ```text
+  Create a location with name LocationTnn and these parameters
+  Country, Street, City and PostalCode the same as the workspace
+  State "none"
+  Primary Contact Email the user's email
+  ```
 
 ## Add a subscription
 
-To activate compute devices that will be added later to your workspace,
+- To activate compute devices that will be added later to your workspace,
 you need to install a COM subscription key (a license to use COM). Be
 sure to replace the string \<key found on your login sheet\> before
 submitting your prompt to Copilot!
 
-```text
-Add subscription key <key found on your login sheet>
-```
+  ```text
+  Add subscription key <key found on your login sheet>
+  ```
 
-```text
-Set automatic subscription assignment and reassignment for Compute. The
-COM subscription tier is STANDARD
-```
+  ```text
+  Set automatic subscription assignment and reassignment for Compute. The
+  COM subscription tier is STANDARD
+  ```
 
 # Onboarding devices
 
 We are now ready to add a server to our COM workspace. We will use a
 method that would work just as well if we had dozens or even hundreds of
 servers to add, even though in this lab you will only add one. We should
-prepare a file with the details of the server(s) we want to add. In VS
-Code menu click File -\> New File
+prepare a file with the details of the server(s) we want to add. 
 
-[![]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image18.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image18.png){:class="img-300"}{: data-lightbox="gallery"}
+- In VS Code menu click **File** -\> **New File**:
 
-Type the file name ilos.csv and Enter
+  [![]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image18.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image18.png){:class="img-300"}{: data-lightbox="gallery"}
 
-[![]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image19.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image19.png){:class="img-600"}{: data-lightbox="gallery"}
+- Type the file name **ilos.csv** and **Enter**:
 
-A standard Windows dialog will appear to choose the location where you
-want to save the file. It should be in folder HOL09-Tnn \>
-GitHubCopilotLab. Click Create File.
+  [![]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image19.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image19.png){:class="img-600"}{: data-lightbox="gallery"}
 
-[![]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image20.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image20.png){:class="img-900"}{: data-lightbox="gallery"}
+  A standard Windows dialog will appear to choose the location where you
+want to save the file. It should be in folder **HOL09-Tnn** \> **GitHubCopilotLab**. 
 
-Decline VS Code's suggestion to install an extension to handle CSV files
+- Click **Create File**.
+
+  [![]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image20.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image20.png){:class="img-900"}{: data-lightbox="gallery"}
+
+- Decline VS Code's suggestion to install an extension to handle CSV files
 (at the bottom right of the screen), we don't really need it for the
-simple work we have to do
+simple work we have to do:
 
-[![]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image21.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image521.png){:class="img-400"}{: data-lightbox="gallery"}
+  [![]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image21.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image521.png){:class="img-400"}{: data-lightbox="gallery"}
 
-Copy the following data into the ilos.csv file and replace the
+- Copy the following data into the **ilos.csv** file and replace the
 placeholders in \<brackets\> with your team\'s information from the login
 sheet:
-```csv
-IP, Username, Password
-10.18.26.<xx>, Administrator, <iLO's password>
-```
 
-Make sure the data is on 2 lines like shown above, with no extra space
-at the beginning or end of either line (space after a comma is OK).
-Copy/paste tends to put everything on a single line. Save the file with
-Ctrl-S or File-\>Save in VS Code's menu
+  ```csv
+  IP, Username, Password
+  10.18.26.<xx>, Administrator, <iLO's password>
+  ```
 
-If we had more servers to onboard, we would simply add more lines into
+  Make sure the data is on 2 lines like shown above, with no extra space
+at the beginning or end of either line (space after a comma is OK). Copy/paste tends to put everything on a single line. 
+
+- Save the file with **Ctrl**-**S** or **File**-\>**Save** in VS Code's menu.
+
+  If we had more servers to onboard, we would simply add more lines into
 this file and our script would iterate over each line.
 
-Go back to your PowerShell script tab in VS Code and tell Copilot to
-import the csv file
+- Go back to your PowerShell script tab in VS Code and tell Copilot to
+import the csv file:
 
-```text
-Import file ilos.csv. Double check the field names in the csv file.
-```
+  ```text
+  Import file ilos.csv. Double check the field names in the csv file.
+  ```
 
-You should see it generated code to import the file into a variable
+  You should see it generated code to import the file into a variable
 \$iLOs (it even figured out on its own the proper case for the name
 iLO!). It may have put the code in the middle of the script, before
 creating the workspace, but that's OK.
 
-To add servers into COM, we need an activation key that we can ask COM
+- To add servers into COM, we need an activation key that we can ask COM
 to generate. This key encodes all the information (such as the workspace
 id) that an iLO will need, to know what it should connect to.
 
-```text
-Generate a COM activation key
-```
+  ```text
+  Generate a COM activation key
+  ```
 
-And now we have everything we need to bring our server into COM
+- And now we have everything we need to bring our server into COM:
 
-```text
-Connect all the iLOs from the CSV file to COM. Make sure the activation key is created before this step
-```
+  ```text
+  Connect all the iLOs from the CSV file to COM. Make sure the activation key is created before this step
+  ```
 
-You can see how it created a loop
-ForEach (\$iLO in \$iLOs)
-
-then created a Credentials object for the username and password imported
-from the CSV file and used it with the proper
-Connect-HPEGLDeviceComputeiLOtoCOM cmdlet
+  You can see how it created a ForEach (\$iLO in \$iLOs) loop, then created a Credentials object for the username and password imported from the CSV file and used it with the proper `Connect-HPEGLDeviceComputeiLOtoCOM` cmdlet.
 
 ## Set device location and tags
 
@@ -538,37 +544,39 @@ We want to assign our server to the location we created previously. This
 is needed to ensure that support cases are automatically created in the
 event of device failures.
 
-```text
-Assign the location we created previously to the device
-```
+- Enter:
 
-**Tags** in HPE GreenLake are metadata labels---key-value pairs---that
+  ```text
+  Assign the location we created previously to the device
+  ```
+
+  *Tags* in HPE GreenLake are metadata labels---key-value pairs---that
 you can attach to cloud resources. Their main purpose is to help you
 categorize, organize, and manage resources based on criteria like
 purpose, owner, environment, cost center, or other custom attributes.
 
-```text
-Add tag "Country=AT, App=AI" to the device
-```
+  ```text
+  Add tag "Country=AT, App=AI" to the device
+  ```
 
-> ⚠️ **Important note**   
->
->{: .small-space}
-> Time Check 
->
-> Now would be a good time to look at the clock and determine how much
-> time you have left before the end of the lab. If you have less than
-> \~20 minutes, consider skipping to the section [Execute the
-> script](#execute-the-script). You have generated enough PowerShell
-> code already to be able to run it and get meaningful results. If you
-> still have time, you can continue generating more code, but be sure
-> to keep an eye on the clock and allow enough time to run the script
-> and see the results of your (and Copilot's) work.
+  > ⚠️ **Important note**   
+  >
+  >{: .small-space}
+  > Time Check 
+  >
+  > Now would be a good time to look at the clock and determine how much
+  > time you have left before the end of the lab. If you have less than
+  > \~20 minutes, consider skipping to the section [Execute the
+  > script](#execute-the-script). You have generated enough PowerShell
+  > code already to be able to run it and get meaningful results. If you
+  > still have time, you can continue generating more code, but be sure
+  > to keep an eye on the clock and allow enough time to run the script
+  > and see the results of your (and Copilot's) work.
 
 # Configuration of Compute Ops Management
 
 Now that we have a server onboarded, we are going to use some of the
-features that COM provides for server management
+features that COM provides for server management.
 
 ## Create server settings
 
@@ -578,74 +586,84 @@ apply consistent configurations---such as firmware baselines, BIOS
 settings, workload profiles, or other system parameters---to one or more
 servers at scale.
 
-First create BIOS settings
+- First create BIOS settings:
 
-```text
-Create a BIOS setting with name Custom-Bios-For-AI, Workload Profile
-"Virtualization -- Max Performance", Automatic Server Recovery on with a
-timeout of 10 minutes
-```
+  ```text
+  Create a BIOS setting with name Custom-Bios-For-AI, Workload Profile
+  "Virtualization -- Max Performance", Automatic Server Recovery on with a
+  timeout of 10 minutes
+  ```
 
-Next, create settings for internal storage
+- Next, create settings for internal storage:
 
-```text
-Create an internal storage setting with name RAID-1, RAID level 1, take the entire disk
-```
+  ```text
+  Create an internal storage setting with name RAID-1, RAID level 1, take the entire disk
+  ```
 
-Create firmware settings
+- Create firmware settings:
 
-``` text
-Create firmware settings with the latest firmware bundles for Gen11 and Gen12
-```
+  ``` text
+  Create firmware settings with the latest firmware bundles for Gen11 and Gen12
+  ```
 
 ## Create a server group
 
 A server group containing the settings we just created will allow to
-keep configuration consistent across all servers added to that group
+keep configuration consistent across all servers added to that group.
 
-```text
-Create a server group named AI_Group with the 3 settings we created
-previously. Make sure the settings are not applied automatically when a
-server is added to the group
-```
+- To create a server group, enter:
+
+  ```text
+  Create a server group named AI_Group with the 3 settings we created
+  previously. Make sure the settings are not applied automatically when a
+  server is added to the group
+  ```
 
 ## Add servers to the group
 
-Now we add our server to the group
+- Now we add our server to the group:
 
-```text
-Add our server to the group
-```
+  ```text
+  Add our server to the group
+  ```
 
 ## Collect servers inventory data
 
-```text
-Run a job to collect our server inventory data, make sure the job is run asynchronously
-```
+- To collect the inventory data of your server, enter:
+
+  ```text
+  Run a job to collect our server inventory data, make sure the job is run asynchronously
+  ```
 
 ## Set iLO auto firmware update
 
-```text
-Set our server to automatically update iLO firmware to the newest available
-```
+- To automate the iLO firmware update, run:
+
+  ```text
+  Set our server to automatically update iLO firmware to the newest available
+  ```
 
 ## Update server firmware
 
 The firmware update step is crucial to ensure that servers are up to
 date. Administrators typically need to perform this task regularly to
-maintain optimal performance and security. In this step, you will create
+maintain optimal performance and security. 
+
+- In this step, you will create
 a scheduled task to run a firmware update during the next weekend for
 all servers in your group. Do NOT try to run a firmware update
-immediately, keep the schedule to next Sunday.
+immediately, keep the schedule to next Sunday:
 
-```text
-Schedule a server firmware update through the group for next Sunday at 5am
-```
+  ```text
+  Schedule a server firmware update through the group for next Sunday at 5am
+  ```
 
 This concludes our code writing exercise. We are now ready to test our
 coding skills by running the script we created.
 
 # Execute the script
+
+With all the code now generated and reviewed, it is time to put it to the test. In this section, you will run the script you built with Copilot's assistance and observe it automating the full workflow—from workspace creation and device onboarding to server configuration and firmware scheduling—all without writing a single line of code manually.
 
 > ⚠️ **Important note**   
 >
@@ -662,93 +680,98 @@ coding skills by running the script we created.
 > reference.
 > ```
 
-If you didn't get it previously, you are likely at this step to get a
-prompt asking you for permission to fetch contents from The GitHub
+- If you didn't get it previously, you are likely at this step to get a
+prompt asking you for permission to fetch contents from the GitHub
 repository:
 
-[![]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image14.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image14.png){:class="img-900"}{: data-lightbox="gallery"}
+  [![]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image14.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image14.png){:class="img-900"}{: data-lightbox="gallery"}
 
-Click the down arrow next to Allow and click the response highlighted in
+- Click the down arrow next to **Allow** and click the response highlighted in
 red in the screenshot to give Copilot the widest permission.
 
-You will likely see multiple edits throughout the file. Unlike humans,
+  You will likely see multiple edits throughout the file. Unlike humans,
 an AI agent can be quite good at fixing its own errors if we give it
-appropriate data. It should even create a CORRECTIONS_NEEDED.md file
+appropriate data. It should even create a `CORRECTIONS_NEEDED.md` file
 which lists all the corrections it made.
 
-Go back to our PowerShell script tab. To execute our script, go to VS
-Code menu Run, and pick Run Without Debugging
+- Go back to our PowerShell script tab. To execute our script, go to VS
+Code menu **Run**, and pick **Run Without Debugging**:
 
-[![]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image22.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image22.png){:class="img-300"}{: data-lightbox="gallery"}
+  [![]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image22.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image22.png){:class="img-300"}{: data-lightbox="gallery"}
 
-Watch the PowerShell terminal at the bottom of the VS Code window. It
+  Watch the PowerShell terminal at the bottom of the VS Code window. It
 should prompt you for a username, type the email address for the
 Greenlake account found on your team login sheet.
 
-Next, it should prompt you for the account's password that you can also
+- Next, it should prompt you for the account's password that you can also
 find on your team login sheet. Do not confuse the Horizon credentials
 you used at the beginning to connect to the lab environment, and the
 Greenlake credentials you are using now, they are not the same.
 
-Once you enter the password, the rest of the script will run, displaying
-what it is doing. In parallel, you can use the Graphical User Interface
-(GUI) of COM to follow the script's actions. In a browser go to
-<https://common.cloud.hpe.com/> and logon with the same credentials you
+  Once you enter the password, the rest of the script will run, displaying
+what it is doing. 
+
+- In parallel, you can use the Graphical User Interface
+(GUI) of COM to follow the script's actions. In a browser go to <https://common.cloud.hpe.com/> and logon with the same credentials you
 used in the script. You should see a screen showing a list of workspaces
 and you should click Launch next to the workspace that was just
 created:
 
-[![]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image23.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image23.png){:class="img-400"}{: data-lightbox="gallery"}
+  [![]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image23.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image23.png){:class="img-400"}{: data-lightbox="gallery"}
 
-If you do not see a workspace with a name following the template used in
+  > **💡 Note**   
+  >
+  >{: .small-space}
+  > 
+  > If you do not see a workspace with a name following the template used in
 this lab, it would indicate that the workspace creation did not work. In
 this case you should inspect the terminal window in VS code and look for
 any errors.
 
-Once you are in the lab's workspace, launch the COM service:
+- Once you are in the lab's workspace, launch the COM service:
 
-[![]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image24.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image24.png){:class="img-900"}{: data-lightbox="gallery"}
+  [![]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image24.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image24.png){:class="img-900"}{: data-lightbox="gallery"}
 
-[![]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image25.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image25.png){:class="img-600"}{: data-lightbox="gallery"}
+  [![]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image25.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image25.png){:class="img-500"}{: data-lightbox="gallery"}
 
-[![]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image26.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image26.png){:class="img-900"}{: data-lightbox="gallery"}
+  [![]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image26.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image26.png){:class="img-900"}{: data-lightbox="gallery"}
 
-If you don't see it, either the script didn't reach the step where it
-provisions the service yet, or it encountered an error.
+  > **💡 Note**   
+  >
+  >{: .small-space}
+  > 
+  > If you don't see it, either the script didn't reach the step where it provisions the service yet, or it encountered an error.
 
-When you are in COM, go to Servers and see if your server is there
+- When you are in COM, go to Servers and see if your server is there
 
-[![]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image27.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image27.png){:class="img-900"}{: data-lightbox="gallery"}
+  [![]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image27.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image27.png){:class="img-900"}{: data-lightbox="gallery"}
 
-Even after the script has finished without errors, it can take several
-minutes before the server shows State Connected in COM as in the
+- Even after the script has finished without errors, it can take several
+minutes before the server shows State `Connected` in COM as in the
 screenshot above. You can also go to the iLO: make a new browser tab and
 connect to <https://10.18.26.xxx/> taking the proper IP address from
-your login sheet. Login with Administrator and the password provided on
-your login sheet. Click the HPE Compute Ops Management tile on the
+your login sheet. Login with **Administrator** and the password provided on
+your login sheet. Click the **HPE Compute Ops Management** tile on the
 dashboard. Do NOT click the Launch HPE Greenlake button as you already
 have a tab connected to Greenlake.
 
-[![]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image28.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image28.png){:class="img-900"}{: data-lightbox="gallery"}
+  [![]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image28.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image28.png){:class="img-900"}{: data-lightbox="gallery"}
 
-In the page that opens you can see the connection status and potentially
-the different steps it goes through before reaching Connected
+- In the page that opens you can see the connection status and potentially
+the different steps it goes through before reaching `Connected`
 
-[![]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image29.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image29.png){:class="img-600"}{: data-lightbox="gallery"}
+  [![]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image29.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image29.png){:class="img-600"}{: data-lightbox="gallery"}
 
-In COM, go to Manage then Settings to explore the Groups and Settings
-you have created with the script. In particular on the Settings page you
-should observe the settings that do not show HPE pre-defined in the Type
-column. These are the 3 settings you defined with the script, BIOS,
-internal storage and firmware. You may note that firmware and internal
-storage are User defined, while BIOS is API defined. This is because it
-is currently not possible to create BIOS settings via the GUI. You must
-use the API (which is what the script does) to create that type of
-settings.
+- In COM, go to **Manage** then **Settings** to explore the *Groups* and *Settings*
+you have created with the script. In particular on the **Settings** page you
+should observe the settings that do not show `HPE pre-defined` in the *Type*
+column. These are the 3 settings you defined with the script, `BIOS/Workload profile`,
+`Server internal storage` and `Server firmware`. You may note that `Server firmware` and `Server internal storage` are `User defined`, while `BIOS/Workload profile` is `API defined`. This is because it
+is currently not possible to create BIOS settings via the GUI. You must use the API (which is what the script does) to create that type of settings.
 
-[![]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image30.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image30.png){:class="img-900"}{: data-lightbox="gallery"}
+  [![]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image30.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image30.png){:class="img-900"}{: data-lightbox="gallery"}
 
-You should also examine the terminal output in the VS Code window where
+- You should also examine the terminal output in the VS Code window where
 the script ran to look for any errors. If there are any, the next step
 would be to understand and fix the errors. Try and devise your own
 prompts to do so. You may also point Copilot to an error and ask it if
@@ -762,10 +785,14 @@ then you must create a continuation script as you will not be able to
 run the entire script again and connect your server to a new Workspace
 since it is already connected.
 
-Note that at some point, human expertise might be needed. AI is a great
+  > **💡 Note**   
+  >
+  >{: .small-space}
+  > 
+  > At some point, human expertise might be needed. AI is a great
 help, but it's not perfect!
 
-# HOL Summary
+# Summary
 
 This Hands-On Lab is now complete. Thank you for taking the time to
 participate, hopefully you received a deeper understanding of how you
