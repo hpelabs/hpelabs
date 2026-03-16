@@ -711,7 +711,7 @@ sheet provided by your instructor. Enter:
     $iLO_IP = "xxx.xxx.xxx.xxx"
     ```
 
-4. And assign the password of your iLO, also found in the login sheet to another variable:
+4. Assign the iLO password, also found in the login sheet, to a variable. This is the password of the iLO **Administrator** account:
 
     ```powershell
     $iLO_Password = "xxxxxxxxxxxx"
