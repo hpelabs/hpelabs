@@ -704,7 +704,7 @@ In production or at scale, use the [HPE Compute Ops Management Onboarding Script
     > `Set-HPEGLDeviceAutoSubscription`.
 
 3. Next, assign the IP address of your iLO to a variable by entering the
-following command. Be sure to use the IP address listed in the login
+following command. Be sure to use the **iLO IP address** listed in the login
 sheet provided by your instructor. Enter:
 
     ```powershell
