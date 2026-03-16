@@ -291,6 +291,7 @@ Follow these rules when editing lab guides:
         >{: .small-space}
         >
         > Use `{: .no-copy}` for commands provided for illustration only — such as Secure Gateway examples, environment-specific snippets, or expected output samples — to prevent lab users from accidentally running them.
+        
 - Use **inline code** (backticks ````` `text` `````) for variables, paths, and terminal commands within text. For example: `$variable`
 
 - Use **blockquotes** (`>`) for tips, warnings, and important notes.
