@@ -92,7 +92,7 @@ Password: `<email Chris.Powell@hpe.com>`
 
     [![]( {{ site.baseurl }}/assets/images/HOLs/SecuritySessionDemo/IMG002.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/SecuritySessionDemo/IMG002.png){:class="img-500"}{: data-lightbox="gallery"}
 
-This Ends this Section
+This Ends this Section - [↑ Back to Top](#)
 
 ## Preferred Starting State
 
@@ -128,7 +128,7 @@ You can see each of the controllers in the iLO7 from the Dashboard in the left n
 
 9. The next Solution to look at is the External Key Manager that we will use for our demonstration. We are using a Thales Trust Manager system running in our lab.
 
-This Ends this Section
+This Ends this Section - [↑ Back to Top](#)
 
 ## Thales Cipher Trust Manager (CTM) state before adding devices.
 
@@ -157,7 +157,7 @@ This Ends this Section
 
     [![]( {{ site.baseurl }}/assets/images/HOLs/SecuritySessionDemo/IMG015.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/SecuritySessionDemo/IMG015.png){:class="img-500"}{: data-lightbox="gallery"}
 
-This Ends this Section
+This Ends this Section - [↑ Back to Top](#)
 
 # HPE ProLiant Security Demo – Demonstration
 
@@ -177,7 +177,7 @@ We will start by showing the participants the state of iLO7 before adding it to 
 7. Show the iLO7 MAC address – iLO7 Settings -> iLO7 Network Ports -> iLO7 Dedicated Network Port to show the information for the connection.
 8. Return to Security -> Remote Key Manager.
 
-This Ends this Section
+This Ends this Section - [↑ Back to Top](#)
 
 ## Show iLO7 encryption status of the various devices used in the Demo
 
@@ -197,7 +197,7 @@ This Ends this Section
 
     [![]( {{ site.baseurl }}/assets/images/HOLs/SecuritySessionDemo/IMG019.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/SecuritySessionDemo/IMG019.png){:class="img-500"}{: data-lightbox="gallery"}
 
-This Ends this Section
+This Ends this Section - [↑ Back to Top](#)
 
 # Configure iLO7 to use Thales CTM
 
@@ -242,7 +242,7 @@ For the initial creation of this account, iLO7 uses a deployment user account th
 
 - The iLO7 is now set up to manage the key exchange between the key manager and the other devices in the computer. iLO7 uses a unique user account based on its MAC address to communicate with the key manager.
 
-This Ends this Section
+This Ends this Section - [↑ Back to Top](#)
 
 # Configure the MR Controller to request a key from the External Key Manager
 
@@ -286,7 +286,7 @@ We are now going to start using our newly connected external key manager. Follow
 
     [![]( {{ site.baseurl }}/assets/images/HOLs/SecuritySessionDemo/IMG031.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/SecuritySessionDemo/IMG031.png){:class="img-500"}{: data-lightbox="gallery"}
   
-This Ends this Section
+This Ends this Section - [↑ Back to Top](#)
 
 # Configure the SED Devices to Unlock Encryption via Postman
 
@@ -327,7 +327,7 @@ We will now configure the SED storage devices.
 
 - At this point you have completed the demonstration.
 
-This Ends this Section
+This Ends this Section - [↑ Back to Top](#)
 
 # Resetting the security demonstration environment
 
@@ -349,7 +349,7 @@ The way you delete the iLO7 from the Thales server is basically the reverse of t
 
 - In all these cases, changes are not made until you reboot the server.
 
-This Ends this Section
+This Ends this Section - [↑ Back to Top](#)
 
 # Summary of what was shown
 
@@ -367,7 +367,7 @@ You performed the following basic steps:
 
 6. You restored the environment for the next user
 
-This Ends this Section
+This Ends this Section - [↑ Back to Top](#)
 
 # HPE ProLiant Security Demo – Passwords and logins
 
