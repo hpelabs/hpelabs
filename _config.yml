@@ -31,8 +31,6 @@ network:
 minima:
   skin: auto
   social_links:
-    - { platform: rss, user_url: "/feed.xml", user_title: "RSS Feed" }
- 
   #   - { platform: devto,          user_url: "https://dev.to/jekyll" }
   #   - { platform: dribbble,       user_url: "https://dribbble.com/jekyll" }
   #   - { platform: facebook,       user_url: "https://www.facebook.com/jekyll" }
@@ -54,6 +52,8 @@ permalink: /:title/
 timezone: Europe/Paris
 title-logo: #/assets/images/favicon/favicon-32x32.png
 header_pages:
+  - room-1.md
+  - room-2.md
   - search.md
 
 # Default front matter for all lab-guide posts
@@ -72,8 +72,8 @@ defaults:
 
 
 # Build settings
+feed: false
 plugins:
-  - jekyll-feed
   - jekyll-paginate
   - jekyll-sitemap
   - jekyll-seo-tag

@@ -26,8 +26,9 @@ COPY Gemfile* ./
 # Install Bundler and project dependencies
 RUN gem install bundler && bundle install
 
-# Expose port 4000
+# Expose port 4000 (site) and 35729 (livereload)
 EXPOSE 4000
+EXPOSE 35729
 
 # Start the Jekyll development server with live reloading
-CMD ["bundle", "exec", "jekyll", "serve", "--host", "0.0.0.0", "--watch", "--livereload"]
+CMD ["bundle", "exec", "jekyll", "serve", "--host", "0.0.0.0", "--livereload", "--livereload-port", "35729", "--force_polling"]

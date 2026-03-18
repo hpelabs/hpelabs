@@ -26,6 +26,10 @@
   &:visited {
     color: $site-title-color;
   }
+
+  &:hover {
+    text-decoration: none;
+  }
 }
 
 .site-nav {

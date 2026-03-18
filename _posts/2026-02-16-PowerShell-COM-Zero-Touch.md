@@ -1,12 +1,43 @@
 ---
 layout: post
 title: "HPE Compute Ops Management Zero-Touch Automation"
-image: /assets/images/HOLs/COM-ZeroTouch/banner-image.jpg
+image: /assets/images/HOLs/COM-ZeroTouch/banner.jpg
 post_end_promo: <i><b>Continue your journey with more HPE Compute Technical Enablement Hands-on Labs for infrastructure, security, technologies, and solutions.</b></i>
 excerpt: Learn to automate HPE server lifecycle management using the HPE Compute Ops Management PowerShell module—from workspace provisioning and device onboarding to policy enforcement, compliance monitoring, and sustainability insights within HPE GreenLake.
+room: 1 # Set to 1 or 2
 ---
 
-Living Lab experience
+Hands on Lab Guide
+
+# Introduction
+
+Welcome to this Hands-On Lab (HOL). For the next two hours you will
+complete a self-paced lab using the HPECOMCmdlets PowerShell library, 
+HPE ProLiant DL-series servers and HPE GreenLake Compute Ops Management.
+
+## Lab Objectives
+
+In this hands-on lab, you will discover how the HPE Compute Ops Management PowerShell library can transform the way you manage data center infrastructure. By working through real-world scenarios, you will learn how to replace time-consuming manual operations with automated, repeatable workflows—covering the full server lifecycle from initial provisioning and device onboarding to policy enforcement, compliance monitoring, and decommissioning. You will gain practical experience automating critical IT tasks such as workspace configuration, firmware management, and iLO settings enforcement, while also learning how to leverage sustainability and utilization insights to make smarter infrastructure decisions. By the end of this lab, you will have the skills and confidence to design and implement automation workflows that reduce human error, enforce consistent configurations at scale, and accelerate server deployments across your HPE GreenLake environment.
+
+## Team Assignments
+
+This lab has 25 stations. Each station will have its own HPE DL-series
+server to be onboarded into COM. You will be working in a Virtual
+Machine using Visual Studio Code with the PowerShell extension.
+
+Your team assignments will be on a separate sheet of paper issued to you
+by your lab proctor. Please return the team assignment sheet to your
+proctor when finished with this lab.
+
+## Virtual Lab Environment
+
+Upon access to the lab, you will be presented with a Windows desktop.
+
+Each team will have the following physical and virtual infrastructure:
+
+- Windows virtual machine with Visual Studio Code
+
+- One ProLiant DL-series server
 
 
 # HPE Compute Ops Management PowerShell Library
@@ -33,14 +64,14 @@ PowerShell Gallery can be accessed through the PowerShellGet module
 pre-installed with Windows PowerShell 5.0 and above.
 
 This project is also associated with a new public GitHub
-[repository](https://github.com/hpelabs/HPE-COM-PowerShell-Library)
-from our HPE Labs team. This repository
+[repository](https://github.com/jullienl/HPE-COM-PowerShell-Library)
+from our community contributor, [Lionel Jullien](https://github.com/jullienl) from HPE. This repository
 is where the source code is developed. You can also track
-[releases](https://github.com/hpelabs/HPE-COM-PowerShell-Library/releases),
+[releases](https://github.com/jullienl/HPE-COM-PowerShell-Library/releases),
 report and view
-[issues](https://github.com/hpelabs/HPE-COM-PowerShell-Library/issues),
+[issues](https://github.com/jullienl/HPE-COM-PowerShell-Library/issues),
 and participate in
-[discussions](https://github.com/hpelabs/HPE-COM-PowerShell-Library/discussions).
+[discussions](https://github.com/jullienl/HPE-COM-PowerShell-Library/discussions).
 
 [![]( {{ site.baseurl }}/assets/images/HOLs/COM-ZeroTouch/image2.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/COM-ZeroTouch/image2.png){: data-lightbox="gallery"}
 
@@ -62,7 +93,7 @@ authentication methods to suit your needs.
 
 - **Device Management**: Add devices individually or in bulk using CSV files, manage device subscriptions and auto-subscriptions, set device locations and connect devices to services.
 
-- **Server configuration Management**: Create and apply BIOS, storage, OS, and firmware settings. Manager group and apply configurations to groups of servers.
+- **Server Configuration Management**: Create and apply BIOS, storage, OS, and firmware settings. Manage group and apply configurations to groups of servers.
 
 - **Security and Compliance**: Manage iLO security settings and run inventory and compliance checks.
 
@@ -86,67 +117,17 @@ These features collectively provide a comprehensive set of cmdlets to
 manage various aspects of your HPE GreenLake environment and any
 existing Compute Ops Management service instances.
 
-## Preparation for using the PowerShell library
+# Connecting to the lab environment
 
-To use the HPE Compute Ops Management PowerShell Library, an HPE
-GreenLake account is required. The library supports two authentication
-methods:
+To access the Windows virtual machine in our VMware Omnissa Horizon lab environment complete these steps:
 
-**HPE Account credentials---single-factor authentication (with or ithout MFA).**
-
-- Requires an HPE Account (username and password)
-
-- Direct authentication using HPE Account credentials
-
-**Single Sign-On (SSO) passwordless authentication**
-
-- Requires a properly configured Identity provider (IdP) such as Okta, PingIdentity, or Microsoft Entra ID.
-
-- User authentication is handled through an external Identity Provider using SAML 2.0.
-
-- For more details, see [SAML Single Sign-On (SSO) with passwordless authentication](https://github.com/hpelabs/HPE-COM-PowerShell-Library?tab=readme-ov-file#saml-single-sign-on-sso-with-passwordless-authentication).
-
-If you have an HPE GreenLake account or a workspace with properly
-configured SSO for passwordless access, **skip this section.**
-
-> ⚠️ **Important note**   
->
->{: .small-space}
-> 
-> If your user account uses an identity provider---whether supported (Okta, Microsoft Entra ID, PingIdentity) or unsupported---that does not use passwordless authentication methods (push notifications or TOTP), authentication with the `Connect-HPEGL` cmdlet will fail.
-
-> 💡 **Note**   
->
->{: .small-space}
-> 
-> Multi-factor authentication (MFA) was implemented with the release of version [1.0.12](https://github.com/hpelabs/HPE-COM-PowerShell-Library/releases/tag/v1.0.12) of the HPECOMCmdlets PowerShell Library. SAML Single Sign-On (SSO) support for the three main providers was introduced beginning with version [1.0.18](https://github.com/hpelabs/HPE-COM-PowerShell-Library/releases/tag/v1.0.18).
-
-1. To create your HPE account for this library, go the HPE GreenLake interface at <https://common.cloud.hpe.com> and click on **Sign up**:
-
-   [![]( {{ site.baseurl }}/assets/images/HOLs/COM-ZeroTouch/image4.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/COM-ZeroTouch/image4.png){:class="img-600"}{: data-lightbox="gallery"}
-   
-2. Provide all the required information, accept the terms and conditions
-and click on **Create Account**:
-
-   [![]( {{ site.baseurl }}/assets/images/HOLs/COM-ZeroTouch/image5.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/COM-ZeroTouch/image5.png){:class="img-600"}{: data-lightbox="gallery"}
-
-3. Once completed, you are ready to access the lab, then to install and use the library.
-
-## Connecting to the lab environment
-
-To access the HPE Compute BU Enablement Environment, we will use VMware Horizon. Follow these steps:
-
-1. Using your Chrome browser, navigate to the appropriate URL based on your network location to open the Horizon Access Portal:
-
-   - **External to HPE** (not connected to HPE VPN): <https://labs.compute.cloud.hpe.com>
-
-   - **Internal to HPE** (or connected to HPE VPN): <https://techenablement.hpecorp.net>
+1. Navigate to <https://labs.compute.cloud.hpe.com>
 
 2. On the Horizon login screen, click the **Omnissa Horizon Web Client** button.
 
     [![]( {{ site.baseurl }}/assets/images/HOLs/COM-ZeroTouch/image6.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/COM-ZeroTouch/image6.png){:class="img-600"}{: data-lightbox="gallery"}
 
-3. Login with the credentials provided in your login sheet.
+3. Login with the Horizon login username and password provided in your login sheet.
 
     [![]( {{ site.baseurl }}/assets/images/HOLs/COM-ZeroTouch/image7.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/COM-ZeroTouch/image7.png){:class="img-500"}{: data-lightbox="gallery"}
 
@@ -182,29 +163,26 @@ To access the HPE Compute BU Enablement Environment, we will use VMware Horizon.
 
     [![]( {{ site.baseurl }}/assets/images/HOLs/COM-ZeroTouch/image14.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/COM-ZeroTouch/image14.png){: data-lightbox="gallery"}
 
-4. I recommend you: **1️⃣** expand the window, **2️⃣** close the Copilot agent, and **3️⃣** increase the terminal size to improve your experience:
+5. I recommend you: **1️⃣** expand the window, **2️⃣** close the Copilot agent, and **3️⃣** increase the terminal size to improve your experience:
 
     [![]( {{ site.baseurl }}/assets/images/HOLs/COM-ZeroTouch/image13a.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/COM-ZeroTouch/image13a.png){: data-lightbox="gallery"}
 
-    **💡 Tip: Using the Copy Button**  
-    
-    Throughout this lab, you'll see a **Copy** button in the midle-right corner of each code block. Click this button to instantly copy the command(s) to your clipboard, then use **CTRL**+**V** to paste them directly into the PowerShell terminal. This helps avoid typing errors and speeds up your workflow.
+    <br>
 
-    [![]( {{ site.baseurl }}/assets/images/HOLs/COM-ZeroTouch/image14a.png)]( {{ site.baseurl }}/assets/images/HOLs/COM-ZeroTouch/image14a.png){: data-lightbox="gallery"}
+    > **💡 Tip: Using the Copy Button**  
+    >
+    >{: .small-space}
+    >
+    > Throughout this lab, each code block displays a **Copy** button in the middle-right corner. Click it to copy the commands to your clipboard, then press **Ctrl**+**V** to paste them into the PowerShell terminal. This eliminates typing errors and speeds up your workflow.
+    >
+    > [![]( {{ site.baseurl }}/assets/images/HOLs/COM-ZeroTouch/image14a.png)]( {{ site.baseurl }}/assets/images/HOLs/COM-ZeroTouch/image14a.png){: data-lightbox="gallery"}
 
-5. While the PowerShell console is opened, you can optionally launch a browser to access the HPE GreenLake website and view the results of the commands you will be executing. If your browser is not already open and connected to HPE GreenLake, open a browser and navigate to <https://common.cloud.hpe.com>.
+    <br>
 
-6. Login with your HPE account credentials:
 
-    [![]( {{ site.baseurl }}/assets/images/HOLs/COM-ZeroTouch/image15.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/COM-ZeroTouch/image15.png){:class="img-300"}{: data-lightbox="gallery"}
+# Task 1 - How to Install HPECOMCmdlets
 
-    If this is your first time using HPE GreenLake, it is expected that no workspace will be available in your environment. If you already have one or more workspaces, there is no issue; you can still proceed with this lab.
-
-7. You can now leave the page and begin your zero-touch automation experience.
-
-# Step 1 - How to Install HPECOMCmdlets
-
-<p class="step-meta">(Step 1 of 12) ⏱️ ~5 min</p>
+<p class="step-meta">(Task 1 of 12) ⏱️ ~5 min</p>
 
 - The first step is to install the library on your Windows virtual machine. Return to the PowerShell console and enter the following command:
 
@@ -212,7 +190,7 @@ To access the HPE Compute BU Enablement Environment, we will use VMware Horizon.
     Install-Module HPECOMCmdlets
     ```
 
-    [![A black screen with white text Description automatically generated]( {{ site.baseurl }}/assets/images/HOLs/COM-ZeroTouch/image16.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/COM-ZeroTouch/image16.png){: data-lightbox="gallery"}
+    [![]( {{ site.baseurl }}/assets/images/HOLs/COM-ZeroTouch/image16.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/COM-ZeroTouch/image16.png){: data-lightbox="gallery"}
 
     This command will download and install the module from the official PowerShell Gallery repository. If this is your first time installing a module from the PowerShell Gallery, it will ask you to confirm whether you trust the repository or not. 
     
@@ -223,9 +201,9 @@ To access the HPE Compute BU Enablement Environment, we will use VMware Horizon.
 
 [↑ Back to Top](#)
 
-# Step 2 - Get the exported commands
+# Task 2 - Get the exported commands
 
-<p class="step-meta">(Step 2 of 12) ⏱️ ~3 min</p>
+<p class="step-meta">(Task 2 of 12) ⏱️ ~3 min</p>
 
 - Now that the module is installed, you can get the list of commands exported by the module using:
 
@@ -235,10 +213,9 @@ To access the HPE Compute BU Enablement Environment, we will use VMware Horizon.
 
     [![]( {{ site.baseurl }}/assets/images/HOLs/COM-ZeroTouch/image17.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/COM-ZeroTouch/image17.png){: data-lightbox="gallery"}
 
-    Version **1.0.22** of the module includes over 200 cmdlets.
+    Version [v1.0.23](https://github.com/jullienl/HPE-COM-PowerShell-Library/releases/tag/v1.0.23) of the module includes over 240 cmdlets.
 
-- In PowerShell, cmdlets use a verb-noun naming convention (e.g., `Get-HPECOMServer` retrieves server data in HPE Compute Ops
-Management). Cmdlets start with **HPECOM** for Compute Ops Management or **HPEGL** for HPE GreenLake (e.g., `New-HPEGLUser`). The library supports both platforms due to their close integration.
+- In PowerShell, cmdlets follow a verb-noun naming convention. In this library, cmdlet names begin with **HPECOM** for Compute Ops Management (e.g., `Get-HPECOMServer`) or **HPEGL** for HPE GreenLake (e.g., `New-HPEGLUser`), reflecting the close integration between both platforms.
 
 - To list all cmdlets in the module related to server resources, use the following command:
 
@@ -256,13 +233,13 @@ Management). Cmdlets start with **HPECOM** for Compute Ops Management or **HPEGL
     > 
     > `?` is an alias for `Where-Object` in PowerShell, and `-match` is the operator used to determine if a string matches a regular expression, such as `server` in this example.
 
-- `Get-Help` cmdlet is another essential PowerShell command for locating information about new modules. To utilize this command,  enter:
+- `Get-Help` cmdlet is another essential PowerShell command for locating information about new modules. To utilize this command, enter:
 
     ```powershell
     Get-Help Get-HPECOMserver -Full
     ```
 
-    [![]( {{ site.baseurl }}/assets/images/HOLs/COM-ZeroTouch/image19.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/COM-ZeroTouch/image19.png){: data-lightbox="gallery"}
+    [![]( {{ site.baseurl }}/assets/images/HOLs/COM-ZeroTouch/image19.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/COM-ZeroTouch/image19.png){: data-lightbox="gallery"}{:class="img-700"}
 
     `Get-Help` (or the alias `Help`) is a PowerShell cmdlet that allows you to retrieve information on other PowerShell cmdlets and functions. 
     
@@ -274,29 +251,58 @@ Management). Cmdlets start with **HPECOM** for Compute Ops Management or **HPEGL
     Help Get-HPECOMServer -Examples
     ```
 
-    This will display a list of examples demonstrating how to use `Get-HPECOMServer` along with detailed explanations of what each
-example does.
+    This will display a list of examples demonstrating how to use `Get-HPECOMServer` along with detailed explanations of what each example does.
 
     [![]( {{ site.baseurl }}/assets/images/HOLs/COM-ZeroTouch/image20.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/COM-ZeroTouch/image20.png){:class="img-700"}{: data-lightbox="gallery"}
 
 
 [↑ Back to Top](#)
 
-# Step 3 - Connection to HPE GreenLake
+# Task 3 - Connection to HPE GreenLake
 
-<p class="step-meta">(Step 3 of 12) ⏱️ ~15 min</p>
+<p class="step-meta">(Task 3 of 12) ⏱️ ~15 min</p>
 
-After the module is installed, the next first step is to connect to HPE GreenLake using the `Connect-HPEGL` command.
+After the module is installed, the next step is to connect to HPE GreenLake using the `Connect-HPEGL` command.
 
-At this point, there are two authentication methods available:
+The library supports two authentication methods:
 
-- **Single or Multi-Factor Authentication** (MFA): Authenticate using your email and password, with optional MFA for added security.
+1. **HPE Account Authentication (Single or Multi-Factor)**
 
-- **SAML Single Sign-On (SSO):** SSO is exclusively supported with Okta, Entra ID, and PingID, providing efficient authentication aligned with your organization's SSO configuration. Please note that specific prerequisites must be met for this method, including the requirement for passwordless authentication methods such as push notifications or TOTP. For detailed guidance on configuring SSO and enabling   passwordless authentication, refer to [Configuring-SAML-SSO-with-HPE-GreenLake-and-Passwordless-Authentication-for-HPECOMCmdlets](https://hpelabs.github.io/Configuring-SAML-SSO-with-HPE-GreenLake-and-Passwordless-Authentication-for-HPECOMCmdlets/)
+    Authenticate using your HPE account email and password. Multi-factor authentication (MFA) is optionally supported for enhanced security (requires [v1.0.12+](https://github.com/jullienl/HPE-COM-PowerShell-Library/releases/tag/v1.0.12)).
 
-Select the below option according to your user authentication method:
+2. **SAML Single Sign-On (SSO)**
 
-- **Using Single or Multi-Factor Authentication**:
+    Connect using your organization's identity provider (IdP) — Okta, PingIdentity, or Microsoft Entra ID are supported. This method enables passwordless authentication via push notifications or Time-based One-Time Passwords (TOTP), aligning with your existing enterprise SSO setup for centralized identity management.
+
+    **Prerequisites** (requires [v1.0.18+](https://github.com/jullienl/HPE-COM-PowerShell-Library/releases/tag/v1.0.18)):
+    - Passwordless authentication (push notifications or TOTP) must be enabled on your identity provider. Without it, `Connect-HPEGL` with SSO will fail. For configuration guidance, refer to [Configuring SAML SSO with HPE GreenLake and Passwordless Authentication](https://jullienl.github.io/Configuring-SAML-SSO-with-HPE-GreenLake-and-Passwordless-Authentication-for-HPECOMCmdlets/).
+    - Identity providers other than Okta, PingIdentity, and Microsoft Entra ID are not supported for SSO — use standard HPE account credentials instead.
+
+If you already have an HPE account or workspace with SSO configured for passwordless access, proceed directly to [Step 2 - Authenticate to HPE GreenLake](#step-2---authenticate-to-hpe-greenlake).
+
+If you don't have an HPE account yet, you can create one in the next section. The process takes only a few minutes to complete.
+
+## Step 1 - Create Your HPE Account
+
+🔔 If you already have an HPE account, go to [Step 2 - Authenticate to HPE GreenLake](#step-2---authenticate-to-hpe-greenlake).
+
+1. To create your HPE account for this library, go to the HPE GreenLake interface at <https://common.cloud.hpe.com> and click on **Sign up**:
+
+   [![]( {{ site.baseurl }}/assets/images/HOLs/COM-ZeroTouch/image4.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/COM-ZeroTouch/image4.png){:class="img-600"}{: data-lightbox="gallery"}
+   
+2. Provide all the required information, accept the terms and conditions, and click on **Create Account**:
+
+   [![]( {{ site.baseurl }}/assets/images/HOLs/COM-ZeroTouch/image5.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/COM-ZeroTouch/image5.png){:class="img-600"}{: data-lightbox="gallery"}
+
+3. Once completed, you are ready to access the lab, then to install and use the library.
+
+
+
+## Step 2 - Authenticate to HPE GreenLake
+
+Select the authentication method that applies to you: follow the steps below for HPE account credentials (single or multi-factor), or skip to [Using SAML Single Sign-On (SSO) with Okta, PingID, or Entra ID](#--using-saml-single-sign-on-sso-with-okta-pingid-or-entra-id) if your organization uses an identity provider:
+
+### - Using Single or Multi-Factor Authentication with HPE account 
 
   1. Begin by creating a credential object to securely store your HPE account credentials (email and password):
 
@@ -304,6 +310,12 @@ Select the below option according to your user authentication method:
      $MyEmail = "your_email@your_domain.com"
      $credentials = Get-Credential -UserName $MyEmail
      ```
+
+     > **💡 Note**  
+     >
+     >{: .small-space}
+     >
+     > Do not confuse the **Horizon credentials** you used at the beginning to connect to the lab environment with the **HPE GreenLake credentials** you are using now—they are not the same.
 
   2. Once executed, the command prompts you for the password.
   
@@ -334,13 +346,20 @@ Select the below option according to your user authentication method:
 
         Open the Google Authenticator app on your device to retrieve the token and enter it when prompted.
 
-- **Using SAML Single Sign-On (SSO) with Okta, PingID or Entra ID**:
+  4. You can skip the next section and proceed directly to [Step 3 - Verify your connection](#step-3---verify-your-connection)
 
-  - Start by creating an email object:
+### - Using SAML Single Sign-On (SSO) with Okta, PingID or Entra ID 
+
+  - Start by creating an email variable:
 
     ```powershell
     $MyEmail = "your_email@your_domain.com"
     ```
+     > **💡 Note**  
+     >
+     >{: .small-space}
+     >
+     > Do not confuse the **Horizon credentials** you used at the beginning to connect to the lab environment with the **HPE GreenLake credentials** you are using now—they are not the same.
 
   - To connect with SAML SSO through your organization's identity provider (IdP), enter the following command in your terminal:
 
@@ -348,19 +367,30 @@ Select the below option according to your user authentication method:
     Connect-HPEGL -SSOEmail $MyEmail
     ```
 
-  Once initiated, the cmdlet will prompt you to approve a push notification sent by your IdP. Follow the on-screen authentication steps displayed in your terminal. Typically, you'll need to:
+  - Once initiated, the cmdlet will prompt you to approve a push notification sent by your IdP. Follow the on-screen authentication steps displayed in your terminal. Typically, you'll need to:
 
-  - Check your IdP-enabled device for a push notification or authentication request.
-  
-    [![]( {{ site.baseurl }}/assets/images/HOLs/COM-ZeroTouch/image25.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/COM-ZeroTouch/image25.png){: data-lightbox="gallery"}
+    - Check your IdP-enabled device for a push notification or authentication request.
+    
+        [![]( {{ site.baseurl }}/assets/images/HOLs/COM-ZeroTouch/image25.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/COM-ZeroTouch/image25.png){: data-lightbox="gallery"}
 
-  - Approve the request (for example, tap the number or "Yes, it's me" in Okta or confirm in PingID/Entra ID).
-  
-    [![]( {{ site.baseurl }}/assets/images/HOLs/COM-ZeroTouch/image26.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/COM-ZeroTouch/image26.png){:class="img-300"}{: data-lightbox="gallery"}
+    - Approve the request (for example, tap the number or "Yes, it's me" in Okta or confirm in PingID/Entra ID).
+    
+        [![]( {{ site.baseurl }}/assets/images/HOLs/COM-ZeroTouch/image26.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/COM-ZeroTouch/image26.png){:class="img-300"}{: data-lightbox="gallery"}
 
-  - Complete any additional steps required by your organization's security policies.
+    - Complete any additional steps required by your organization's security policies.
+
+## Step 3 - Verify your connection
 
 Once authentication is successful, a secure connection to HPE GreenLake will be established, allowing you to proceed with subsequent operations.
+
+- If you have no workspace tied to your HPE account, the `Connect-HPEGL` command will return a warning message indicating that you need to create your first workspace:
+
+    [![]( {{ site.baseurl }}/assets/images/HOLs/COM-ZeroTouch/image27.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/COM-ZeroTouch/image27.png){: data-lightbox="gallery"}
+
+- If you already have one or more workspaces available, the command will return a warning message indicating that you need to use a second command to connect to one of the workspaces:
+
+    [![]( {{ site.baseurl }}/assets/images/HOLs/COM-ZeroTouch/image28.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/COM-ZeroTouch/image28.png){: data-lightbox="gallery"}
+
 The `Connect-HPEGL` cmdlet is responsible for initiating and managing this connection. Upon establishment, it maintains a persistent session using the `$HPEGreenLakeSession` connection tracker variable, which supports all further module cmdlet activities. Furthermore, the cmdlet issues a temporary API client credential for both HPE GreenLake and any Compute Ops Management service instances provisioned within your workspace.
 
 > **💡 Note** 
@@ -369,30 +399,33 @@ The `Connect-HPEGL` cmdlet is responsible for initiating and managing this conne
 > 
 > You can use `Get-Help Connect-HPEGL -Full` to access the complete help documentation, technical details, and in-depth explanations for `Connect-HPEGL`.
 
-If you have no workspace tied to your HPE account, the `Connect-HPEGL` command will return a warning message indicating that you need to create your first workspace:
-
-[![]( {{ site.baseurl }}/assets/images/HOLs/COM-ZeroTouch/image27.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/COM-ZeroTouch/image27.png){: data-lightbox="gallery"}
-
-If you already have one or more workspaces available, the command will return a warning message indicating that you need to use a second command to connect to one of the workspaces:
-
-[![]( {{ site.baseurl }}/assets/images/HOLs/COM-ZeroTouch/image28.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/COM-ZeroTouch/image28.png){: data-lightbox="gallery"}
 
 > **💡 Note**   
 >
 >{: .small-space}
 > 
-> The command to directly connect to an existing and known workspace is:
+> The command to directly connect to an existing and known workspace is: `Connect-HPEGL -Credential $credentials -Workspace "workspace_name"`
+
+Now that you are connected to HPE GreenLake with the PowerShell module, you can optionally open a browser to access the HPE GreenLake portal and view the results of the commands you will run in the following sections. If your browser is not already open and connected to HPE GreenLake, navigate to <https://common.cloud.hpe.com> and sign in with your HPE account credentials:
+
+[![]( {{ site.baseurl }}/assets/images/HOLs/COM-ZeroTouch/image15.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/COM-ZeroTouch/image15.png){:class="img-300"}{: data-lightbox="gallery"}
+
+> **💡 Note**   
 >
->  `Connect-HPEGL -Credential $credentials -Workspace "My_workspace_name"`
+>{: .small-space}
+> 
+> If this is your first time using HPE GreenLake, it is normal for no workspace to appear in your environment. If one or more workspaces are already available, you can still continue with this lab without issue.
+
+You may now leave this page open and begin your zero-touch automation experience.
 
 
 [↑ Back to Top](#)
 
-# Step 4 - Configuration of your workspace
+# Task 4 - Configuration of your workspace
 
-<p class="step-meta">(Step 4 of 12) ⏱️ ~20 min</p>
+<p class="step-meta">(Task 4 of 12) ⏱️ ~20 min</p>
 
-## Task 1 -- Create your first workspace
+## Step 1 - Create your first workspace
 
 1. To create your initial workspace (or an extra one just for this lab --- don't worry, it will be deleted once the lab ends), you need to provide a unique name. Since the name must be unique across all workspaces on the HPE GreenLake platform, we will use a random number to generate the name. Enter:
 
@@ -404,12 +437,12 @@ If you already have one or more workspaces available, the command will return a 
     
     For example, **team 5** should use: `$WorkspaceName = "HPEWorkspaceT05_$(Get-Random)"`
 
-    > ### ⚠️ CRITICAL REQUIREMENT ⚠️
+    > #### ⚠️ CRITICAL REQUIREMENT ⚠️
     > {: .no_toc }
     >
     > You **MUST** follow the naming convention **HPEWorkspaceTxx_** (with xx your team number) exactly. This is essential for the lab reset scripts to identify and clean up your workspace automatically.
     > <br>   
-    > **⚠️ Failure to use this naming format will prevent automatic cleanup and may require manual intervention.**
+    > **❌ Failure to use this naming format will prevent automatic cleanup and may require manual intervention.**
 
 2. This command generates a name such as *HPEWorkspaceT01_12345678* for team 1. You can verify your workspace name by executing:
 
@@ -417,47 +450,37 @@ If you already have one or more workspaces available, the command will return a 
     $WorkspaceName
     ```
 
-3. Build the command step by step using PowerShell's tab completion feature:
+3. Now build the full command using PowerShell's **tab completion** feature. Tab completion is a built-in PowerShell mechanism that, after typing a parameter name followed by a space, lets you press the **Tab** key to cycle through all valid values for that parameter — no need to memorize them.
 
-    a. Start typing the command with the workspace name:
-   
-    ```powershell
-    New-HPEGLWorkspace -Name $WorkspaceName -Type 
-    ```
-   
-   b. After typing `-Type`, press **SPACE** then press the **Tab** key repeatedly to cycle through available workspace types. Select **'Standard enterprise workspace'**.
-   
-   c. Continue by adding the country parameter:
-   
-    ```powershell
-    -Country 
-    ```
-      
-    Press **SPACE** then press the **Tab** key to see the list of supported countries, then select your country.
-   
-   d. Complete the command by adding the street address:
-   
-    ```powershell
-    -Street "Your street address"
-    ```
-   
-   e. Your complete command should look like this:
-   
-    ```powershell
-    New-HPEGLWorkspace -Name $WorkspaceName -Type 'Standard enterprise workspace' -Country Canada -Street "123 Main Street"
-    ```
+    - Start by typing the command with the `-Type` parameter followed by a space, then press **Tab** repeatedly to cycle through the available workspace types and select **'Standard enterprise workspace'**:
 
-    > **💡 Tip**   
-    >
-    >{: .small-space}
-    > 
-    > Press **SPACE** after a parameter name, then press **Tab** to activate PowerShell's auto-completion for parameter values. This shows you valid options and helps avoid typos.
+      ```powershell
+      New-HPEGLWorkspace -Name $WorkspaceName -Type 
+      ```
 
-    >  **📌 Note**   
-    >
-    >{: .small-space}
-    > 
-    > In the example above, only the `name`, `type`, `country`, and `street` parameters are included because they are required. However, you can also specify optional parameters like `city`, `state`, `email`, and others.
+    - Add the `-Country` parameter followed by a space, then press **Tab** to browse the list of supported countries and select yours. You can also type the first letter(s) of your country before pressing **Tab** to jump directly to matching entries — for example, type `I` to jump to countries starting with "I" such as *Iceland*, *India*, *Ireland*, etc.:
+
+      ```powershell
+      -Country 
+      ```
+
+    - Complete the command with the `-Street` parameter. You can enter any address — real or fictional — since the workspace will be automatically deleted when the lab is reset:
+
+      ```powershell
+      -Street "Your street address"
+      ```
+
+    - Your complete command should look like this:
+
+      ```powershell
+      New-HPEGLWorkspace -Name $WorkspaceName -Type 'Standard enterprise workspace' -Country Canada -Street "123 Main Street"
+      ```
+
+        >  **📌 Note**   
+        >
+        >{: .small-space}
+        > 
+        > In the example above, only the `name`, `type`, `country`, and `street` parameters are included because they are required. However, you can also specify optional parameters like `city`, `state`, `email`, and others.
 
 3. After executing this command, the workspace is created, and the command automatically disconnects the session. To connect to your new workspace, enter:
 
@@ -477,9 +500,9 @@ If you already have one or more workspaces available, the command will return a 
     [![]( {{ site.baseurl }}/assets/images/HOLs/COM-ZeroTouch/image31.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/COM-ZeroTouch/image31.png){: data-lightbox="gallery"}
 
 
-## Task 2 -- Add a user to your workspace
+## Step 2 - Add a user to your workspace
 
-There are several commands that are available to configure a workspace and the different resources available in a workspace, such as adding users, settings roles, location, etc. In this task, you will simply add
+There are several commands that are available to configure a workspace and the different resources available in a workspace, such as adding users, setting roles, location, etc. In this task, you will simply add
 a new user with a specific role.
 
 1. Invite **admin@hpelabs.us** as an administrator to your newly created workspace:
@@ -489,13 +512,12 @@ a new user with a specific role.
     New-HPEGLUser -Email $NewUserEmail -RoleName 'Workspace Administrator'
     ```
 
-    > ### ⚠️ CRITICAL REQUIREMENT ⚠️
+    > #### ⚠️ CRITICAL REQUIREMENT ⚠️
     > {: .no_toc }
     >
-    > You **MUST** add this admin user (**admin@hpelabs.us**) to your workspace. This is essential for the lab reset scripts to function properly at the end of your session.
+    > You **MUST** add **admin@hpelabs.us** to your workspace. This is essential for the lab reset scripts to function properly at the end of your session.
     > <br>  
-    > **⚠️ Failure to add this user will prevent cleanup and break the lab for the next participant.**
-
+    > **❌ Failure to add this user will prevent cleanup and break the lab for the next participant.**
 
 2. To verify the new user, execute the following command:
 
@@ -503,7 +525,7 @@ a new user with a specific role.
     Get-HPEGLUser
     ```
 
-## Task 3 -- Provision Compute Ops Management
+## Step 3 - Provision Compute Ops Management
 
 The following step involves setting up services. There are several kinds of services you can provision across different regions.
 
@@ -553,10 +575,12 @@ The following step involves setting up services. There are several kinds of serv
 
     ```powershell
     Get-HPEGLUserRole -Email $MyEmail
+    ```
+    ```powershell
     Get-HPEGLUserRole -Email $NewUserEmail
     ```
 
-## Task 4 -- Set a location
+## Step 4 - Set a location
 
 Locations in Service Delivery Information (SDI) store addresses, contacts, and support details for automation. Assigning a device to a location links it physically for automated support, including ticket creation with HPE.
 
@@ -582,7 +606,7 @@ This step is essential for automatically creating a ticket with HPE support.
     Get-HPEGLLocation
     ```
 
-## Task 5 - Add a subscription to your workspace
+## Step 5 - Add a subscription to your workspace
 
 1. To activate compute devices that will be added later to your workspace, you need to add a COM subscription key. Enter:
 
@@ -606,6 +630,8 @@ This step is essential for automatically creating a ticket with HPE support.
 
     ```powershell
     Get-HPEGLDeviceAutoSubscription
+    ```
+    ```powershell
     Get-HPEGLDeviceAutoReassignSubscription
     ```
 
@@ -626,9 +652,9 @@ This step is essential for automatically creating a ticket with HPE support.
 
 [↑ Back to Top](#)
 
-# Step 5 - Onboarding devices
+# Task 5 - Onboarding devices
 
-<p class="step-meta">(Step 5 of 12) ⏱️ ~15 min</p>
+<p class="step-meta">(Task 5 of 12) ⏱️ ~15 min</p>
 
 You can add devices to a workspace either one at a time or in bulk.
 Another option is to use a COM activation key, which lets you add single
@@ -639,16 +665,16 @@ instance. In this lab, you'll be using that specific method.
 >
 >{: .small-space}
 > 
-> For onboarding multiple servers, use the [HPE Compute Ops
-> Management Onboarding
-> Script](https://github.com/hpelabs/HPE-Compute-Ops-Management/tree/main/PowerShell/Onboarding).
-> This PowerShell tool automates connecting HPE servers to COM, applies
-> activation keys, and sets up initial iLO configurations (DNS, NTP,
-> tags, location, firmware/compliance policies). It also manages
-> authentication, device registration, and early configuration for a
-> streamlined "zero-touch" setup.
+> For onboarding multiple servers, a better approach is to use the [HPE Compute Ops Management Onboarding Script](https://github.com/jullienl/HPE-Compute-Ops-Management/tree/main/PowerShell/Onboarding).
+> This script automates the full onboarding workflow—from required pre-checks and preparation steps through final server onboarding to COM.
+> It handles key prerequisites such as authentication, device registration, activation key application, and initial iLO configuration (DNS, NTP, tags, location, and policy settings), helping deliver a consistent zero-touch process at scale.
 
-## Task 1 - Onboard one server
+
+## Step 1 - Onboard one server
+
+For this lab, you will onboard a single server manually so you can understand each command and validation step.  
+In production or at scale, use the [HPE Compute Ops Management Onboarding Script](https://github.com/jullienl/HPE-Compute-Ops-Management/tree/main/PowerShell/Onboarding), which automates all prerequisite checks, preparation tasks, and the onboarding workflow end to end.
+
 
 1. To generate an activation key for connecting your server to the Compute Ops Management instance in the region you provisioned earlier, use the following command:
 
@@ -682,14 +708,14 @@ instance. In this lab, you'll be using that specific method.
     > `Set-HPEGLDeviceAutoSubscription`.
 
 3. Next, assign the IP address of your iLO to a variable by entering the
-following command. Be sure to use the IP address listed in the login
+following command. Be sure to use the **iLO IP address** listed in the login
 sheet provided by your instructor. Enter:
 
     ```powershell
     $iLO_IP = "xxx.xxx.xxx.xxx"
     ```
 
-4. And assign the password of your iLO, also found in the login sheet to another variable:
+4. Assign the iLO password, also found in the login sheet, to a variable. This is the password of the iLO **Administrator** account:
 
     ```powershell
     $iLO_Password = "xxxxxxxxxxxx"
@@ -721,10 +747,8 @@ sheet provided by your instructor. Enter:
     >{: .small-space}
     > 
     > The `Connect-HPEGLDeviceComputeiLOtoCOM` cmdlet provides additional parameters to connect iLO through a COM Secure Gateway or through a web proxy.
-
-    > **💡Note**
     >
-    >{: .small-space}
+    > {: .small-space}
     > 
     > In scenarios involving a Secure Gateway (**not applicable to this lab**), the commands would be as follows:
     > 1. Obtain a valid subscription key:  
@@ -743,6 +767,7 @@ sheet provided by your instructor. Enter:
     > ```powershell
     > Connect-HPEGLDeviceComputeiLOtoCOM -iLOCredential $iLO_credential -IloIP "xxx.xxx.xxx.xxx" -ActivationKeyfromCOM $Activation_Key -SkipCertificateValidation -IloProxyServer sg01.domain.com -IloProxyPort 8080
     > ```
+    {: .no-copy}
 
 6. You can then verify the onboarded servers using the following cmdlet:
 
@@ -788,9 +813,9 @@ sheet provided by your instructor. Enter:
 
     [![]( {{ site.baseurl }}/assets/images/HOLs/COM-ZeroTouch/image36.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/COM-ZeroTouch/image36.png){: data-lightbox="gallery"}
 
-    This command will power on all servers managed by COM. Since you currently have only one server onboarded, it will specifically start that device.
+    This command powers on all servers managed by COM. Since you currently have only one server onboarded, it will start that specific device.
 
-## Task 2 -- Set device location and tags
+## Step 2 - Set device location and tags
 
 1. Next you need to set the device location. As indicated earlier, this step is important to ensure that support cases are automatically created in the event of device failures. To do so, enter:
 
@@ -846,16 +871,16 @@ sheet provided by your instructor. Enter:
 
 [↑ Back to Top](#)
 
-# Step 6 - Configuration of Compute Ops Management
+# Task 6 - Configuration of Compute Ops Management
 
-<p class="step-meta">(Step 6 of 12) ⏱️ ~25 min</p>
+<p class="step-meta">(Task 6 of 12) ⏱️ ~25 min</p>
 
 The following step involves setting up Compute Ops Management. This
 process includes various tasks like setting up server configurations,
 forming groups, assigning servers to these groups and much more. The
 steps to complete this setup are outlined below:
 
-## Task 1 -- Create server settings
+## Step 1 - Create server settings
 
 A setting in COM is a collection of parameters that you can apply to one
 or more servers through groups. These settings include parameters such
@@ -969,7 +994,7 @@ ILO settings enable the configuration of specific parameters to standardize iLO 
 
     ```powershell
     $iLOSettingName = "AI_iLO_Settings"
-    New-HPECOMSettingiLOSettings -Region $Region -Name $iLOSettingName -Description "iLO Settings for AI Servers" -VirtualMedia Enabled -PasswordComplexity Enabled -WebServerSSL Enabled -AcceptThirdPartyFirmwareUpdates Disabled
+    New-HPECOMSettingiLOSettings -Region $Region -Name $iLOSettingName -Description "iLO Settings for AI Servers" -VirtualMedia Enabled -AccountServicePasswordComplexity Enabled -WebServerSSL Enabled -AcceptThirdPartyFirmwareUpdates Disabled
     ```
     
     This command activates iLO virtual media, enforces password complexity, enables HTTPS, and disables third-party firmware updates.
@@ -984,7 +1009,7 @@ ILO settings enable the configuration of specific parameters to standardize iLO 
 
     [![]( {{ site.baseurl }}/assets/images/HOLs/COM-ZeroTouch/image50.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/COM-ZeroTouch/image50.png){: data-lightbox="gallery"}
 
-## Task 2 -- Create a group
+## Step 2 - Create a group
 
 In this task you will create a new group incorporating the different settings created earlier. Groups enable you to organize your servers into custom-defined sets for easier monitoring and manageability. The server-related settings and policies you created earlier can be applied to a single group, as you will do in this lab, or to multiple groups as needed.
 
@@ -1036,7 +1061,7 @@ In this task you will create a new group incorporating the different settings cr
 
     Keep in mind that only the iLO settings take effect right away after you add servers to the group.
 
-## Task 3 -- Add servers to the group
+## Step 3 - Add servers to the group
 
 The next task is to add your server to the new group. According to the group policies, only the iLO settings will be applied immediately upon adding the servers to the group. 
 
@@ -1128,9 +1153,9 @@ The next task is to add your server to the new group. According to the group pol
 
 [↑ Back to Top](#)
 
-# Step 7 - Gathering Comprehensive Server Inventory Information
+# Task 7 - Gathering Comprehensive Server Inventory Information
 
-<p class="step-meta">(Step 7 of 12) ⏱️ ~5 min</p>
+<p class="step-meta">(Task 7 of 12) ⏱️ ~5 min</p>
 
 Keeping accurate server inventory is crucial for effective IT
 management---it enables quick troubleshooting, ensures compliance, and
@@ -1188,17 +1213,17 @@ To obtain detailed server inventory information, use the `Get-HPECOMServerInvent
     > The `-Async` parameter allows the cmdlet to return the asynchronous
     > job resource immediately. By default, the cmdlet will wait for the job
     > to finish before returning.
-
+    {: .no-copy}
 
 [↑ Back to Top](#)
 
-# Step 8 - Monitoring Server Health, Support, and Warranty Status
+# Task 8 - Monitoring Server Health, Support, and Warranty Status
 
-<p class="step-meta">(Step 8 of 12) ⏱️ ~10 min</p>
+<p class="step-meta">(Task 8 of 12) ⏱️ ~10 min</p>
 
 One of the key responsibilities in server management is troubleshooting
 issues, managing open cases, monitoring server health, and ensuring that
-servers remain under warranty coverage. In Step 8, effective server
+servers remain under warranty coverage. In Task 8, effective server
 management includes tasks such as confirming operational status,
 reviewing health summaries, monitoring current activities and alerts,
 retrieving support details and cases, and identifying servers with
@@ -1221,7 +1246,7 @@ Specifically, you can:
 
 These features collectively enable robust monitoring, efficient troubleshooting, and proactive resolution of server issues, ensuring optimal server performance and support coverage.
 
-## Task 1 -- Getting server health status, activities, jobs and alerts
+## Step 1 - Getting server health status, activities, jobs and alerts
 
 The first step in server troubleshooting is to confirm that the server is operational and verify the absence of any active alerts. 
 
@@ -1290,7 +1315,7 @@ The first step in server troubleshooting is to confirm that the server is operat
 
     This flexibility helps in managing and monitoring server operations more effectively, especially in large or complex environments.
 
-## Task 2 -- Getting server support details
+## Step 2 - Getting server support details
 
 The subsequent phase in server troubleshooting involves verifying the
 support details. This information is crucial for determining warranty
@@ -1326,7 +1351,7 @@ status and its duration.
     > 
     > `Get-HPECOMServer -Region $Region -ShowServersWithRecentSupportCases` can be used to list servers with recent support cases.
 
-## Task 3 -- Collecting and downloading server logs
+## Step 3 - Collecting and downloading server logs
 
 When encountering a critical server issue, HPE support may request the
 collection and submission of your server's Active Health System (AHS)
@@ -1380,7 +1405,7 @@ efficient and accessible.
 
 3. If you want to see what's inside, you can use Windows Explorer to open the zip file:
 
-    [![]( {{ site.baseurl }}/assets/images/HOLs/COM-ZeroTouch/image73.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/COM-ZeroTouch/image73.png){: data-lightbox="gallery"}
+    [![]( {{ site.baseurl }}/assets/images/HOLs/COM-ZeroTouch/image73.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/COM-ZeroTouch/image73.png){: data-lightbox="gallery"}{:class="img-700"}
 
 4. Alternatively, you can use PowerShell's built-in `Expand-Archive` cmdlet to extract the contents of the zip file. Simply run the following by replacing the angle brackets with your server name, timestamp and destination folder:
 
@@ -1390,7 +1415,7 @@ efficient and accessible.
 
     This makes it easy to inspect individual log files and share relevant data with support teams for further troubleshooting.
 
-## Task 4 -- Enabling email notification
+## Step 4 - Enabling email notification
 
 An essential aspect of effective server management is receiving timely
 alerts when issues arise. To address this, COM provides configurable
@@ -1425,9 +1450,9 @@ automatically applied.
 
 [↑ Back to Top](#)
 
-# Step 9 - Updating and Ensuring Server Firmware Compliance
+# Task 9 - Updating and Ensuring Server Firmware Compliance
 
-<p class="step-meta">(Step 9 of 12) ⏱️ ~10 min</p>
+<p class="step-meta">(Task 9 of 12) ⏱️ ~10 min</p>
 
 This section outlines the procedures for configuring key server
 management functions in COM. It covers maintaining server firmware
@@ -1436,7 +1461,7 @@ firmware deviations, and scheduling group firmware updates. Adhering to
 these steps will enhance the efficiency of monitoring and maintaining
 your server infrastructure.
 
-## Task 1 -- Checking group firmware compliance 
+## Step 1 - Checking group firmware compliance 
 
 The initial step in this process is to verify your group's firmware
 compliance status. This compliance report provides a clear assessment of
@@ -1488,7 +1513,7 @@ efficiently.
     >     
     > You may achieve a perfect 100% compliance score with no deviations depending on the status of your allocated server.
 
-## Task 2 -- Checking group firmware deviations
+## Step 2 - Checking group firmware deviations
 
 Before updating the server firmware, you can examine any deviations in
 firmware components from your group's established baseline. This step
@@ -1516,19 +1541,19 @@ in the TotalDownloadSize column of the firmware compliance report.
     - **ComponentFilename**: Filename of the firmware update package  
    
 
-> ⚠️ **Note**
->
->{: .small-space}
-> 
-> If there are no deviations, this command will not return any response.  
+    > ⚠️ **Note**
+    >
+    >{: .small-space}
+    > 
+    > If there are no deviations, this command will not return any response.  
 
-> 🔔 **Note** 
->
->{: .small-space}
-> 
-> The Firmware Compliance feature does not monitor HPE driver and software versions.
+    > 🔔 **Note** 
+    >
+    >{: .small-space}
+    > 
+    > The Firmware Compliance feature does not monitor HPE driver and software versions.
 
-## Task 3 -- Scheduling group firmware update
+## Step 3 - Scheduling group firmware update
 
 After identifying the firmware deviation within the group definition,
 you may choose to perform a group firmware update. For this exercise,
@@ -1575,7 +1600,7 @@ weekend (in four days).
     group at once. Testing firmware updates on an individual server prior to
     deploying them across the entire group is a recommended best practice.
 
-    By default, `-Update-HPECOMGroupFirmware` runs updates in parallel
+    By default, `Update-HPECOMGroupFirmware` runs updates in parallel
     across eligible servers. The `-SerialUpdates` parameter ensures that
     only one server in the group updates at a time. This prevents all
     servers from being offline simultaneously. When you combine
@@ -1605,9 +1630,9 @@ weekend (in four days).
 
 [↑ Back to Top](#)
 
-# Step 10 - Essential Next Steps for Server Management and Sustainability
+# Task 10 - Essential Next Steps for Server Management and Sustainability
 
-<p class="step-meta">(Step 10 of 12) ⏱️ ~15 min</p>
+<p class="step-meta">(Task 10 of 12) ⏱️ ~15 min</p>
 
 After completing setup and firmware updates, the next essential steps
 focus on ongoing server management and sustainability. Use HPE Compute
@@ -1617,7 +1642,7 @@ reports. Streamline authentication for accessing iLO interfaces by
 implementing Single Sign-On (SSO), and confirm that your COM
 configuration of iLO settings is correct through practical verification.
 
-## Task 1 -- Server utilization insights
+## Step 1 - Server utilization insights
 
 Server utilization insights play a crucial role in optimizing data
 center efficiency and sustainability. Leveraging AI-powered analytics,
@@ -1684,7 +1709,7 @@ and issuing utilization alerts.
     > allowing you to make smart choices that boost performance and
     > efficiency.
 
-## Task 2 -- Server sustainability insights
+## Step 2 - Server sustainability insights
 
 The Server Sustainability Insights feature is essential for enhancing
 data center efficiency and promoting environmentally responsible
@@ -1733,10 +1758,10 @@ operational expenses.
 
     The report provides the total estimated energy consumption (in kilowatt-hours, kWh) for all servers in the specified region. The data includes collected values from the past 90 days (3 months), as well as projected consumption for the next 180 days (6 months) helping with planning and decision-making.
 
-3. To retrieve this summary specifically for the EU Central region, use:
+3. To retrieve this summary specifically for the region, use:
 
     ```powershell
-    Get-HPECOMSustainabilityInsights -Region eu-central -EnergyConsumptionTotal
+    Get-HPECOMSustainabilityInsights -Region $Region -EnergyConsumptionTotal
     ```
 
     [![]( {{ site.baseurl }}/assets/images/HOLs/COM-ZeroTouch/image84.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/COM-ZeroTouch/image84.png){: data-lightbox="gallery"}
@@ -1755,7 +1780,7 @@ operational expenses.
 
     This command returns projected CO2 emissions, allowing you to better assess and manage the environmental impact of your server operations.
 
-## Task 3: Interacting with iLOs using Compute Ops Management SSO
+## Step 3 - Interacting with iLOs using Compute Ops Management SSO
 
 Direct interaction with iLOs from this library is a key capability that
 enhances server management efficiency. Starting in January 2025, Compute
@@ -1833,7 +1858,7 @@ To authenticate to your server's iLO using single sign-on (SSO), follow these 4 
 
     These steps streamline the process of authenticating to iLO using Compute Ops Management SSO and enable you to manage your servers more efficiently with the PowerShell cmdlets.
 
-## Task 4: Testing ILO settings configuration
+## Step 4 - Testing ILO settings configuration
 
 In this task, you will verify that the iLO settings you configured in
 your group (Step6 -- Task 1) have been correctly applied to your server.
@@ -1841,7 +1866,7 @@ Specifically, you will check the AcceptThirdPartyFirmwareUpdates
 parameter, then change it and observe how COM detects the configuration
 drift and re-applies the correct settings.
 
-- **Step 1**: Verify the current iLO firmware policy setting
+1. Verify the current iLO firmware policy setting
 
     Begin by querying the iLO directly with the HPEiLOCmdlets and your connection object to check the current firmware update policy. Use the following command to retrieve the firmware policy from your iLO:
 
@@ -1856,17 +1881,17 @@ drift and re-applies the correct settings.
     This command should return **false**, indicating that the AcceptThirdPartyFirmwareUpdates option is set to Disabled as per your group's iLO policy. With this setting, installation of third-party firmware on your server is blocked, aligning with recommended security
 best practices.
 
-- **Step 2**: Simulate a configuration drift by changing the setting in COM
+2. Simulate a configuration drift by changing the setting in COM
 
     Now you will change the iLO setting in COM from ***Disabled*** to ***Enabled*** to simulate a configuration change. This will cause your server to become non-compliant with the group's iLO policy. Run this command to update the iLO setting:
 
     ```powershell
-    Set-HPECOMSettingiLOSettings -Region $Region -Name $iLOSettingName -Description "iLO Settings for AI Servers" -VirtualMedia Enabled -PasswordComplexity Enabled -WebServerSSL Enabled -AcceptThirdPartyFirmwareUpdates Enabled
+    Set-HPECOMSettingiLOSettings -Region $Region -Name $iLOSettingName -Description "iLO Settings for AI Servers" -VirtualMedia Enabled -AccountServicePasswordComplexity Enabled -WebServerSSL Enabled -AcceptThirdPartyFirmwareUpdates Enabled
     ```
 
     [![]( {{ site.baseurl }}/assets/images/HOLs/COM-ZeroTouch/image88.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/COM-ZeroTouch/image88.png){: data-lightbox="gallery"}
 
-- **Step 3**: Check the compliance status
+3. Check the compliance status
 
     After changing the setting, check the group's compliance status. You should see that the iLO settings are now marked as not compliant because the group policy expects Disabled but the setting now says Enabled:
 
@@ -1878,7 +1903,7 @@ best practices.
 
     The compliance check will show that your server's iLO configuration no longer matches the group's iLO policy.
 
-- **Step 4**: Re-apply the correct iLO configuration
+4. Re-apply the correct iLO configuration
 
     Now you will use COM to re-apply the correct iLO configuration to your server. This will change the **AcceptThirdPartyFirmwareUpdates** parameter back to **Enabled** on the iLO itself. Run the following command using the Async parameter so you don't have to wait for the job to complete:
 
@@ -1886,16 +1911,24 @@ best practices.
     $task = Invoke-HPECOMGroupiLOConfiguration -Region $Region -GroupName $GroupName -ServerSerialNumber $SN -Async
     ```
 
+5. Chck the job status
+
+    ```powershell
+    $task
+    ```
+
     [![]( {{ site.baseurl }}/assets/images/HOLs/COM-ZeroTouch/image90.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/COM-ZeroTouch/image90.png){: data-lightbox="gallery"}
 
-    The command returns the job status, indicating that it is currently in a *Running* state.
+    The `$task` variable contains the job object returned by the `-Async` parameter, showing the job is currently in a *Running* state.
 
-- **Step 5**: Monitor the job progress
+6. Monitor the job progress
 
     While the iLO configuration is being applied, you can check the job status using these commands:
 
     ```powershell
     Get-HPECOMJob -Region $Region -Category Group -ShowRunning
+    ```
+    ```powershell
     Get-HPECOMJob -Region $Region -Category Group -JobResourceUri $task.resourceUri
     ```
     
@@ -1911,7 +1944,7 @@ best practices.
     
     [![]( {{ site.baseurl }}/assets/images/HOLs/COM-ZeroTouch/image93.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/COM-ZeroTouch/image93.png){: data-lightbox="gallery"}
 
-- **Step 6**: Verify the setting has been applied
+7. Verify the setting has been applied
 
     Once the job is completed, query the iLO again to verify that AcceptThirdPartyFirmwareUpdates has been changed back to Enabled on your iLO:
 
@@ -1942,14 +1975,15 @@ These points illustrate the effectiveness of COM's policy-based management appro
 
 [↑ Back to Top](#)
 
-# Step 11 - Clean the lab for the next participant 
+# Task 11 - Clean the lab for the next participant 
 
-<p class="step-meta">(Step 11 of 12) ⏱️ ~5 min</p>
+<p class="step-meta">(Task 11 of 12) ⏱️ ~5 min</p>
+
 Before concluding the lab, follow these steps to clean up your
 environment. Skipping these steps may leave resources locked to your
 workspace, which could affect future lab sessions.
 
-## Task 1: Remove your server from its service assignment
+## Step 1 - Remove your server from its service assignment
 
 It is essential to remove a server from its current service assignment
 before onboarding it to a different workspace. Failure to complete this
@@ -1962,7 +1996,7 @@ environment.
     Get-HPEGLDevice | Remove-HPEGLDeviceFromService
     ```
     
-    [![]( {{ site.baseurl }}/assets/images/HOLs/COM-ZeroTouch/image95.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/COM-ZeroTouch/image95.png){: data-lightbox="gallery"}
+    [![]( {{ site.baseurl }}/assets/images/HOLs/COM-ZeroTouch/image95.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/COM-ZeroTouch/image95.png){: data-lightbox="gallery"}{:class="img-700"}
 
 2. Confirm that the server has been removed from its assignment by running:
 
@@ -1974,7 +2008,7 @@ environment.
 
     [![]( {{ site.baseurl }}/assets/images/HOLs/COM-ZeroTouch/image96.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/COM-ZeroTouch/image96.png){: data-lightbox="gallery"}
 
-## Task 2: Remove the subscription key
+## Step 2 - Remove the subscription key
 
 Subscription keys are single-use on the HPE GreenLake platform, so it's
 also important to delete your key from your workspace.
@@ -1985,7 +2019,7 @@ also important to delete your key from your workspace.
     Get-HPEGLSubscription | Remove-HPEGLSubscription
     ```
     
-    [![]( {{ site.baseurl }}/assets/images/HOLs/COM-ZeroTouch/image97.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/COM-ZeroTouch/image97.png){: data-lightbox="gallery"}
+    [![]( {{ site.baseurl }}/assets/images/HOLs/COM-ZeroTouch/image97.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/COM-ZeroTouch/image97.png){: data-lightbox="gallery"}{:class="img-700"}
 
 2. To verify that the subscription key has been removed, the following command should return no response:
 
@@ -1993,7 +2027,7 @@ also important to delete your key from your workspace.
     Get-HPEGLSubscription
     ```
 
-## Task 3: Remove the COM service instance
+## Step 3 - Remove the COM service instance
 
 Next, remove the COM service instance (the `$Region` you set earlier)
 from your workspace. This will permanently remove all the COM resources,
@@ -2020,7 +2054,7 @@ resources and lowers your carbon footprint.
     Get-HPEGLService -ShowProvisioned
     ```
 
-## Task 4: Disconnect from HPE GreenLake
+## Step 4 - Disconnect from HPE GreenLake
 
 The cleanup process is now complete. The final task, which cannot be
 performed within the lab, is the deletion of the workspace itself. This
@@ -2066,13 +2100,13 @@ your command line terminal.
 
 [↑ Back to Top](#)
 
-# Step 12 - Explore Zero Touch Automation with the Sample Script (Optional)
+# Task 12 - Explore Zero Touch Automation with the Sample Script (Optional)
 
-<p class="step-meta">(Step 12 of 12) ⏱️ ~</p>
+<p class="step-meta">(Task 12 of 12) ⏱️ ~</p>
 
 If you would like to see the true value of this library, you can run the
 Zero Touch Automation script available on GitHub:
-<https://github.com/hpelabs/HPE-COM-PowerShell-Library/blob/main/Examples/COM-Zero-Touch-Automation.ps1>.
+<https://github.com/jullienl/HPE-COM-PowerShell-Library/blob/main/Examples/COM-Zero-Touch-Automation.ps1>.
 This script offers complete end-to-end automation for everything you've
 accomplished in this lab, but this time through scripting. It
 demonstrates the power of the library by automating the entire
@@ -2081,7 +2115,7 @@ policy management and scheduling a firmware update---all in one go.
 You'll receive results messages for each step, making it easy to track
 progress.
 
-1. Open Chrome and visit <https://github.com/hpelabs/HPE-COM-PowerShell-Library/blob/main/Examples/COM-Zero-Touch-Automation.ps1>
+1. Open Chrome and visit <https://github.com/jullienl/HPE-COM-PowerShell-Library/blob/main/Examples/COM-Zero-Touch-Automation.ps1>
 
 2. Click **Download raw file**.
 
@@ -2117,7 +2151,7 @@ progress.
 
         [![]( {{ site.baseurl }}/assets/images/HOLs/COM-ZeroTouch/image110.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/COM-ZeroTouch/image110.png){: data-lightbox="gallery"}
 
-6. After you finish changing the variable, save the file (**File** /**Save**) and switch back to the PowerShell terminal.
+6. After you finish changing the variables, save the file (**File** /**Save**) and switch back to the PowerShell terminal.
 
     [![]( {{ site.baseurl }}/assets/images/HOLs/COM-ZeroTouch/image111.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/COM-ZeroTouch/image111.png){: data-lightbox="gallery"}
 
@@ -2168,7 +2202,7 @@ Throughout this lab, you explored how to automate server lifecycle management us
 
 - Installed the HPECOMCmdlets library and authenticated to HPE GreenLake.
 
-- Created a workspace, add a user, provision a COM instance, configure a location, and install a subscription key.
+- Created a workspace, added a user, provisioned a COM instance, configured a location, and installed a subscription key.
 
 - Onboarded a server to COM using an activation key, assigned location and tags, and verified device status.
 
@@ -2180,7 +2214,7 @@ Throughout this lab, you explored how to automate server lifecycle management us
 
 - Explored firmware compliance, scheduled updates, utilization insights, and sustainability metrics.
 
-- Finished by cleaning the lab: remove device assignments, delete subscriptions, delete the COM instance, and disconnected.
+- Finished by cleaning the lab: removed device assignments, deleted subscriptions, deleted the COM service instance, and disconnected.
 
 - Finally, executed the COM-Zero-Touch-Automation PowerShell script to automate and streamline the entire configuration workflow---from provisioning and policy application to deprovisioning---enabling consistent, efficient, and error-free server management within the HPE
 GreenLake platform.
@@ -2194,12 +2228,12 @@ streamline onboarding, enforce policy‑driven governance, automate compliance, 
 
 **🚀** Looking to automate the onboarding of HPE servers into HPE
 GreenLake and Compute Ops Management, see
-[Onboarding-Script](https://github.com/hpelabs/HPE-Compute-Ops-Management/blob/main/PowerShell/Onboarding/Prepare-and-Connect-iLOs-to-COM-v2.ps1).
+[Onboarding-Script](https://github.com/jullienl/HPE-Compute-Ops-Management/blob/main/PowerShell/Onboarding/Prepare-and-Connect-iLOs-to-COM-v2.ps1).
 
 **🚀** Looking to demonstrate the power of scripting with HPE GreenLake
 and Compute Ops Management, see [HPE Compute Ops Management Zero Touch
 Automation
-Example](https://github.com/hpelabs/HPE-COM-PowerShell-Library/blob/main/Examples/COM-Zero-Touch-Automation.ps1).
+Example](https://github.com/jullienl/HPE-COM-PowerShell-Library/blob/main/Examples/COM-Zero-Touch-Automation.ps1).
 This script automates the entire lifecycle from workspace provisioning
 through server configuration, policy management, and optional cleanup.
 It showcases best practices for programmatic infrastructure deployment
@@ -2210,10 +2244,10 @@ workflows.
 Management API, including Ansible playbooks, PowerShell, and Python
 scripts. These resources offer practical examples to help automate and
 streamline server management tasks. Visit the [GitHub
-project](https://github.com/hpelabs/HPE-Compute-Ops-Management).
+project](https://github.com/jullienl/HPE-Compute-Ops-Management).
 
 **🛠️** Interested in using Ansible with COM? Visit this open source
-[GitHub project](https://github.com/hpelabs/HPE-COM-baremetal)
+[GitHub project](https://github.com/jullienl/HPE-COM-baremetal)
 dedicated to server provisioning. Originally developed to support ESXi,
 RHEL, and Windows Server platforms, the project demonstrates extensive
 COM API capabilities---from initial setup (Day 0 operations), through

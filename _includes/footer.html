@@ -1,35 +1,15 @@
 <footer class="site-footer h-card" role="contentinfo">
   <data class="u-url" href="{{ "/" | relative_url }}"></data>
-
-  <div class="wrapper">
-    <h2 class="footer-heading">{{ site.title }}</h2>
-    <div class="footer-col-wrapper">
-      <div class="footer-col">
-        {%- include social/meta.html -%}
-        {%- if site.copyright -%}
-        <p>&copy; <font size="2"><i>{{ site.copyright }} {{'now' | date: "%Y" }}</i></font></p>
-        {%- endif -%}
-      </div>
-      <div class="footer-col">
-        <p>{{ site.description | escape }}</p>
-        <p>
-          {% if site.github.versions.github-pages %}
-          <a href="https://pages.github.com/">GH Pages</a> {{ site.github.versions.github-pages | default: 1.0 }},
-          {% endif %}
-          <a href="https://jekyllrb.com/">Jekyll</a> {{ jekyll.version | site.github.versions.jekyll | default: 1.0 }}
-          <!-- {% if site.theme_version %}
-          <a href="https://github.com/JakeSteam/minimaJake">minimaJake</a> {{ site.theme_version }}.
-          {% else %}
-          <a href="https://github.com/JakeSteam/minimaJake">minimaJake</a> {{ site.remote_theme | split: '@' | last | replace: 'JakeSteam/minimaJake', 'latest'}}.
-          {% endif %} -->
-        </p>
-      </div>
-    </div>
-
-    <div class="social-links">
+  <div class="wrapper footer-inner">
+    <span class="footer-copyright">
+      {%- if site.copyright -%}&copy; {{ site.copyright }} {{'now' | date: "%Y"}}{%- endif -%}
+    </span>
+    <span class="footer-social">
       {%- include social/social.html -%}
-    </div>
-
+    </span>
+    <span class="footer-desc">
+      <a href="https://hpelabs.github.io/install-instructions/" title="Install Instructions" class="footer-favicon-link">
+        <img src="{{ '/assets/images/favicon/favicon-32x32.png' | relative_url }}" alt="Site favicon" class="footer-favicon">
+      </a>{{ site.description | escape }}</span>
   </div>
-
 </footer>

@@ -2,36 +2,70 @@
 layout: post
 title: "Use GitHub Copilot to help with your infrastructure automation with COM"
 image: /assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/banner.jpg
-categories:
-    - Hands-on Lab
-tags:
-    - GitHub Copilot
-    - HPE GreenLake
-    - PowerShell
-    - Compute Ops Management
-    - Infrastructure Automation
-    - AI-Assisted Development
 post_end_promo: <i><b>Continue your journey with more HPE Compute Technical Enablement Hands-on Labs for infrastructure, security, technologies, and solutions.</b></i>
 excerpt: Experience the power of AI and get code written for you by GitHub Copilot, providing just plain English prompts, using a PowerShell library for Compute Ops Management.
+room: 1 # Set to 1 or 2
 ---
+Hands-On Lab Guide
 
-Living Lab experience
+Experience the power of AI and get code written for you by GitHub
+Copilot, providing just plain English prompts, using a PowerShell
+library for Compute Ops Management.
 
+# Introduction
+
+Welcome to this Hands-On Lab (HOL). For the next two hours you will
+complete a self-paced lab using HPE ProLiant DL-series servers, HPE
+GreenLake Compute Ops Management, and GitHub Copilot AI.
+
+## Lab Objectives
+
+Get GitHub Copilot to write PowerShell code for you, even if you don't
+know much about PowerShell, using a library that wraps the APIs provided
+by the GreenLake Platform and Compute Ops Management (COM). This can
+help you add automation to server management at scale. Automation is
+crucial for server management in datacenters because it reduces manual
+effort, minimizes errors, and ensures consistent, reliable operations.
+Automated processes speed up routine tasks like provisioning,
+monitoring, and updating servers, which improves efficiency and
+scalability while lowering operational costs. This allows IT teams to
+focus on strategic work and helps maintain high availability and
+security across the infrastructure.
+
+## Team Assignments
+
+This lab has 25 stations. Each station will have its own HPE DL-series
+server to be onboarded into COM. You will be working in a Virtual
+Machine using Visual Studio Code with GitHub Copilot integration.
+
+Your team assignments will be on a separate sheet of paper issued to you
+by your lab proctor. Please return the team assignment sheet to your
+proctor when finished with this lab.
+
+## Virtual Lab Environment
+
+Upon access to the lab, you will be presented with a Windows desktop.
+
+Each team will have the following physical and virtual infrastructure:
+
+- Windows virtual machine with Visual Studio Code
+
+- One ProLiant DL-series server
 
 # HPE Compute Ops Management PowerShell Library
 
-This lab introduces the HPE Compute Ops Management PowerShell module, a
-set of cmdlets for managing and automating your HPE GreenLake
-environment. The module enables direct interaction with HPE GreenLake
-and Compute Ops Management services from the PowerShell command line,
-fitting easily into existing automation workflows.
+This library offers a robust set of cmdlets (PowerShell functions)
+designed to manage and automate your HPE GreenLake environment
+efficiently. By leveraging this library, users can seamlessly interact
+with HPE GreenLake and Compute Ops Management services directly from the
+PowerShell command line, integrating effortlessly into existing
+automation workflows.
 
-Development is ongoing. SaaS cloud applications evolve over time. Therefore, this library
-will be continuously updated to incorporate new features as they are released by HPE.
+This module is available in the PowerShell Gallery under the name
+[HPECOMCmdlets](https://www.powershellgallery.com/packages/HPECOMCmdlets),
+following the naming convention used by most HPE modules.
 
-This module is available in the PowerShell Gallery under the name [HPECOMCmdlets](https://www.powershellgallery.com/packages/HPECOMCmdlets), following the naming convention used by most HPE modules.
-
-[![]( {{ site.baseurl }}/assets/images/HOLs/COM-ZeroTouch/image3.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/COM-ZeroTouch/image3.png){:class="img-600"}{: data-lightbox="gallery"}
+[![]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image3.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image3.png){:class="img-900"}{: data-lightbox="gallery"}
 
 The PowerShell Gallery is a repository for sharing and distributing
 PowerShell modules and scripts. It's a community-driven platform that
@@ -41,619 +75,733 @@ PowerShell Gallery can be accessed through the PowerShellGet module
 (includes `Install-Module`, `Find-Module`, etc.), which comes
 pre-installed with Windows PowerShell 5.0 and above.
 
-This project is also associated with a new public GitHub
-[repository](https://github.com/hpelabs/HPE-COM-PowerShell-Library)
-from our HPE Labs team. This repository
+This project is also associated with a public GitHub
+[repository](https://github.com/jullienl/HPE-COM-PowerShell-Library)
+from our community contributor, Lionel Jullien from HPE. This repository
 is where the source code is developed. You can also track
-[releases](https://github.com/hpelabs/HPE-COM-PowerShell-Library/releases),
+[releases](https://github.com/jullienl/HPE-COM-PowerShell-Library/releases),
 report and view
-[issues](https://github.com/hpelabs/HPE-COM-PowerShell-Library/issues),
+[issues](https://github.com/jullienl/HPE-COM-PowerShell-Library/issues),
 and participate in
-[discussions](https://github.com/hpelabs/HPE-COM-PowerShell-Library/discussions).
-
-[![]( {{ site.baseurl }}/assets/images/HOLs/COM-ZeroTouch/image2.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/COM-ZeroTouch/image2.png){: data-lightbox="gallery"}
+[discussions](https://github.com/jullienl/HPE-COM-PowerShell-Library/discussions).
 
 This library provides a variety of key features for managing HPE
 GreenLake and Compute Ops Management. Here are the main features:
 
-- **Authentication**: Establish secure connections to HPE GreenLake using Single Sign-On (SSO) or single/multi-factor authentication. Whether you have an existing workspace or not, the library supports flexible
-authentication methods to suit your needs.
+- **Authentication**: Connect to HPE GreenLake using single-factor or
+  multifactor authentication with or without an existing workspace.
 
 - **Workspace Management**: Create and manage HPE GreenLake workspaces.
 
-- **Session Tracking**: Automatically track sessions with the global session tracker $HPEGreenLakeSession.
+- **Session Tracking**: Automatically track sessions with the global
+  session tracker \$HPEGreenLakeSession.
 
-- **User Management**: Invite and manage users within your HPE GreenLake environment, assign roles.
+- **User Management**: Invite and manage users within your HPE GreenLake
+  environment, assign roles.
 
-- **Resource Management**: Manage resources such as servers, storage, and networking within your HPE GreenLake environment.
+- **Resource Management**: Manage resources such as servers, storage,
+  and networking within your HPE GreenLake environment.
 
-- **Service Provisioning**: Provision services like Compute Ops Management, manage service roles and subscriptions.
+- **Service Provisioning**: Provision services like Compute Ops
+  Management, manage service roles and subscriptions.
 
-- **Device Management**: Add devices individually or in bulk using CSV files, manage device subscriptions and auto-subscriptions, set device locations and connect devices to services.
+- **Device Management**: Add devices individually or in bulk using CSV
+  files, manage device subscriptions and auto-subscriptions, set device
+  locations and connect devices to services.
 
-- **Server configuration Management**: Create and apply BIOS, storage, OS, and firmware settings. Manager group and apply configurations to groups of servers.
+- **Server configuration Management**: Create and apply BIOS, storage,
+  OS, and firmware settings. Manager group and apply configurations to
+  groups of servers.
 
-- **Security and Compliance**: Manage iLO security settings and run inventory and compliance checks.
+- **Security and Compliance**: Manage iLO security settings and run
+  inventory and compliance checks.
 
-- **Job Scheduling and Execution**: Schedule and execute various tasks like firmware updates, OS installations, and sustainability reports.
+- **Job Scheduling and Execution**: Schedule and execute various tasks
+  like firmware updates, OS installations, and sustainability reports.
 
-- **Notification and Integration**: Enable email notifications for service events and summaries, integrate with external services like ServiceNow.
+- **Notification and Integration**: Enable email notifications for
+  service events and summaries, integrate with external services like
+  ServiceNow.
 
-- **Appliance Management**: Add HPE OneView and Secure Gateway appliances, upgrade HPE OneView appliances.
+- **Appliance Management**: Add HPE OneView and Secure Gateway
+  appliances, upgrade HPE OneView appliances.
 
-- **Monitoring and Alerts**: Monitor alerts for your resources to ensure optimal performance and uptime.
+- **Monitoring and Alerts**: Monitor alerts for your resources to ensure
+  optimal performance and uptime.
 
-- **Reporting**: Generate detailed reports on resource usage, performance, and other metrics.
+- **Reporting**: Generate detailed reports on resource usage,
+  performance, and other metrics.
 
-- **Automation**: Automate repetitive tasks and workflows using PowerShell scripts and cmdlets.
+- **Automation**: Automate repetitive tasks and workflows using
+  PowerShell scripts and cmdlets.
 
-- **Integration**: Seamlessly integrate with other tools and platforms using REST APIs and webhooks.
+- **Integration**: Seamlessly integrate with other tools and platforms
+  using REST APIs and webhooks.
 
-- **Security**: Implement security best practices and manage access control for your HPE GreenLake environment.
+- **Security**: Implement security best practices and manage access
+  control for your HPE GreenLake environment.
 
 These features collectively provide a comprehensive set of cmdlets to
 manage various aspects of your HPE GreenLake environment and any
 existing Compute Ops Management service instances.
 
-## Preparation for using the PowerShell library
+# Connecting to the Lab
 
-To use the HPE Compute Ops Management PowerShell Library, an HPE
-GreenLake account is required. The library supports two authentication
-methods:
+One of the HPE HOL instructors will be happy to assist with getting you
+setup for this lab.
 
-**HPE Account credentials---single-factor authentication (with or ithout MFA).**
+1.  Open a Chrome or similar HTML5 capable browser and navigate to:
+    <https://labs.compute.cloud.hpe.com/>
 
-- Requires an HPE Account (username and password)
+2.  Choose **Omnissa Horizon Web Client**:
 
-- Direct authentication using HPE Account credentials
+    [![]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image4.jpg){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image4.jpg){:class="img-300"}{: data-lightbox="gallery"}
 
-**Single Sign-On (SSO) passwordless authentication**
+3.  Login with your provided credentials from the team assignment sheet.
 
-- Requires a properly configured Identity provider (IdP) such as Okta, PingIdentity, or Microsoft Entra ID.
+4.  Click the **GitHub Copilot** icon.
 
-- User authentication is handled through an external Identity Provider using SAML 2.0.
+5.  At the warning message "You need to grant microphone and camera
+    permission to use RTAV", click **OK**.
 
-- For more details, see [SAML Single Sign-On (SSO) with passwordless authentication](https://github.com/hpelabs/HPE-COM-PowerShell-Library?tab=readme-ov-file#saml-single-sign-on-sso-with-passwordless-authentication).
+6.  At the Fullscreen message: "Click OK to grant permission for full
+    screen", you can click **OK** or not, based on your preference and the
+    display setup in front of you, and you can click on **Allow** at the
+    message "labs.compute.cloud.hpe.com wants to manage windows on all
+    your displays".
 
-If you have an HPE GreenLake account or a workspace with properly
-configured SSO for passwordless access, **skip this section.**
+7.  After a few moments, a Horizon-Published Windows desktop will
+    appear.
+
+# Getting familiar with Visual Studio Code
+
+**Visual Studio Code (VS Code)** is a free, open-source code editor
+developed by Microsoft. It is widely used for writing, editing, and
+debugging code in many programming languages. VS Code offers features
+like syntax highlighting, intelligent code completion, integrated
+terminal, version control, and a rich ecosystem of extensions. It is
+available for all major operating systems, Windows, MacOS and Linux.
+
+- To start VS Code, click its icon in the taskbar:
+
+  [![]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image5.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image5.png){:class="img-600"}{: data-lightbox="gallery"}
+
+- This is what the window should look like:
+
+  [![]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image6.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image6.png){:class="img-900"}{: data-lightbox="gallery"}
+
+- Most of your work will be to type or paste text in the Copilot prompt
+field at the bottom right:
+
+  [![]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image7.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image7.png){:class="img-400"}{: data-lightbox="gallery"}
+
+- But first, let's make sure VS Code is properly configured for Copilot. Click the user icon at the bottom of the Activity bar:
+
+  [![]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image8.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image8.png){:class="img-100"}{: data-lightbox="gallery"}
+
+  A menu should open with at the top bot-compute-lab<span style="color:red">nn</span>_hpeprod (GitHub) where <span style="color:red">nn</span> is your team number. This is the user with which you are logged
+into GitHub, ensuring your rights to Copilot.
+
+- You should also look at the bottom right, just below the area where you will enter Copilot prompts:
+
+  [![]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image9.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image9.png){:class="img-400"}{: data-lightbox="gallery"}
+
+  It shows the mode you will be using (Agent) and the LLM (Large Language
+Model) set to Claude Sonnet 4.5. An LLM, or Large Language Model, is a
+type of artificial intelligence that uses deep learning to understand
+and generate human-like text. LLMs are trained on massive amounts of
+data and can perform tasks such as answering questions, summarizing
+information, translating languages, and generating content. In this lab,
+we will be using the LLM to write PowerShell code. While you are free to
+change the LLM, in our experience Claude Sonnet offers the best results
+for this particular task.
+
+# Your first prompt
+
+We are now ready to start coding.
 
 > ⚠️ **Important note**   
 >
 >{: .small-space}
 > 
-> If your user account uses an identity provider---whether supported (Okta, Microsoft Entra ID, PingIdentity) or unsupported---that does not use passwordless authentication methods (push notifications or TOTP), authentication with the `Connect-HPEGL` cmdlet will fail.
+> ```text
+> In the rest of this document text like this represents a prompt that 
+ you should type or copy and paste into the Copilot prompt area.
+> ```
 
-> 💡 **Note**   
+In AI, a prompt is the input or instruction you give to an artificial
+intelligence model---such as a question, command, or statement---to
+guide it in generating a specific response. The prompt provides the AI
+with context or directions, helping it produce output that matches your
+intent, whether that's text, code, images, or other results. The quality
+and clarity of your prompt directly affect how useful and relevant the
+AI's response will be. If you feel adventurous, you can change the
+prompts slightly, but this lab has been tested with the prompts
+provided. Results will be different with other prompts, and could also
+be different even with the exact same prompts, that is the nature of AI.
+
+- Here is our first prompt:
+
+  ```text
+  I want to write PowerShell code that connects to HPE Greenlake and COM
+  using the HPECOMcmdlets library. The code should take a username (email)
+  as a parameter and prompt for a password
+  ```
+
+- After a few seconds, you should see your Copilot's response in plain
+English, explaining what it did. But the code itself is in a file that
+Copilot created. Click on the tab it created in the main editing window,
+as depicted below:
+
+  [![]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image10.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image10.png){:class="img-900"}{: data-lightbox="gallery"}
+
+- The ![](/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image11.png) icon next to the file name means the file
+has pending changes from Copilot.
+
+  [![]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image12.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image12.png){:class="img-900"}{: data-lightbox="gallery"}
+
+- The generated code is on green background. Click on **Keep** (either at the
+top or at the bottom) to accept the changes. Later when Copilot wants to
+make multiple changes in one strike, the **Keep**/**Undo** at the top relates to
+the particular change where it is displayed, and the one at the bottom
+relates to all the changes (that's why here it says 1 of 1 at the
+bottom, later you will see 1 of n). So, you will click **Keep** at the
+bottom to accept all changes.
+
+  [![]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image13.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image13.png){:class="img-100"}{: data-lightbox="gallery"}
+
+- The green background will go away, as well as the icon next to the file
+name in the tab header. If you are ever unhappy with the changes
+proposed by Copilot, you can click **Undo** instead of **Keep**, to ignore the
+latest suggested change and write another prompt.
+
+You can see that with this simple first prompt, Copilot wrote fairly
+comprehensive code with comments (text in green), error handling
+(try/catch blocks), parameter binding, etc. If this looks like gibberish
+to you, that's OK, your Copilot assistant is here to handle the
+technical details!
+
+# Copilot can make mistakes
+
+While Copilot is a great help, it is not perfect right from the start.
+You still need to be in control and check your assistant's work. In this
+particular case, the names of the cmdlets that Copilot generated are not
+correct, they do not match what the HPECOMcmdlets library provides. This
+is because the LLM does not know this library (yet), so it
+"hallucinates" some of its responses. This is very common in AI, a
+hallucination occurs when an AI model generates information that is
+inaccurate, misleading, or entirely fabricated, even though it may sound
+plausible. These outputs are not based on real data or facts but are the
+result of the model making incorrect predictions or \"guesses\". But do
+not fear, we can easily fix that by providing Copilot with some context.
+This is the equivalent of sending our junior coder to training, except
+it's vastly faster than with human beings.
+
+```text
+Your cmdlets are not correct. Use the HPECOMcmdlets source code and
+examples at <https://github.com/jullienl/HPE-COM-PowerShell-Library>
+```
+
+- Whenever you instruct Copilot to fetch information from the Internet, it
+may ask you for permission to do so with something like this in the
+prompt area. Click the down arrow next to **Allow** and click the response
+highlighted in red to give Copilot the widest permission so it hopefully
+does not ask you again.
+
+  [![]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image14.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image14.png){:class="img-900"}{: data-lightbox="gallery"}
+
+  This will take slightly longer as Copilot fetches information from the
+repository. You should see it changes the cmdlet to connect to Greenlake
+to the proper one `Connect-HPEGL`. Click **Keep** to accept the changes.
+
+- Get used to watching the bottom right of the prompt area, this will give
+you a clue whether Copilot is still thinking or if it's ready to accept
+the next prompt. When it's thinking it will show this icon:
+
+  [![]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image15.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image15.png){:class="img-300"}{: data-lightbox="gallery"}
+
+- When it's ready for your next prompt, it will show this icon instead,
+that you can click to submit your prompt (pressing **Enter** has the same
+effect):
+
+  [![]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image16.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image16.png){:class="img-300"}{: data-lightbox="gallery"}
+
+- Copilot has added a Workspace parameter (which is indeed common when
+using this library) but we don't want that because we are going to
+create our own workspace.
+
+  ```text
+  Remove the workspace parameter, I want to connect without a workspace and create one later
+  ```
+
+- Code removed in on <span style="background-color:red">red background</span>, code added is on <span style="background-color:green">green background</span>. As always, click **Keep** to accept the changes.
+
+  [![]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image17.jpg){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image17.jpg){:class="img-600"}{: data-lightbox="gallery"}
+
+
+# Create a workspace
+
+In HPE GreenLake, a workspace is an environment where users can organize
+and manage resources, such as servers, storage, and services, for
+specific projects or teams. Workspaces help separate and control access
+to different sets of resources, making it easier to manage permissions,
+monitor usage, and automate tasks within a defined scope.
+
+- In the following prompt, replace <span style="color:red">nn</span> with your team number, for example
+09, before sending the prompt to Copilot:
+
+  ```text
+  Create a workspace with name GHCPWorkspaceTnn_random where random is a random number. Use the following parameters:
+  Type: Standard enterprise workspace
+  Email: the email address used to connect
+  Street: make up an address
+  City: make up a city
+  Country: Austria
+  ```
+
+  Copilot might want to make another script for the create workspace
+script. We want everything in the same script that we will execute at
+the end. If it did create another script, tell it not to:
+
+  ```text
+  Do not create a second script, integrate everything into the existing script
+  ```
+
+- Make sure you close the tab for the second script
+`Create-HPEWorkspace.ps1` to avoid confusion, and delete the file
+(right-click it in the left-hand sidebar and click **Delete**). Copilot
+might also offer to delete the file itself, but it will ask for
+permission before doing so. If you see a question "Run pwsh command?"
+with a command like `Remove-Item` followed by the path to the second
+script file, click **Allow** and Copilot will delete the file.
+
+- It may also want to make the workspace creation optional with a script
+parameter. We want to create a workspace on every run. If you see lines
+like this in the changes near the top of the file:
+
+  > \[Parameter(Mandatory = \$false)\]\
+  > \[switch\]\$CreateWorkspace
+
+  Tell it we do not want the workspace creation to be optional:
+
+  ```text
+  Do not make the workspace creation optional
+  ```
+
+- We also want to reconnect to Greenlake after creating the workspace,
+this is specific to how the HPECOMcmdlets library works (and it displays
+a message saying this is necessary when you create a workspace):
+
+  ```text
+  Reconnect to Greenlake after the workspace creation if successful
+  ```
+
+## Invite another user to the workspace
+
+- We want to invite another user to our workspace. In this lab context, it
+also ensures that we can reset the lab and perform the necessary actions
+once your lab is complete, so **please do not miss this step**:
+
+  ```text
+  Add user admin@hpelabs.ddnsfree.com to the workspace
+  ```
+
+  > #### ⚠️ CRITICAL REQUIREMENT ⚠️
+  > {: .no_toc }
+  >
+  > You **MUST** add **admin@hpelabs.ddnsfree.com** to your workspace. This is essential for the lab reset scripts to function properly at the end of your session.
+  > <br>  
+  > **❌ Failure to add this user will prevent cleanup and break the lab for the next participant.**
+
+
+## Provision Compute Ops Management in the workspace
+
+- We need to make Compute Ops Management available in our workspace, this
+is called provisioning a service in Greenlake. All services can be
+provisioned in multiple regions and we need to specify which region we
+want.
+
+  ```text
+  Provision service Compute Ops Management in region eu-central
+  ```
+
+- We also need to give our 2 users Administrator roles for the COM service:
+
+  ```text
+  Add Compute Ops Management Administrator role to the 2 users in the workspace
+  ```
+
+## Create a location
+
+Locations are part of the Service Delivery Information (SDI) that is
+available to automate support workflows. Locations capture addresses,
+contacts, and service delivery information for operations, management,
+and commerce. Assigning a device to a location is the process of
+attaching a device to a physical location to automate support and
+services for this device.
+
+- Use the following prompt to create your location:
+
+  ```text
+  Create a location with name LocationTnn and these parameters
+  Country, Street, City and PostalCode the same as the workspace
+  State "none"
+  Primary Contact Email the user's email
+  ```
+
+## Add a subscription
+
+- To activate compute devices that will be added later to your workspace,
+you need to install a COM subscription key (a license to use COM). Be
+sure to replace the string \<key found on your login sheet\> before
+submitting your prompt to Copilot!
+
+  ```text
+  Add subscription key <key found on your login sheet>
+  ```
+
+  ```text
+  Set automatic subscription assignment and reassignment for Compute. The
+  COM subscription tier is STANDARD
+  ```
+
+# Onboarding devices
+
+We are now ready to add a server to our COM workspace. We will use a
+method that would work just as well if we had dozens or even hundreds of
+servers to add, even though in this lab you will only add one. We should
+prepare a file with the details of the server(s) we want to add. 
+
+- In VS Code menu click **File** -\> **New File**:
+
+  [![]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image18.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image18.png){:class="img-300"}{: data-lightbox="gallery"}
+
+- Type the file name **ilos.csv** and **Enter**:
+
+  [![]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image19.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image19.png){:class="img-600"}{: data-lightbox="gallery"}
+
+  A standard Windows dialog will appear to choose the location where you
+want to save the file. It should be in folder **HOL09-Tnn** \> **GitHubCopilotLab**. 
+
+- Click **Create File**.
+
+  [![]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image20.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image20.png){:class="img-900"}{: data-lightbox="gallery"}
+
+- Decline VS Code's suggestion to install an extension to handle CSV files
+(at the bottom right of the screen), we don't really need it for the
+simple work we have to do:
+
+  [![]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image21.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image521.png){:class="img-400"}{: data-lightbox="gallery"}
+
+- Copy the following data into the **ilos.csv** file and replace the
+placeholders in \<brackets\> with your team\'s information from the login
+sheet:
+
+  ```csv
+  IP, Username, Password
+  10.18.26.<xx>, Administrator, <iLO's password>
+  ```
+
+  Make sure the data is on 2 lines like shown above, with no extra space
+at the beginning or end of either line (space after a comma is OK). Copy/paste tends to put everything on a single line. 
+
+- Save the file with **Ctrl**-**S** or **File**-\>**Save** in VS Code's menu.
+
+  If we had more servers to onboard, we would simply add more lines into
+this file and our script would iterate over each line.
+
+- Go back to your PowerShell script tab in VS Code and tell Copilot to
+import the csv file:
+
+  ```text
+  Import file ilos.csv. Double check the field names in the csv file.
+  ```
+
+  You should see it generated code to import the file into a variable
+\$iLOs (it even figured out on its own the proper case for the name
+iLO!). It may have put the code in the middle of the script, before
+creating the workspace, but that's OK.
+
+- To add servers into COM, we need an activation key that we can ask COM
+to generate. This key encodes all the information (such as the workspace
+id) that an iLO will need, to know what it should connect to.
+
+  ```text
+  Generate a COM activation key
+  ```
+
+- And now we have everything we need to bring our server into COM:
+
+  ```text
+  Connect all the iLOs from the CSV file to COM. Make sure the activation key is created before this step
+  ```
+
+  You can see how it created a ForEach (\$iLO in \$iLOs) loop, then created a Credentials object for the username and password imported from the CSV file and used it with the proper `Connect-HPEGLDeviceComputeiLOtoCOM` cmdlet.
+
+## Set device location and tags
+
+We want to assign our server to the location we created previously. This
+is needed to ensure that support cases are automatically created in the
+event of device failures.
+
+- Enter:
+
+  ```text
+  Assign the location we created previously to the device
+  ```
+
+  *Tags* in HPE GreenLake are metadata labels---key-value pairs---that
+you can attach to cloud resources. Their main purpose is to help you
+categorize, organize, and manage resources based on criteria like
+purpose, owner, environment, cost center, or other custom attributes.
+
+  ```text
+  Add tag "Country=AT, App=AI" to the device
+  ```
+
+  > ⚠️ **Important note**   
+  >
+  >{: .small-space}
+  > Time Check 
+  >
+  > Now would be a good time to look at the clock and determine how much
+  > time you have left before the end of the lab. If you have less than
+  > \~20 minutes, consider skipping to the section [Execute the
+  > script](#execute-the-script). You have generated enough PowerShell
+  > code already to be able to run it and get meaningful results. If you
+  > still have time, you can continue generating more code, but be sure
+  > to keep an eye on the clock and allow enough time to run the script
+  > and see the results of your (and Copilot's) work.
+
+# Configuration of Compute Ops Management
+
+Now that we have a server onboarded, we are going to use some of the
+features that COM provides for server management.
+
+## Create server settings
+
+Server settings are predefined or custom configuration templates that
+define how servers should be configured. They allow administrators to
+apply consistent configurations---such as firmware baselines, BIOS
+settings, workload profiles, or other system parameters---to one or more
+servers at scale.
+
+- First create BIOS settings:
+
+  ```text
+  Create a BIOS setting with name Custom-Bios-For-AI, Workload Profile
+  "Virtualization -- Max Performance", Automatic Server Recovery on with a
+  timeout of 10 minutes
+  ```
+
+- Next, create settings for internal storage:
+
+  ```text
+  Create an internal storage setting with name RAID-1, RAID level 1, take the entire disk
+  ```
+
+- Create firmware settings:
+
+  ``` text
+  Create firmware settings with the latest firmware bundles for Gen11 and Gen12
+  ```
+
+## Create a server group
+
+A server group containing the settings we just created will allow to
+keep configuration consistent across all servers added to that group.
+
+- To create a server group, enter:
+
+  ```text
+  Create a server group named AI_Group with the 3 settings we created
+  previously. Make sure the settings are not applied automatically when a
+  server is added to the group
+  ```
+
+## Add servers to the group
+
+- Now we add our server to the group:
+
+  ```text
+  Add our server to the group
+  ```
+
+## Collect servers inventory data
+
+- To collect the inventory data of your server, enter:
+
+  ```text
+  Run a job to collect our server inventory data, make sure the job is run asynchronously
+  ```
+
+## Set iLO auto firmware update
+
+- To automate the iLO firmware update, run:
+
+  ```text
+  Set our server to automatically update iLO firmware to the newest available
+  ```
+
+## Update server firmware
+
+The firmware update step is crucial to ensure that servers are up to
+date. Administrators typically need to perform this task regularly to
+maintain optimal performance and security. 
+
+- In this step, you will create
+a scheduled task to run a firmware update during the next weekend for
+all servers in your group. Do NOT try to run a firmware update
+immediately, keep the schedule to next Sunday:
+
+  ```text
+  Schedule a server firmware update through the group for next Sunday at 5am
+  ```
+
+This concludes our code writing exercise. We are now ready to test our
+coding skills by running the script we created.
+
+# Execute the script
+
+With all the code now generated and reviewed, it is time to put it to the test. In this section, you will run the script you built with Copilot's assistance and observe it automating the full workflow—from workspace creation and device onboarding to server configuration and firmware scheduling—all without writing a single line of code manually.
+
+> ⚠️ **Important note**   
 >
 >{: .small-space}
 > 
-> Multi-factor authentication (MFA) was implemented with the release of version [1.0.12](https://github.com/hpelabs/HPE-COM-PowerShell-Library/releases/tag/v1.0.12) of the HPECOMCmdlets PowerShell Library. SAML Single Sign-On (SSO) support for the three main providers was introduced beginning with version [1.0.18](https://github.com/hpelabs/HPE-COM-PowerShell-Library/releases/tag/v1.0.18).
-
-1. To create your HPE account for this library, go the HPE GreenLake interface at <https://common.cloud.hpe.com> and click on **Sign up**:
-
-   [![]( {{ site.baseurl }}/assets/images/HOLs/COM-ZeroTouch/image4.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/COM-ZeroTouch/image4.png){:class="img-600"}{: data-lightbox="gallery"}
-   
-2. Provide all the required information, accept the terms and conditions
-and click on **Create Account**:
-
-   [![]( {{ site.baseurl }}/assets/images/HOLs/COM-ZeroTouch/image5.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/COM-ZeroTouch/image5.png){:class="img-600"}{: data-lightbox="gallery"}
-
-3. Once completed, you are ready to access the lab, then to install and use the library.
-
-## Connecting to the lab environment
-
-To access the HPE Compute BU Enablement Environment, we will use VMware Horizon. Follow these steps:
-
-1. Using your Chrome browser, navigate to the appropriate URL based on your network location to open the Horizon Access Portal:
-
-   - **External to HPE** (not connected to HPE VPN): <https://labs.compute.cloud.hpe.com>
-
-   - **Internal to HPE** (or connected to HPE VPN): <https://techenablement.hpecorp.net>
-
-2. On the Horizon login screen, click the **Omnissa Horizon Web Client** button.
-
-    [![]( {{ site.baseurl }}/assets/images/HOLs/COM-ZeroTouch/image6.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/COM-ZeroTouch/image6.png){:class="img-600"}{: data-lightbox="gallery"}
-
-3. Login with the credentials provided in your login sheet.
-
-    [![]( {{ site.baseurl }}/assets/images/HOLs/COM-ZeroTouch/image7.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/COM-ZeroTouch/image7.png){:class="img-500"}{: data-lightbox="gallery"}
-
-4. Click on the graphic that represents your Lab environment.
-
-    [![]( {{ site.baseurl }}/assets/images/HOLs/COM-ZeroTouch/image8.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/COM-ZeroTouch/image8.png){:class="img-600"}{: data-lightbox="gallery"}
-
-    Since Horizon is presenting a remote desktop session inside of your desktop's browser, it may be helpful to hit **F11** at this time to put the browser in full screen mode.
-
-## Preparation of your environment 
-
-1. You'll start by opening **Visual Studio Code** using the shortcut in the VM's desktop:
-
-    [![]( {{ site.baseurl }}/assets/images/HOLs/COM-ZeroTouch/image9.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/COM-ZeroTouch/image9.png){:class="img-600"}{: data-lightbox="gallery"}
-
-2. Once opened, click on **Mark Done**:
-
-    [![]( {{ site.baseurl }}/assets/images/HOLs/COM-ZeroTouch/image10.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/COM-ZeroTouch/image10.png){:class="img-600"}{: data-lightbox="gallery"}
-
-3. Start by opening a new file:
-
-    [![]( {{ site.baseurl }}/assets/images/HOLs/COM-ZeroTouch/image11.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/COM-ZeroTouch/image11.png){:class="img-600"}{: data-lightbox="gallery"}
-
-    This new file will be useful to copy/paste all important information you find useful to keep an eye on.
-
-    [![]( {{ site.baseurl }}/assets/images/HOLs/COM-ZeroTouch/image12.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/COM-ZeroTouch/image12.png){: data-lightbox="gallery"}
-
-4. Then open a PowerShell terminal using the **Terminal** menu / **New Terminal**: 
-
-    [![]( {{ site.baseurl }}/assets/images/HOLs/COM-ZeroTouch/image13.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/COM-ZeroTouch/image13.png){: data-lightbox="gallery"}
-
-    All the commands outlined in this lab guide should be executed in this window.
-
-    [![]( {{ site.baseurl }}/assets/images/HOLs/COM-ZeroTouch/image14.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/COM-ZeroTouch/image14.png){: data-lightbox="gallery"}
-
-4. I recommend you: **1️⃣** expand the window, **2️⃣** close the Copilot agent, and **3️⃣** increase the terminal size to improve your experience:
-
-    [![]( {{ site.baseurl }}/assets/images/HOLs/COM-ZeroTouch/image13a.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/COM-ZeroTouch/image13a.png){: data-lightbox="gallery"}
-
-    **💡 Tip: Using the Copy Button**  
-    
-    Throughout this lab, you'll see a **Copy** button in the midle-right corner of each code block. Click this button to instantly copy the command(s) to your clipboard, then use **CTRL**+**V** to paste them directly into the PowerShell terminal. This helps avoid typing errors and speeds up your workflow.
-
-    [![]( {{ site.baseurl }}/assets/images/HOLs/COM-ZeroTouch/image14a.png)]( {{ site.baseurl }}/assets/images/HOLs/COM-ZeroTouch/image14a.png){: data-lightbox="gallery"}
-
-5. While the PowerShell console is opened, you can optionally launch a browser to access the HPE GreenLake website and view the results of the commands you will be executing. If your browser is not already open and connected to HPE GreenLake, open a browser and navigate to <https://common.cloud.hpe.com>.
-
-6. Login with your HPE account credentials:
-
-    [![]( {{ site.baseurl }}/assets/images/HOLs/COM-ZeroTouch/image15.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/COM-ZeroTouch/image15.png){:class="img-300"}{: data-lightbox="gallery"}
-
-    If this is your first time using HPE GreenLake, it is expected that no workspace will be available in your environment. If you already have one or more workspaces, there is no issue; you can still proceed with this lab.
-
-7. You can now leave the page and begin your zero-touch automation experience.
-
-# Step 1 - How to Install HPECOMCmdlets
-(Step 1 of 12) ⏱️ ~5 min
-
-- The first step is to install the library on your Windows virtual machine. Return to the PowerShell console and enter the following command:
-
-    ```powershell
-    Install-Module HPECOMCmdlets
-    ```
-
-    [![A black screen with white text Description automatically generated]( {{ site.baseurl }}/assets/images/HOLs/COM-ZeroTouch/image16.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/COM-ZeroTouch/image16.png){: data-lightbox="gallery"}
-
-    This command will download and install the module from the official PowerShell Gallery repository. If this is your first time installing a module from the PowerShell Gallery, it will ask you to confirm whether you trust the repository or not. 
-    
-- Type `Y` when prompted and press **Enter** to continue with the installation.
-
-    This library has no dependencies, so it does not require the installation of any other software or modules to function properly.
-
-
-[↑ Back to Top](#)
-
-# Step 2 - Get the exported commands
-(Step 2 of 12) ⏱️ ~3 min
-
-- Now that the module is installed, you can get the list of commands exported by the module using:
-
-    ```powershell
-    Get-Command -Module HPECOMCmdlets
-    ```
-
-    [![]( {{ site.baseurl }}/assets/images/HOLs/COM-ZeroTouch/image17.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/COM-ZeroTouch/image17.png){: data-lightbox="gallery"}
-
-    Version **1.0.22** of the module includes over 200 cmdlets.
-
-- In PowerShell, cmdlets use a verb-noun naming convention (e.g., `Get-HPECOMServer` retrieves server data in HPE Compute Ops
-Management). Cmdlets start with **HPECOM** for Compute Ops Management or **HPEGL** for HPE GreenLake (e.g., `New-HPEGLUser`). The library supports both platforms due to their close integration.
-
-- To list all cmdlets in the module related to server resources, use the following command:
-
-    ```powershell
-    Get-Command -Module HPECOMCmdlets | ? name -match server
-    ```
-
-    [![]( {{ site.baseurl }}/assets/images/HOLs/COM-ZeroTouch/image18.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/COM-ZeroTouch/image18.png){: data-lightbox="gallery"}
-
-    This command is especially helpful when you're dealing with many cmdlets and need to pinpoint the one that fits your needs best.
-
-    >💡**Note**   
-    >
-    >{: .small-space}
-    > 
-    > `?` is an alias for `Where-Object` in PowerShell, and `-match` is the operator used to determine if a string matches a regular expression, such as `server` in this example.
-
-- `Get-Help` cmdlet is another essential PowerShell command for locating information about new modules. To utilize this command,  enter:
-
-    ```powershell
-    Get-Help Get-HPECOMserver -Full
-    ```
-
-    [![]( {{ site.baseurl }}/assets/images/HOLs/COM-ZeroTouch/image19.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/COM-ZeroTouch/image19.png){: data-lightbox="gallery"}
-
-    `Get-Help` (or the alias `Help`) is a PowerShell cmdlet that allows you to retrieve information on other PowerShell cmdlets and functions. 
-    
-    By running `Get-Help` in the PowerShell console, you can view detailed information about the specified cmdlet, including its syntax, parameters, examples, and related links. Additionally, you can use specific switches such as `-Detailed`, `-Examples`, or `-Full` to customize the output.
-
-- Each cmdlet exported from this module provides detailed examples of how to use the command. To view the examples for the   `Get-HPECOMServer` cmdlet, enter:
-
-    ```powershell
-    Help Get-HPECOMServer -Examples
-    ```
-
-    This will display a list of examples demonstrating how to use `Get-HPECOMServer` along with detailed explanations of what each
-example does.
-
-    [![]( {{ site.baseurl }}/assets/images/HOLs/COM-ZeroTouch/image20.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/COM-ZeroTouch/image20.png){:class="img-700"}{: data-lightbox="gallery"}
-
-
-[↑ Back to Top](#)
-
-# Step 3 - Connection to HPE GreenLake
-(Step 3 of 12) ⏱️ ~15 min
-
-After the module is installed, the next first step is to connect to HPE GreenLake using the `Connect-HPEGL` command.
-
-At this point, there are two authentication methods available:
-
-- **Single or Multi-Factor Authentication** (MFA): Authenticate using your email and password, with optional MFA for added security.
-
-- **SAML Single Sign-On (SSO):** SSO is exclusively supported with Okta, Entra ID, and PingID, providing efficient authentication aligned with your organization's SSO configuration. Please note that specific prerequisites must be met for this method, including the requirement for passwordless authentication methods such as push notifications or TOTP. For detailed guidance on configuring SSO and enabling   passwordless authentication, refer to [Configuring-SAML-SSO-with-HPE-GreenLake-and-Passwordless-Authentication-for-HPECOMCmdlets](https://hpelabs.github.io/Configuring-SAML-SSO-with-HPE-GreenLake-and-Passwordless-Authentication-for-HPECOMCmdlets/)
-
-Select the below option according to your user authentication method:
-
-- **Using Single or Multi-Factor Authentication**:
-
-  1. Begin by creating a credential object to securely store your HPE account credentials (email and password):
-
-     ```powershell
-     $MyEmail = "your_email@your_domain.com"
-     $credentials = Get-Credential -UserName $MyEmail
-     ```
-
-  2. Once executed, the command prompts you for the password.
-  
-  3. Then use the credential object with the `Connect-HPEGL` command:
-
-     ```powershell
-     Connect-HPEGL -Credential $credentials
-     ```
-
-     [![]( {{ site.baseurl }}/assets/images/HOLs/COM-ZeroTouch/image21.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/COM-ZeroTouch/image21.png){: data-lightbox="gallery"}
-
-      - When MFA is enabled with Okta:
-
-        The cmdlet will prompt you to validate the push notification from Okta.
-
-        [![]( {{ site.baseurl }}/assets/images/HOLs/COM-ZeroTouch/image22.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/COM-ZeroTouch/image22.png){: data-lightbox="gallery"}
-
-        On your Okta-enabled device, press **Yes, it's me** to approve the authentication request.
-
-         [![]( {{ site.baseurl }}/assets/images/HOLs/COM-ZeroTouch/image23.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/COM-ZeroTouch/image23.png){:class="img-300"}{: data-lightbox="gallery"}
-
-
-      - When MFA is enabled with Google Authenticator:
-
-        The cmdlet will pause and prompt you to enter the MFA token.
-
-        [![]( {{ site.baseurl }}/assets/images/HOLs/COM-ZeroTouch/image24.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/COM-ZeroTouch/image24.png){: data-lightbox="gallery"}
-
-        Open the Google Authenticator app on your device to retrieve the token and enter it when prompted.
-
-- **Using SAML Single Sign-On (SSO) with Okta, PingID or Entra ID**:
-
-  - Start by creating an email object:
-
-    ```powershell
-    $MyEmail = "your_email@your_domain.com"
-    ```
-
-  - To connect with SAML SSO through your organization's identity provider (IdP), enter the following command in your terminal:
-
-    ```powershell
-    Connect-HPEGL -SSOEmail $MyEmail
-    ```
-
-  Once initiated, the cmdlet will prompt you to approve a push notification sent by your IdP. Follow the on-screen authentication steps displayed in your terminal. Typically, you'll need to:
-
-  - Check your IdP-enabled device for a push notification or authentication request.
-  
-    [![]( {{ site.baseurl }}/assets/images/HOLs/COM-ZeroTouch/image25.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/COM-ZeroTouch/image25.png){: data-lightbox="gallery"}
-
-  - Approve the request (for example, tap the number or "Yes, it's me" in Okta or confirm in PingID/Entra ID).
-  
-    [![]( {{ site.baseurl }}/assets/images/HOLs/COM-ZeroTouch/image26.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/COM-ZeroTouch/image26.png){:class="img-300"}{: data-lightbox="gallery"}
-
-  - Complete any additional steps required by your organization's security policies.
-
-Once authentication is successful, a secure connection to HPE GreenLake will be established, allowing you to proceed with subsequent operations.
-The `Connect-HPEGL` cmdlet is responsible for initiating and managing this connection. Upon establishment, it maintains a persistent session using the `$HPEGreenLakeSession` connection tracker variable, which supports all further module cmdlet activities. Furthermore, the cmdlet issues a temporary API client credential for both HPE GreenLake and any Compute Ops Management service instances provisioned within your workspace.
-
-> **💡 Note** 
->
->{: .small-space}
+> Before running the script, it is very useful to ask Copilot to
+> double check the code it has created. AIs are often better at fixing
+> their errors than doing things right the first time.
 > 
-> You can use `Get-Help Connect-HPEGL -Full` to access the complete help documentation, technical details, and in-depth explanations for `Connect-HPEGL`.
+> ```text
+> Double check the code to make sure the cmdlet names and options you
+> used from HPECOMcmdlets are all correct. Use everything you find at
+> <https://github.com/jullienl/HPE-COM-PowerShell-Library> as a
+> reference.
+> ```
 
-If you have no workspace tied to your HPE account, the `Connect-HPEGL` command will return a warning message indicating that you need to create your first workspace:
+- If you didn't get it previously, you are likely at this step to get a
+prompt asking you for permission to fetch contents from the GitHub
+repository:
 
-[![]( {{ site.baseurl }}/assets/images/HOLs/COM-ZeroTouch/image27.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/COM-ZeroTouch/image27.png){: data-lightbox="gallery"}
+  [![]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image14.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image14.png){:class="img-900"}{: data-lightbox="gallery"}
 
-If you already have one or more workspaces available, the command will return a warning message indicating that you need to use a second command to connect to one of the workspaces:
+- Click the down arrow next to **Allow** and click the response highlighted in
+red in the screenshot to give Copilot the widest permission.
 
-[![]( {{ site.baseurl }}/assets/images/HOLs/COM-ZeroTouch/image28.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/COM-ZeroTouch/image28.png){: data-lightbox="gallery"}
+  You will likely see multiple edits throughout the file. Unlike humans,
+an AI agent can be quite good at fixing its own errors if we give it
+appropriate data. It should even create a `CORRECTIONS_NEEDED.md` file
+which lists all the corrections it made.
 
-> **💡 Note**   
->
->{: .small-space}
-> 
-> The command to directly connect to an existing and known workspace is:
->
->  `Connect-HPEGL -Credential $credentials -Workspace "My_workspace_name"`
+- Go back to our PowerShell script tab. To execute our script, go to VS
+Code menu **Run**, and pick **Run Without Debugging**:
 
+  [![]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image22.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image22.png){:class="img-300"}{: data-lightbox="gallery"}
+
+  Watch the PowerShell terminal at the bottom of the VS Code window. It
+should prompt you for a username, type the email address for the
+Greenlake account found on your team login sheet.
+
+- Next, it should prompt you for the account's password that you can also
+find on your team login sheet. Do not confuse the Horizon credentials
+you used at the beginning to connect to the lab environment, and the
+Greenlake credentials you are using now, they are not the same.
+
+  Once you enter the password, the rest of the script will run, displaying
+what it is doing. 
+
+- In parallel, you can use the Graphical User Interface
+(GUI) of COM to follow the script's actions. In a browser go to <https://common.cloud.hpe.com/> and logon with the same credentials you
+used in the script. You should see a screen showing a list of workspaces
+and you should click Launch next to the workspace that was just
+created:
+
+  [![]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image23.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image23.png){:class="img-400"}{: data-lightbox="gallery"}
+
+  > **💡 Note**   
+  >
+  >{: .small-space}
+  > 
+  > If you do not see a workspace with a name following the template used in
+this lab, it would indicate that the workspace creation did not work. In
+this case you should inspect the terminal window in VS code and look for
+any errors.
+
+- Once you are in the lab's workspace, launch the COM service:
+
+  [![]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image24.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image24.png){:class="img-900"}{: data-lightbox="gallery"}
+
+  [![]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image25.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image25.png){:class="img-500"}{: data-lightbox="gallery"}
+
+  [![]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image26.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image26.png){:class="img-900"}{: data-lightbox="gallery"}
+
+  > **💡 Note**   
+  >
+  >{: .small-space}
+  > 
+  > If you don't see it, either the script didn't reach the step where it provisions the service yet, or it encountered an error.
+
+- When you are in COM, go to Servers and see if your server is there
+
+  [![]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image27.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image27.png){:class="img-900"}{: data-lightbox="gallery"}
+
+- Even after the script has finished without errors, it can take several
+minutes before the server shows State `Connected` in COM as in the
+screenshot above. You can also go to the iLO: make a new browser tab and
+connect to <https://10.18.26.xxx/> taking the proper IP address from
+your login sheet. Login with **Administrator** and the password provided on
+your login sheet. Click the **HPE Compute Ops Management** tile on the
+dashboard. Do NOT click the Launch HPE Greenlake button as you already
+have a tab connected to Greenlake.
+
+  [![]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image28.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image28.png){:class="img-900"}{: data-lightbox="gallery"}
+
+- In the page that opens you can see the connection status and potentially
+the different steps it goes through before reaching `Connected`
+
+  [![]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image29.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image29.png){:class="img-600"}{: data-lightbox="gallery"}
+
+- In COM, go to **Manage** then **Settings** to explore the *Groups* and *Settings*
+you have created with the script. In particular on the **Settings** page you
+should observe the settings that do not show `HPE pre-defined` in the *Type*
+column. These are the 3 settings you defined with the script, `BIOS/Workload profile`,
+`Server internal storage` and `Server firmware`. You may note that `Server firmware` and `Server internal storage` are `User defined`, while `BIOS/Workload profile` is `API defined`. This is because it
+is currently not possible to create BIOS settings via the GUI. You must use the API (which is what the script does) to create that type of settings.
+
+  [![]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image30.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image30.png){:class="img-900"}{: data-lightbox="gallery"}
+
+- You should also examine the terminal output in the VS Code window where
+the script ran to look for any errors. If there are any, the next step
+would be to understand and fix the errors. Try and devise your own
+prompts to do so. You may also point Copilot to an error and ask it if
+it can fix it. If the error happened after the Workspace creation, you
+could ask Copilot to create a continuation script from the point where
+it errored out, using the already created Workspace. But you can also
+run the entire script again, it will create another Workspace with a
+random element in its name. However, if the script ran previously up to
+the step where it connects the server to COM and that was successful,
+then you must create a continuation script as you will not be able to
+run the entire script again and connect your server to a new Workspace
+since it is already connected.
+
+  > **💡 Note**   
+  >
+  >{: .small-space}
+  > 
+  > At some point, human expertise might be needed. AI is a great
+help, but it's not perfect!
+
+# Summary
+
+This Hands-On Lab is now complete. Thank you for taking the time to
+participate, hopefully you received a deeper understanding of how you
+could use GitHub Copilot to help you automate server management with HPE
+GreenLake Compute Ops Management.
+
+Over the course of the lab, users leverage AI‑assisted code generation
+and the **HPECOMcmdlets** PowerShell library to build a complete
+automation workflow that provisions a workspace, configures services,
+and onboards and manages an HPE ProLiant server through COM.
 
 [↑ Back to Top](#)
-
-# Step 4 - Configuration of your workspace
-(Step 4 of 12) ⏱️ ~20 min
-
-## Task 1 -- Create your first workspace
-
-1. To create your initial workspace (or an extra one just for this lab --- don't worry, it will be deleted once the lab ends), you need to provide a unique name. Since the name must be unique across all workspaces on the HPE GreenLake platform, we will use a random number to generate the name. Enter:
-
-    ```powershell
-    $WorkspaceName = "HPEWorkspaceTxx_$(Get-Random)"
-    ```
-
-    **⚠️ Replace `xx` with your team number** (e.g., `01` for team 1, `05` for team 5, `12` for team 12).
-    
-    For example, **team 5** should use: `$WorkspaceName = "HPEWorkspaceT05_$(Get-Random)"`
-
-    > ### ⚠️ CRITICAL REQUIREMENT ⚠️
-    > {: .no_toc }
-    >
-    > You **MUST** follow the naming convention **HPEWorkspaceTxx_** (with xx your team number) exactly. This is essential for the lab reset scripts to identify and clean up your workspace automatically.
-    > <br>   
-    > **⚠️ Failure to use this naming format will prevent automatic cleanup and may require manual intervention.**
-
-2. This command generates a name such as *HPEWorkspaceT01_12345678* for team 1. You can verify your workspace name by executing:
-
-    ```powershell
-    $WorkspaceName
-    ```
-
-3. Build the command step by step using PowerShell's tab completion feature:
-
-    a. Start typing the command with the workspace name:
-   
-    ```powershell
-    New-HPEGLWorkspace -Name $WorkspaceName -Type 
-    ```
-   
-   b. After typing `-Type`, press **SPACE** then press the **Tab** key repeatedly to cycle through available workspace types. Select **'Standard enterprise workspace'**.
-   
-   c. Continue by adding the country parameter:
-   
-    ```powershell
-    -Country 
-    ```
-      
-    Press **SPACE** then press the **Tab** key to see the list of supported countries, then select your country.
-   
-   d. Complete the command by adding the street address:
-   
-    ```powershell
-    -Street "Your street address"
-    ```
-   
-   e. Your complete command should look like this:
-   
-    ```powershell
-    New-HPEGLWorkspace -Name $WorkspaceName -Type 'Standard enterprise workspace' -Country Canada -Street "123 Main Street"
-    ```
-
-    > **💡 Tip**   
-    >
-    >{: .small-space}
-    > 
-    > Press **SPACE** after a parameter name, then press **Tab** to activate PowerShell's auto-completion for parameter values. This shows you valid options and helps avoid typos.
-
-    >  **📌 Note**   
-    >
-    >{: .small-space}
-    > 
-    > In the example above, only the `name`, `type`, `country`, and `street` parameters are included because they are required. However, you can also specify optional parameters like `city`, `state`, `email`, and others.
-
-3. After executing this command, the workspace is created, and the command automatically disconnects the session. To connect to your new workspace, enter:
-
-    ```powershell
-    Connect-HPEGL -Credential $credentials -Workspace $WorkspaceName
-    ```
-
-    [![]( {{ site.baseurl }}/assets/images/HOLs/COM-ZeroTouch/image30.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/COM-ZeroTouch/image30.png){: data-lightbox="gallery"}
-
-
-4. To check the content of your workspace, enter:
-
-    ```powershell
-    Get-HPEGLWorkspace
-    ```
-
-    [![]( {{ site.baseurl }}/assets/images/HOLs/COM-ZeroTouch/image31.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/COM-ZeroTouch/image31.png){: data-lightbox="gallery"}
-
-
-## Task 2 -- Add a user to your workspace
-
-There are several commands that are available to configure a workspace and the different resources available in a workspace, such as adding users, settings roles, location, etc. In this task, you will simply add
-a new user with a specific role.
-
-1. Invite **admin@hpelabs.us** as an administrator to your newly created workspace:
-
-    ```powershell
-    $NewUserEmail = "admin@hpelabs.us"
-    New-HPEGLUser -Email $NewUserEmail -RoleName 'Workspace Administrator'
-    ```
-
-    > ### ⚠️ CRITICAL REQUIREMENT ⚠️
-    > {: .no_toc }
-    >
-    > You **MUST** add this admin user (**admin@hpelabs.us**) to your workspace. This is essential for the lab reset scripts to function properly at the end of your session.
-    > <br>  
-    > **⚠️ Failure to add this user will prevent cleanup and break the lab for the next participant.**
-
-
-2. To verify the new user, execute the following command:
-
-    ```powershell
-    Get-HPEGLUser
-    ```
-
-## Task 3 -- Provision Compute Ops Management
-
-The following step involves setting up services. There are several kinds of services you can provision across different regions.
-
-1. To see all available services, use:
-
-    ```powershell
-    Get-HPEGLService -ShowUnprovisioned
-    ```
-
-    This command lists all unprovisioned services, including those for networking devices (HPE Aruba Networking Central), compute devices (Compute Ops Management), storage devices (Data Services), OpsRamp, etc.
-
-    The **ProvisionStatus** column will indicate UNPROVISIONED for each listed service. You can choose to provision any of these, as long as you have the needed permissions.
-
-2. In this lab exercise, you'll set up the Compute Ops Management (COM) service in the European central region. Enter:
-
-    ```powershell
-    $Region = "eu-central"
-    New-HPEGLService -Name "Compute Ops Management" -Region $Region
-    ```
-
-    > **💡 Note**   
-    >
-    >{: .small-space}
-    > 
-    > Additional regions are available; to view different supported regions, use:  
-    > `Get-HPEGLService -Name "Compute Ops Management"`
-
-3. To confirm that the COM instance is provisioned, run:
-
-    ```powershell
-    Get-HPEGLService -ShowProvisioned
-    ```
-
-4. Next, assign the 'Administrator' role for Compute Ops Management to both you and the invited user:
-
-    ```powershell
-    $MyEmail, $NewUserEmail | Add-HPEGLRoleToUser -RoleName 'Compute Ops Management administrator'
-    ```
-
-    > **💡 Note**   
-    >
-    >{: .small-space}
-    > 
-    > The **Tab** key can be used to display the available list of role names.
-
-5. Finally, verify the role assignments with:
-
-    ```powershell
-    Get-HPEGLUserRole -Email $MyEmail
-    Get-HPEGLUserRole -Email $NewUserEmail
-    ```
-
-## Task 4 -- Set a location
-
-Locations in Service Delivery Information (SDI) store addresses, contacts, and support details for automation. Assigning a device to a location links it physically for automated support, including ticket creation with HPE.
-
-This step is essential for automatically creating a ticket with HPE support.
-
-1. To create a location, enter:
-
-    ```powershell
-    $LocationName = "Your_customized_location_name"
-    New-HPEGLLocation -Name $LocationName -Description "Your customized description" -Country "Your country" -Street "Your customized street address" -City $LocationName -State "NA" -PostalCode "123456789" -PrimaryContactEmail $MyEmail
-    ```
-
-    > **💡 Note**   
-    >
-    >{: .small-space}
-    > 
-    > You can press the **Tab** key after typing `-Country` to view all supported countries.
-
-
-2. Check the location with:
-
-    ```powershell
-    Get-HPEGLLocation
-    ```
-
-
-# Summary 
-
-Throughout this lab, you explored how to automate server lifecycle management using the HPE Compute Ops Management PowerShell module. You:
-
-- Installed the HPECOMCmdlets library and authenticated to HPE GreenLake.
-
-- Created a workspace, add a user, provision a COM instance, configure a location, and install a subscription key.
-
-- Onboarded a server to COM using an activation key, assigned location and tags, and verified device status.
-
-- Created configuration policies for BIOS, storage, firmware, and iLO, then applied them through a server group.
-
-- Checked and enforced compliance, monitored jobs, and retrieved detailed inventory, health, alerts, support, and warranty data.
-
-- Used COM SSO to access iLO, detected configuration drift, and automatically re‑applied policy.
-
-- Explored firmware compliance, scheduled updates, utilization insights, and sustainability metrics.
-
-- Finished by cleaning the lab: remove device assignments, delete subscriptions, delete the COM instance, and disconnected.
-
-- Finally, executed the COM-Zero-Touch-Automation PowerShell script to automate and streamline the entire configuration workflow---from provisioning and policy application to deprovisioning---enabling consistent, efficient, and error-free server management within the HPE
-GreenLake platform.
-
-Completing this lab provides you with a practical, end‑to‑end understanding of automated server management, enabling faster deployments, consistent configuration at scale, reduced manual effort, and improved operational reliability. It equips you with skills to
-streamline onboarding, enforce policy‑driven governance, automate compliance, and leverage sustainability and utilization insights for smarter infrastructure decisions.
-
-[↑ Back to Top](#)
-
-# Want more?
-
-**🚀** Looking to automate the onboarding of HPE servers into HPE
-GreenLake and Compute Ops Management, see
-[Onboarding-Script](https://github.com/hpelabs/HPE-Compute-Ops-Management/blob/main/PowerShell/Onboarding/Prepare-and-Connect-iLOs-to-COM-v2.ps1).
-
-**🚀** Looking to demonstrate the power of scripting with HPE GreenLake
-and Compute Ops Management, see [HPE Compute Ops Management Zero Touch
-Automation
-Example](https://github.com/hpelabs/HPE-COM-PowerShell-Library/blob/main/Examples/COM-Zero-Touch-Automation.ps1).
-This script automates the entire lifecycle from workspace provisioning
-through server configuration, policy management, and optional cleanup.
-It showcases best practices for programmatic infrastructure deployment
-and provides a foundation for building production-ready automation
-workflows.
-
-**🔔** Explore a variety of sample scripts designed for the Compute Ops
-Management API, including Ansible playbooks, PowerShell, and Python
-scripts. These resources offer practical examples to help automate and
-streamline server management tasks. Visit the [GitHub
-project](https://github.com/hpelabs/HPE-Compute-Ops-Management).
-
-**🛠️** Interested in using Ansible with COM? Visit this open source
-[GitHub project](https://github.com/hpelabs/HPE-COM-baremetal)
-dedicated to server provisioning. Originally developed to support ESXi,
-RHEL, and Windows Server platforms, the project demonstrates extensive
-COM API capabilities---from initial setup (Day 0 operations), through
-activation and configuration (Day 1), to ongoing management and
-maintenance (Day 2), such as automated firmware updates.
-
-**🖥️** When you're ready to dive deeper, schedule a personalized
-session on the [HPE Demonstration
-Portal](https://hpedemoportal.ext.hpe.com/).
-
-**✨** You can also request a [90-day
-evaluation](https://www.hpe.com/us/en/hpe-compute-ops-management.html?emodal=/us/en/greenlake/fragments/modal-fragment/uc-modal-form.fragment.html)
-of Compute Ops Management to experience its full capabilities.
-
-
-[↑ Back to Top](#)
-

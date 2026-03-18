@@ -33,6 +33,13 @@
               <a class="page-link" href="{{ my_page.url | relative_url }}">{{ my_page.title | escape }}</a>
               {%- endif -%}
             {%- endfor -%}
+            <div class="nav-dropdown" id="hol-dropdown">
+              <button class="page-link nav-dropdown-btn" aria-haspopup="true" aria-expanded="false" onclick="toggleHolDropdown(event)">Lab Access &#9662;</button>
+              <ul class="nav-dropdown-menu" role="menu">
+                <li role="menuitem"><a href="https://labs.compute.cloud.hpe.com" target="_blank" rel="noopener noreferrer">&#127760; External <span class="nav-dropdown-sub">(no VPN required)</span></a></li>
+                <li role="menuitem"><a href="https://techenablement.hpecorp.net" target="_blank" rel="noopener noreferrer">&#128274; Internal <span class="nav-dropdown-sub">(HPE / VPN)</span></a></li>
+              </ul>
+            </div>
             <button id="theme-toggle-header" class="theme-toggle-header page-link" aria-label="Toggle theme" title="Toggle theme">☾</button>
           </div>
         </nav>
@@ -40,3 +47,20 @@
     </div>
   </div>
 </header>
+
+<script>
+  function toggleHolDropdown(e) {
+    e.stopPropagation();
+    var dropdown = document.getElementById('hol-dropdown');
+    var btn = dropdown.querySelector('.nav-dropdown-btn');
+    var isOpen = dropdown.classList.toggle('nav-dropdown--open');
+    btn.setAttribute('aria-expanded', isOpen);
+  }
+  document.addEventListener('click', function() {
+    var dropdown = document.getElementById('hol-dropdown');
+    if (dropdown) {
+      dropdown.classList.remove('nav-dropdown--open');
+      dropdown.querySelector('.nav-dropdown-btn').setAttribute('aria-expanded', 'false');
+    }
+  });
+</script>

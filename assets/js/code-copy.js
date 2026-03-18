@@ -9,13 +9,19 @@ document.addEventListener('DOMContentLoaded', function() {
 
   document.querySelectorAll('pre').forEach(function(pre) {
     if (pre.parentElement.classList.contains('code-block-wrapper')) return;
-    
-    // Wrap pre in a container
+
+    // Wrap pre in a container (for consistent styling)
     const wrapper = document.createElement('div');
     wrapper.className = 'code-block-wrapper';
     pre.parentNode.insertBefore(wrapper, pre);
     wrapper.appendChild(pre);
-    
+
+    // Skip copy button for .no-copy blocks
+    if (pre.closest('.no-copy')) {
+      updateHScrollState(pre);
+      return;
+    }
+
     // Create and add button to wrapper
     const btn = document.createElement('button');
     btn.className = 'copy-code-button';

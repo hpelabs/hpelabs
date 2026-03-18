@@ -17,9 +17,15 @@ layout: default
     {% assign posts = site.posts %}
   {% endif %}
 
+  {% if page.room %}
+    {% assign posts = posts | where: "room", page.room %}
+  {% endif %}
+
   {%- if posts.size > 0 -%}
     <!-- Category Filter Chips -->
+    {% unless page.room %}
     {% include custom/category-filter.html %}
+    {% endunless %}
     
     {%- if page.list_title -%}
       {%- assign visible_count = 0 -%}

@@ -12,9 +12,12 @@ GEM
       eventmachine (>= 0.12.9)
       http_parser.rb (~> 0)
     eventmachine (1.2.7)
+    ffi (1.17.2-aarch64-linux-gnu)
     ffi (1.17.2-x64-mingw-ucrt)
     ffi (1.17.2-x86_64-linux-gnu)
     forwardable-extended (2.6.0)
+    google-protobuf (4.26.1-aarch64-linux)
+      rake (>= 13)
     google-protobuf (4.26.1-x64-mingw-ucrt)
       rake (>= 13)
     google-protobuf (4.26.1-x86_64-linux)
@@ -68,6 +71,8 @@ GEM
     rexml (3.2.6)
     rouge (4.2.1)
     safe_yaml (1.0.5)
+    sass-embedded (1.76.0-aarch64-linux-gnu)
+      google-protobuf (>= 3.25, < 5.0)
     sass-embedded (1.76.0-x64-mingw-ucrt)
       google-protobuf (>= 3.25, < 5.0)
     sass-embedded (1.76.0-x86_64-linux-gnu)
@@ -84,6 +89,7 @@ GEM
     webrick (1.8.1)
 
 PLATFORMS
+  aarch64-linux
   x64-mingw-ucrt
   x86_64-linux
 
