@@ -7,8 +7,7 @@ excerpt: This hands-on lab offers participants practical, choice-driven learning
 room: 1 # Set to 1 or 2
 ---
 
-Hands-On Lab Guide
-
+Hands-On Lab information
 
 # From Deploying to Optimizing Workload Solutions with HPE Compute and Hybrid Cloud
 
@@ -39,25 +38,22 @@ By completing one or more modules in this lab, participants will:
 - Experience software‑driven deployment and orchestration using HPE
   Morpheus blueprints
 
-# Introduction
+## Introduction
 
 Microsoft SQL Server serves as the example database workload to
 demonstrate deployment, configuration, performance optimization
 strategies, and newly integrated AI features for designing and executing
 applications in contemporary environments.
 
-Your work environment includes a desktop computer with two monitors: use
-the landscape-oriented monitor for hands-on tasks, and the
-portrait-oriented monitor for reviewing instructions and consulting with
-an AI assistant.
+Your work environment includes a desktop computer (PC) with two monitors:
+ We recommend to use the landscape-oriented monitor for hands-on tasks, and the
+portrait-oriented monitor for reviewing instructions and consulting with an AI assistant.
 
 This setup allows you to reference step-by-step guides while performing
-practical tasks, enhancing efficiency and accuracy during lab exercises.
+practical tasks, enhancing efficiency and accuracy during lab exercises, 
+from the hands on lab guide platform available though a web browser at HOL.SSHK2.COM
 
-from the hands on lab guide platform available though a web browser
-HOL.SSHK2.COM
-
-The PC will allow you to connect via VPN to your assigned HPE ProLiant
+The PC will allow you to connect to the HPE remote lab through Omnissa horizon to your assigned HPE ProLiant
 Servers and HPE Primera storage systems installed specifically to run
 all modules of this hands on lab.
 
