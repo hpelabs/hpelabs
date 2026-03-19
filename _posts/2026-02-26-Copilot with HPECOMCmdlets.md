@@ -768,6 +768,8 @@ Greenlake account found on your team login sheet.
 
 - Next, it should prompt you for the account's password that you can also find on your team login sheet. 
 
+  [![]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image22b.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image22b.png){:class="img-800"}{: data-lightbox="gallery"}
+
   > 💡 **Note**  
   >
   >{: .small-space}
