@@ -104,17 +104,13 @@ cases**
 
   `Estimated time: 45 minutes`
 
-    This last module uses a completely different environment and focuses on HPE Morpheus blueprint.
-    It introduces HPE Morpheus blueprints for orchestrating end‑to‑end SQL Server and application stack deployments.
+    This last module uses a completely different environment and focuses on HPE Morpheus blueprint. It introduces HPE Morpheus blueprints for orchestrating end‑to‑end SQL Server and application stack deployments.
 
-## Getting started with this hands-on lab
+# Getting started with this hands-on lab
 
-### Task1 – Connect to HOL guide platform
+## Task1 – Connect to HOL guide platform
 
-From the classroom desktop computer, access the portal that allows you
-to select the manuals for the modules you are interested in. This will
-guide you through the hands-on lab with an AI assistant that you could
-query in case of needed.
+  From the classroom desktop computer, access the portal that allows you to select the manuals for the modules you are interested in. This will guide you through the hands-on lab with an AI assistant that you could query in case of needed.
 
 1.  Open a web browser (chrome for example)
 
