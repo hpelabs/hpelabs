@@ -61,8 +61,8 @@ all modules of this hands on lab.
   which modules to run.
 
   The login sheet given by the instructors contains information related to
-your team number and the credentials to establish the connection through
-Omnissa horizon to an HPE lab in Houston where the hardware is located.
+your team number(or group of participants) and the credentials to establish the connection through
+Omnissa horizon to an HPE lab in Houston where this infrastructure is hosted.
 
     [![]( {{ site.baseurl }}/assets/images/HOLs/Deploy-Optimize-Workload/image3.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/Deploy-Optimize-Workload/image3.png){:class="img-900"}{: data-lightbox="gallery"}
 
