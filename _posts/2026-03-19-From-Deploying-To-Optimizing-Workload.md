@@ -1,91 +1,20 @@
-Techjam 26 - Hands on - Lab guide guide
+---
+layout: post
+title: "From Deploying to Optimizing Workload Solutions with HPE Compute and Hybrid Cloud"
+image: /assets/images/HOLs/Deploy-Optimize-Workload/banner.jpg
+post_end_promo: <i><b>Continue your journey with more HPE Compute Technical Enablement Hands-on Labs for infrastructure, security, technologies, and solutions.</b></i>
+excerpt: Learn to automate HPE server lifecycle management using the HPE Compute Ops Management PowerShell module—from workspace provisioning and device onboarding to policy enforcement, compliance monitoring, and sustainability insights within HPE GreenLake.
+room: 1 # Set to 1 or 2
+---
 
-Confidential \| For training purposes only
+Hands-On Lab Guide
 
-From Deploying to Optimizing Workload Solutions with HPE Compute and
-Hybrid Cloud
 
-CMP1103HOL
-
-Introduction
+# Introduction
 
 Use of this material to deliver training without prior written
 permission from HPE is prohibited.
 
-\
-=
-
-<table>
-<colgroup>
-<col style="width: 100%" />
-</colgroup>
-<tbody>
-<tr>
-<td></td>
-</tr>
-<tr>
-<td><p> Copyright 2025 Hewlett Packard Enterprise Development LP</p>
-<p>The information contained herein is subject to change without notice.
-The only warranties for HPE products and services are set forth in the
-express warranty statements accompanying such products and services.
-Nothing herein should be construed as constituting an additional
-warranty. Hewlett Packard Enterprise shall not be liable for technical
-or editorial errors or omissions contained herein.</p>
-<p>This is an HPE copyrighted work that may not be reproduced without
-the written permission of Hewlett Packard Enterprise. You may not use
-these materials to deliver training to any person outside of your
-organization without the written permission of HPE.</p>
-<p>Intel®, Itanium®, Pentium®, Intel Inside®, and the Intel Inside logo
-are trademarks of Intel Corporation in the United States and other
-countries.</p>
-<p>Microsoft® and Windows® are either registered trademarks or
-trademarks of Microsoft Corporation in the United States and/or other
-countries.</p>
-<p>Adobe® and Acrobat® are trademarks of Adobe Systems Incorporated.</p>
-<p>Java® and Oracle® are registered trademarks of Oracle and/or its
-affiliates.</p>
-<p>UNIX® is a registered trademark of The Open Group.</p>
-<p>All third-party marks are property of their respective owners.</p>
-<p>Hands on lab: From Deploying to Optimizing Workload Solutions with
-HPE Compute and Hybrid Cloud<br />
-Lab guide (0/6)<br />
-Mar 2026</p>
-<p>Confidential | For training purposes only</p>
-<p>Export Compliance Agreement<br />
-Export Requirements. You may not export or re-export products subject to
-this agreement in violation of any applicable laws or regulations.</p>
-<p>Without limiting the generality of the foregoing, products subject to
-this agreement may not be exported, re-exported, otherwise transferred
-to or within (or to a national or resident of) countries under U.S.
-economic embargo and/or sanction including the following countries and
-regions: Cuba, Iran, North Korea, Sudan, Syria, and the Crimea region of
-the Ukraine. This list is subject to change.</p>
-<p>In addition, products subject to this agreement may not be exported,
-re-exported, or otherwise transferred to persons or entities on
-applicable Sanctioned Parties Lists, such as listed on the U.S.
-Department of Commerce Denied Persons List; U.S. Department of Commerce
-Entity List (15 CFR 744, Supplement 4); U.S. Treasury Department
-Designated/Blocked Nationals exclusion list; U.S. State Department
-Debarred Parties List; Office of Foreign Assets Control Specially
-Designated Nationals Lists; or to parties directly or indirectly
-involved in the development or production of nuclear, chemical, or
-biological weapons, missiles, rocket systems, or unmanned air vehicles
-as specified in the U.S. Export Administration Regulations (15 CFR 744);
-or to parties directly or indirectly involved in the financing,
-commission or support of terrorist activities.</p>
-<p>By accepting this agreement you confirm that you are not located in
-(or a national or resident of) any country/region under U.S. embargo or
-sanction; not identified on any U.S. Department of Commerce Denied
-Persons List, Entity List, US State Department Debarred Parties List or
-Treasury Department Designated Nationals exclusion list; not directly or
-indirectly involved in the development or production of nuclear,
-chemical, biological weapons, missiles, rocket systems, or unmanned air
-vehicles as specified in the U.S. Export Administration Regulations (15
-CFR 744), and not directly or indirectly involved in the financing,
-commission or support of terrorist activities.</p></td>
-</tr>
-</tbody>
-</table>
 
 # From Deploying to Optimizing Workload Solutions with HPE Compute and Hybrid Cloud
 
@@ -141,31 +70,30 @@ all modules of this hands on lab.
 - Each student group is assigned a server and storage and can decide
   which modules to run.
 
-The login sheet given by the instructors contains information related to
+  The login sheet given by the instructors contains information related to
 your team number and the credentials to establish the connection through
 Omnissa horizon to an HPE lab in Houston where the hardware is located.
 
-<img src="./media/media/image3.png"
-style="width:7.39722in;height:4.08333in" />
+    [![]( {{ site.baseurl }}/assets/images/HOLs/Deploy-Optimize-Workload/image3.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/Deploy-Optimize-Workload/image3.png){:class="img-900"}{: data-lightbox="gallery"}
 
-The first set of modules (modules 1-4) is designed to run on HPE
+  The first set of modules (modules 1-4) is designed to run on HPE
 ProLiant DL380 or DL380a Gen11 as bare metal servers with Microsoft
 Windows Server 2025 and SQL Server 2025.
 
-Module 1: Achieve best OLTP performance
+  - **Module 1**: Achieve best OLTP performance
 
-Estimated time: 1 hour 30 minutes
+    Estimated time: 1 hour 30 minutes
 
-Use SQL Server on bare metal HPE ProLiant Server and Primera storage and
-software to tune iLO/BIOS and SQL Server database including storage
-parameters to achieve best OLTP performance on the given configuration.
+    Use SQL Server on bare metal HPE ProLiant Server and Primera storage and
+    software to tune iLO/BIOS and SQL Server database including storage
+    parameters to achieve best OLTP performance on the given configuration.
 
-Module 2: HPE StoreOnce Catalyst Plug-in for SQL Server
+  - **Module 2**: HPE StoreOnce Catalyst Plug-in for SQL Server
 
-Estimated time: 40 minutes
+    Estimated time: 40 minutes
 
-Protect (backup) Microsoft SQL Server to HPE StoreOnce with HPE Catalyst
-plugin for SQL Server
+    Protect (backup) Microsoft SQL Server to HPE StoreOnce with HPE Catalyst
+    plugin for SQL Server
 
 Module 3: Microsoft SQL Server Data Lake with Alletra MP X10000 use
 cases
@@ -209,7 +137,7 @@ query in case of needed.
 > <img src="./media/media/image4.jpg"
 > style="width:6.91667in;height:4.07325in" />
 
-3.  Enter your assigned Holuser# where \#is your team number (for
+3.  Enter your assigned Holuser# where is your team number (for
     example for Team 1 enter holuser1, password is identical)
 
 > <img src="./media/media/image5.jpeg"
