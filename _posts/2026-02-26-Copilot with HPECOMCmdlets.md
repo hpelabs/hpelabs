@@ -179,7 +179,7 @@ setup for this lab.
 
 [↑ Back to Top](#)
 
-# Getting familiar with Visual Studio Code
+# Task 1 - Getting familiar with Visual Studio Code
 
 **Visual Studio Code (VS Code)** is a free, open-source code editor
 developed by Microsoft. It is widely used for writing, editing, and
@@ -241,7 +241,7 @@ for this particular task.
 
 [↑ Back to Top](#)
 
-# Your first prompt
+# Task 2 - Your first prompt
 
 We are now ready to start coding.
 
@@ -316,7 +316,7 @@ technical details!
 
 [↑ Back to Top](#)
 
-# Copilot can make mistakes
+# Task 3 - Copilot can make mistakes
 
 While Copilot is a great help, it is not perfect right from the start.
 You still need to be in control and check your assistant's work. In this
@@ -365,21 +365,17 @@ effect):
 
   [![]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image16.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image16.png){:class="img-500"}{: data-lightbox="gallery"}
 
-- Copilot may add a Workspace parameter (which is indeed common when using this library) but we don't want that because we are going to
-create our own workspace. If it is the case, enter:
+- Before moving on, instruct Copilot to make the script **idempotent** — meaning it can be safely re-run without side effects. This is essential: if the script fails midway and you need to restart it, steps that already succeeded will be skipped rather than repeated.
 
   ```text
-  Remove the workspace parameter, I want to connect without a workspace and create one later
+  I want my script to be fully idempotent so it can be safely run multiple times.
+  From now on, apply this idempotency principle to every piece of code you generate:
+  always check whether a resource already exists before creating it, and skip creation if it does.
   ```
-
-- Code removed in on <span style="background-color:red">red background</span>, code added is on <span style="background-color:green">green background</span>. As always, click **Keep** to accept the changes.
-
-  [![]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image17.jpg){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image17.jpg){:class="img-600"}{: data-lightbox="gallery"}
-
 
 [↑ Back to Top](#)
 
-# Create a workspace
+# Task 4 - Create a workspace
 
 In HPE GreenLake, a workspace is an environment where users can organize
 and manage resources, such as servers, storage, and services, for
@@ -387,12 +383,12 @@ specific projects or teams. Workspaces help separate and control access
 to different sets of resources, making it easier to manage permissions,
 monitor usage, and automate tasks within a defined scope.
 
-- ⚠️ In the following prompt, replace <span style="color:red">nn</span> with your team number, for example
-09, before sending the prompt to Copilot:
+- ⚠️ In the following prompt, replace **<span style="color:red">nn</span>** in `GHCPWorkspaceTnn_random` with your team number, for example
+`09` for team 9, before sending the prompt to Copilot:
 
   ```text
-  Create or reuse a workspace named GHCPWorkspaceTnn_random where random is a random numeric suffix 
-  generated once and hardcoded in the script as a constant to ensure idempotency. 
+  Create or reuse a workspace named GHCPWorkspaceTnn_random where random is a
+  random numeric suffix generated once and hardcoded as a constant in the script.
   If the workspace already exists, connect to it instead of creating a new one.
   IMPORTANT: when checking whether the workspace already exists, use the 'company_name' property, NOT the 'name' property.
   Use the following parameters:
@@ -403,7 +399,25 @@ monitor usage, and automate tasks within a defined scope.
   Country: United States
   ```
 
-  **Idempotency** is the property of an operation that produces the same result whether it is executed once or multiple times. Here, the hardcoded random suffix ensures the workspace name stays consistent across script runs, and the "create or reuse" logic means re-running the script won't create duplicate workspaces — it will simply connect to the existing one. This is important for resilience: if the script fails partway through and needs to be re-run, it will safely skip the workspace creation step rather than spinning up a second workspace.
+  The hardcoded random suffix ensures the workspace name stays consistent across script runs, and the "create or reuse" logic means re-running the script won't create duplicate workspaces — it will simply reconnect to the existing one.
+
+- Review the diff highlighted in the editor: <span style="background-color:red">red</span> = removed code, <span style="background-color:green">green</span> = added code. Click **Keep** to accept.
+
+  [![]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image17.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image17.png){:class="img-900"}{: data-lightbox="gallery"}
+
+  > **🔔 Note**   
+  >
+  >{: .small-space}
+  >
+  > Always click **Keep** (or the bottom **Keep all** button) to accept pending changes before sending your next prompt. If you don't, Copilot will merge the old and new diffs together, making it harder to follow what changed.
+
+- Copilot sometimes declares constants using `Set-Variable -Option Constant`, which is **not idempotent**. Re-running the script in the same PowerShell session will fail with: "Cannot overwrite variable WORKSPACE_NAME because it is read-only or constant". If this happens, enter:
+
+  ```text
+  Are you sure that your Set-Variable commands are idempotent? Remember I want my script to be fully idempotent to ensure the script can be run multiple times safely.
+  ```
+
+  [![]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image17b.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image17b.png){:class="img-900"}{: data-lightbox="gallery"}
 
   > **🔔 Note**   
   >
@@ -438,20 +452,6 @@ once your lab is complete, so **please do not miss this step** ⚠️:
   ```
 
   Because the script is designed to be idempotent, Copilot should add a pre-check to verify the user does not already exist before attempting to add it.
-
-  > **🔔 Note**   
-  >
-  >{: .small-space}
-  >
-  > Copilot may use the wrong cmdlet at this step. If it generates `Send-HPEGLUserInvitation`, ask it to use `New-HPEGLUser` instead. `Send-HPEGLUserInvitation` mirrors the **Send Invitation** button in the HPE GreenLake UI — it resends a verification email to a user who is already in the workspace but hasn't confirmed their account yet. That is not what we need here; we want to add a brand new user to the workspace.
-  >
-  >{: .small-space}
-  >
-  > In that case, use this prompt:
-  >
-  > ```text
-  > Send-HPEGLUserInvitation is not the correct cmdlet. Use New-HPEGLUser to add the user to the workspace.
-  > ```
 
   > #### ⚠️ CRITICAL REQUIREMENT ⚠️
   > {: .no_toc }
@@ -514,7 +514,7 @@ submitting your prompt to Copilot!
 
 [↑ Back to Top](#)
 
-# Onboarding devices
+# Task 5 - Onboarding devices
 
 We are now ready to add a server to our COM workspace. We will use a
 method that would work just as well if we had dozens or even hundreds of
@@ -540,7 +540,7 @@ want to save the file. It should be in folder **HOL09-Tnn** \> **GitHubCopilotLa
 (at the bottom right of the screen), we don't really need it for the
 simple work we have to do:
 
-  [![]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image21.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image521.png){:class="img-500"}{: data-lightbox="gallery"}
+  [![]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image21.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image21.png){:class="img-500"}{: data-lightbox="gallery"}
 
 - Copy the following data into the **ilos.csv** file and replace the
 placeholders in \<brackets\> with your team\'s information from the login
@@ -586,11 +586,6 @@ id) that an iLO will need, to know what it should connect to.
 
   You can see how it created a `ForEach ($iLO in $iLOs)` loop, then created a Credentials object for the username and password imported from the CSV file and used it with the proper `Connect-HPEGLDeviceComputeiLOtoCOM` cmdlet.
 
-  > **💡 Note**   
-  >
-  >{: .small-space}
-  >
-  > If Copilot uses a cmdlet other than `Connect-HPEGLDeviceComputeiLOtoCOM` to connect the iLO to COM, let it know the cmdlet name is wrong and ask it to correct it.
 
 ## Set device location and tags
 
@@ -620,16 +615,17 @@ purpose, owner, environment, cost center, or other custom attributes.
   >
   > Now would be a good time to look at the clock and determine how much
   > time you have left before the end of the lab. If you have less than
-  > \~20 minutes, consider skipping to the section [Execute the
-  > script](#execute-the-script). You have generated enough PowerShell
+  > \~20 minutes, consider skipping to [Task 7 - Review the
+  > script](#task-7---review-the-script). You have generated enough PowerShell
   > code already to be able to run it and get meaningful results. If you
   > still have time, you can continue generating more code, but be sure
   > to keep an eye on the clock and allow enough time to run the script
   > and see the results of your (and Copilot's) work.
 
+
 [↑ Back to Top](#)
 
-# Configuration of Compute Ops Management
+# Task 6 - Configuration of Compute Ops Management
 
 Now that we have a server onboarded, we are going to use some of the
 features that COM provides for server management.
@@ -691,6 +687,12 @@ keep configuration consistent across all servers added to that group.
   Set our server to automatically update iLO firmware to the newest available
   ```
 
+  > Copilot may struggle to find the right cmdlet and may ask you to run a PowerShell command to help it look it up. If that happens, click on **Allow**:
+  >
+  >{: .small-space}
+  > 
+  > [![]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image21a.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image21a.png){:class="img-500"}{: data-lightbox="gallery"}
+
 ## Update server firmware
 
 The firmware update step is crucial to ensure that servers are up to
@@ -711,24 +713,18 @@ coding skills by running the script we created.
 
 [↑ Back to Top](#)
 
-# Execute the script
+# Task 7 - Review the script
 
-With all the code now generated and reviewed, it is time to put it to the test. In this section, you will run the script you built with Copilot's assistance and observe it automating the full workflow—from workspace creation and device onboarding to server configuration and firmware scheduling—all without writing a single line of code manually.
+Before running the script, it is worth taking a moment to have Copilot review and validate what it has generated. AI models are often better at catching their own mistakes when given a second pass — this step can save you significant debugging time during execution.
 
-> ⚠️ **Important note**   
->
->{: .small-space}
-> 
-> Before running the script, it is very useful to ask Copilot to
-> double check the code it has created. AIs are often better at fixing
-> their errors than doing things right the first time.
-> 
-> ```text
-> Double check the code to make sure the cmdlet names and options you
-> used from HPECOMcmdlets are all correct. Use everything you find at
-> <https://github.com/jullienl/HPE-COM-PowerShell-Library> as a
-> reference.
-> ```
+- Ask Copilot to verify all cmdlet names and options against the official library:
+
+  ```text
+  Double check the code to make sure the cmdlet names and options you
+  used from HPECOMcmdlets are all correct. Use everything you find at
+  <https://github.com/jullienl/HPE-COM-PowerShell-Library> as a
+  reference.
+  ```
 
 - If you didn't get it previously, you are likely at this step to get a
 prompt asking you for permission to fetch contents from the GitHub
@@ -743,8 +739,12 @@ red in the screenshot to give Copilot the widest permission.
 
   You will likely see multiple edits throughout the file. Unlike humans,
 an AI agent can be quite good at fixing its own errors if we give it
-appropriate data. It should even create a `CORRECTIONS_NEEDED.md` file
+appropriate data. It may even create a `CORRECTIONS_NEEDED.md` file
 which lists all the corrections it made.
+
+- This step may take a while — Copilot may be fixing multiple issues. When it runs commands, it does so silently, but you can monitor its activity by clicking the **pwsh** terminal tab at the bottom of the VS Code window:
+
+  [![]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image21b.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image21b.png){:class="img-900"}{: data-lightbox="gallery"}
 
 - A scripting best practice is to halt execution as soon as a failure is detected, rather than letting the script continue in an error state. Ask Copilot to add this behavior:
 
@@ -762,7 +762,13 @@ which lists all the corrections it made.
   Quickly assess the script and fix any issues
   ```
 
-- Copilot may offer additional improvements at the end of its response — feel free to accept or skip them. The key point is that these last three prompts have already brought the script to a state where it is ready to run. Switch back to the PowerShell script tab in VS Code, then go to the menu **Run** > **Run Without Debugging** to execute it:
+- Copilot may offer additional improvements at the end of its response — feel free to accept or skip them. The key point is that these last three prompts have already brought the script to a state where it is ready to run. 
+
+# Task 8 - Execute the script
+
+With all the code now generated and reviewed, it is time to put it to the test. In this section, you will run the script you built with Copilot's assistance and observe it automating the full workflow—from workspace creation and device onboarding to server configuration and firmware scheduling—all without writing a single line of code manually.
+
+- Switch back to the PowerShell script tab in VS Code, then go to the menu **Run** > **Run Without Debugging** to execute it:
 
   [![]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image22.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image22.png){:class="img-700"}{: data-lightbox="gallery"}
 
@@ -775,6 +781,10 @@ which lists all the corrections it made.
   >{: .small-space}
   >
   >   [![]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image22c.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image22c.png){:class="img-700"}{: data-lightbox="gallery"}
+
+- Make sure you are on the **PowerShell Extension** terminal tab (not the **pwsh** tab used by Copilot). Expand the terminal panel using the ❷ icon for a better view:
+
+  [![]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image22e.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image22e.png){:class="img-900"}{: data-lightbox="gallery"}
 
 - Watch the PowerShell terminal at the bottom of the VS Code window. It
 should prompt you for a username, type the email address for the
@@ -801,34 +811,13 @@ Greenlake account found on your team login sheet.
     > For any error you encounter, copy and paste the full error message from the terminal into the Copilot pane and send it — that is usually enough context for Copilot to understand the issue and automatically fix your script. 
 
 
-- Once the error is fixed, re-run the entire script from the beginning. Because it is idempotent, it is safe to run it multiple times — it will detect the existing workspace and connect to it rather than creating a new one.
+- Once Copilot has fixed the error, re-run the script from the beginning — it is safe to do so since the script is idempotent.
  
   > **💡 Note**   
   >
   >{: .small-space}
   > 
   > At some point, human expertise might be needed. AI is a great help, but it's not perfect!
-
-  > 💡 **Note**  
-  >
-  >{: .small-space}
-  >   
-  > If you have the following error:
-  >
-  >{: .small-space}
-  >   
-  >   [![]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image22a.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image22a.png){:class="img-100pct"}{: data-lightbox="gallery"}
-  >
-  >{: .small-space}
-  >   
-  > Tell Copilot that a PowerShell variable cannot be followed by a `:`
-  >
-  >{: .small-space}
-  >   
-  > ```text
-  > Do not use $variable: syntax. If you need to append a colon after a variable, 
-  > use string interpolation (e.g., "$variable:"). Validate that all output PowerShell code is syntactically correct.
-  > ```
 
 - In parallel, you can use the Graphical User Interface
 (GUI) of COM to follow the script's actions. In a browser go to <https://common.cloud.hpe.com/> and logon with the same credentials you
