@@ -196,6 +196,10 @@ available for all major operating systems, Windows, MacOS and Linux.
 
   [![]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image6.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image6.png){:class="img-900"}{: data-lightbox="gallery"}
 
+- You can start by expanding the window ❶, closing the Release Notes ❷ and Welcome pages ❸: 
+
+  [![]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image6a.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image6a.png){:class="img-900"}{: data-lightbox="gallery"}
+
 - Most of your work will be to type or paste text in the Copilot prompt field at the bottom right:
 
   [![]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image7.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image7.png){:class="img-700"}{: data-lightbox="gallery"}
@@ -287,7 +291,7 @@ as depicted below:
 - The ![](/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image11.png) icon next to the file name means the file
 has pending changes from Copilot.
 
-  [![]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image12.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image12.png){:class="img-900"}{: data-lightbox="gallery"}
+  [![]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image12.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image12.png){:class="img-100pct"}{: data-lightbox="gallery"}
 
 - The generated code is on green background. Click on **Keep** (either at the
 top or at the bottom) to accept the changes. Later when Copilot wants to
@@ -331,8 +335,8 @@ it's vastly faster than with human beings.
 - To fix this, point Copilot to the official HPECOMCmdlets source repository so it can learn the correct cmdlet names and syntax:
 
   ```text
-  Your cmdlets are not correct. Use the HPECOMcmdlets source code and
-  examples at <https://github.com/jullienl/HPE-COM-PowerShell-Library>
+  The cmdlet names you used are incorrect. From now on, always refer to the official HPECOMCmdlets
+  source code and examples at https://github.com/jullienl/HPE-COM-PowerShell-Library before generating any code.
   ```
 
 - Whenever you instruct Copilot to fetch information from the Internet, it
@@ -361,9 +365,8 @@ effect):
 
   [![]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image16.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image16.png){:class="img-500"}{: data-lightbox="gallery"}
 
-- Copilot has added a Workspace parameter (which is indeed common when
-using this library) but we don't want that because we are going to
-create our own workspace.
+- Copilot may add a Workspace parameter (which is indeed common when using this library) but we don't want that because we are going to
+create our own workspace. If it is the case, enter:
 
   ```text
   Remove the workspace parameter, I want to connect without a workspace and create one later
@@ -384,13 +387,14 @@ specific projects or teams. Workspaces help separate and control access
 to different sets of resources, making it easier to manage permissions,
 monitor usage, and automate tasks within a defined scope.
 
-- In the following prompt, replace <span style="color:red">nn</span> with your team number, for example
+- ⚠️ In the following prompt, replace <span style="color:red">nn</span> with your team number, for example
 09, before sending the prompt to Copilot:
 
   ```text
   Create or reuse a workspace named GHCPWorkspaceTnn_random where random is a random numeric suffix 
-  generated once and hardcode in the script as a constant to ensure idempotency. 
-  If the workspace already exists, the script should connect to it instead of creating a new one.
+  generated once and hardcoded in the script as a constant to ensure idempotency. 
+  If the workspace already exists, connect to it instead of creating a new one.
+  IMPORTANT: when checking whether the workspace already exists, use the 'company_name' property, NOT the 'name' property.
   Use the following parameters:
   Type: Standard enterprise workspace
   Email: the email address used to connect
@@ -758,15 +762,23 @@ which lists all the corrections it made.
   Quickly assess the script and fix any issues
   ```
 
-- The script is now ready. Switch back to the PowerShell script tab in VS Code, then go to the menu **Run** > **Run Without Debugging** to execute it:
+- Copilot may offer additional improvements at the end of its response — feel free to accept or skip them. The key point is that these last three prompts have already brought the script to a state where it is ready to run. Switch back to the PowerShell script tab in VS Code, then go to the menu **Run** > **Run Without Debugging** to execute it:
 
   [![]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image22.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image22.png){:class="img-700"}{: data-lightbox="gallery"}
 
-  Watch the PowerShell terminal at the bottom of the VS Code window. It
+  > 💡 **Note**  
+  >
+  >{: .small-space}
+  >   
+  > If the **Run** menu is greyed out, save your script first (`Ctrl`+ `S`), then close and reopen VS Code.
+  >
+  >{: .small-space}
+  >
+  >   [![]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image22c.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image22c.png){:class="img-700"}{: data-lightbox="gallery"}
+
+- Watch the PowerShell terminal at the bottom of the VS Code window. It
 should prompt you for a username, type the email address for the
 Greenlake account found on your team login sheet.
-
-- Next, it should prompt you for the account's password that you can also find on your team login sheet. 
 
   [![]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image22b.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image22b.png){:class="img-800"}{: data-lightbox="gallery"}
 
@@ -776,7 +788,9 @@ Greenlake account found on your team login sheet.
   >   
   > Do not confuse the Horizon credentials you used at the beginning to connect to the lab environment, and the Greenlake credentials you are using now, they are not the same.
 
-  Once you enter the password, the rest of the script will run, displaying what it is doing.   
+- Then enter the password, the rest of the script will run, displaying what it is doing.   
+
+    [![]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image22d.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image22d.png){:class="img-800"}{: data-lightbox="gallery"}
 
 - Examine the terminal output to look for any errors. If there are any, the next step would be to understand and fix the errors. 
 
