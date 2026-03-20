@@ -68,7 +68,7 @@ Omnissa horizon to an HPE lab in Houston where this infrastructure is hosted.
 
 The first set of modules (modules 1-4) is designed to run on HPE
 ProLiant DL380 or DL380a Gen11 as bare metal servers with Microsoft
-Windows Server 2025 and SQL Server 2025.
+Windows Server 2025 and SQL Server 2025:
 
   - **Module 1: Achieve best OLTP performance**
 
@@ -88,65 +88,76 @@ Windows Server 2025 and SQL Server 2025.
   - **Module 3: Microsoft SQL Server Data Lake with Alletra MP X10000 use cases**
 
     `Estimated time: 30 minutes`
+
     Setup SQL Server data lake with external table feature and S3 object storage like HPE Alletra MP X10000
 
   - **Module 4: Getting started with SQL Server 2025 Vector Search**
 
-    `Estimated time: 20 minutes`
+    `Estimated time: 20 minutes`   
+
     Introduction to SQL Server 2025 and its new Vector Search capabilities on HPE ProLiant Server
 
   - **Module 5: Deploy Microsoft SQL Server web stack with HPE Morpheus Blueprint**
 
-    `Estimated time: 45 minutes`
+    `Estimated time: 45 minutes`   
+
     This last module uses a completely different environment and focuses on HPE Morpheus blueprint. It introduces HPE Morpheus blueprints for orchestrating end‑to‑end SQL Server and application stack deployments.
 
 # Getting started with this hands-on lab
 
-## Task1 – Connect to HOL guide platform
+## Connect to HOL guide platform
 
   From the classroom desktop computer, access the portal that allows you to select the manuals for the modules you are interested in. This will guide you through the hands-on lab with an AI assistant that you could query in case of needed.
 
-- Open a web browser (chrome for example)
-- Go to: **[https://hol.sshk2.com](https://hol.sshk2.com)**
+- Go to **[https://hol.sshk2.com](https://hol.sshk2.com)**
 
-  [![]( {{ site.baseurl }}/assets/images/HOLs/Deploy-Optimize-Workload/image4.jpeg){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/Deploy-Optimize-Workload/image4.jpeg){:class="img-900"}{: data-lightbox="gallery"}
+- Enter your credentials, replacing <span style="color:red">**#**</span> with your assigned team number:
+  - **Username**: holuser<span style="color:red">**#**</span> 
+  - **Password**: holuser<span style="color:red">**#**</span> 
 
-- Enter your assigned **Holuser#** where '#' is your team number (for example for Team 1 enter holuser1; password is identical)
+  > **Example — Team 1:** Username `holuser1` / Password `holuser1`
 
-  [![]( {{ site.baseurl }}/assets/images/HOLs/Deploy-Optimize-Workload/image5.jpeg){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/Deploy-Optimize-Workload/image5.jpeg){:class="img-900"}{: data-lightbox="gallery"}
+  [![]( {{ site.baseurl }}/assets/images/HOLs/Deploy-Optimize-Workload/image4.jpg){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/Deploy-Optimize-Workload/image4.jpg){:class="img-900"}{: data-lightbox="gallery"}
 
 - Once on this page, you can access any of the available module/guide (displayed as tiles). However, you must **start** with **0 Intro connection guide** to establish connectivity to the lab infrastructure.
+
+  [![]( {{ site.baseurl }}/assets/images/HOLs/Deploy-Optimize-Workload/image5.jpeg){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/Deploy-Optimize-Workload/image5.jpeg){:class="img-900"}{: data-lightbox="gallery"}
 
 - After you have connected to the lab infrastructure, you can select the module(s) of your choice (one at a time) as depicted below:
 
   [![]( {{ site.baseurl }}/assets/images/HOLs/Deploy-Optimize-Workload/image6.jpeg){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/Deploy-Optimize-Workload/image6.jpeg){:class="img-900"}{: data-lightbox="gallery"}
 
 - Clicking on the module opens a new page. The page is divided into two main parts:
-  - on the left is the manual
-  - on the right, the AI assistant.
+  - On the left is the manual
+  - On the right, the AI assistant
 
-  On top, you can see some options that may ease your experience.
+  On top, you can see some options that may ease your experience:
 
   [![]( {{ site.baseurl }}/assets/images/HOLs/Deploy-Optimize-Workload/image7.jpeg){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/Deploy-Optimize-Workload/image7.jpeg){:class="img-900"}{: data-lightbox="gallery"}
 
-For example, for each module,
+For example, for each module:
 
-  - If you prefer a larger or smaller window for the manual/AI assistant, you can pick the size using the sizing options (labelled 2 on the image above)
+  - ❷ **Sizing options** — Adjust the split between the manual and AI assistant panels to your preference.
 
-  - You have some information like credentials that may have to be entered. You can find them by clicking on the credentials button on top (number 3 from the image above).
-  
-  A new page will appear on top with specific information as depicted in the next image, and to copy the information you just have to select the button with overlapping squares on the right, next to the information.
+  - ❸ **Lab credentials** — Click to reveal the credentials you may need during the lab. A popup will appear with your information; use the copy button (overlapping squares icon) next to each value to copy it.
 
-  [![]( {{ site.baseurl }}/assets/images/HOLs/Deploy-Optimize-Workload/image8.jpg){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/Deploy-Optimize-Workload/image8.jpg){:class="img-600"}{: data-lightbox="gallery"}
+    [![]( {{ site.baseurl }}/assets/images/HOLs/Deploy-Optimize-Workload/image8.jpg){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/Deploy-Optimize-Workload/image8.jpg){:class="img-600"}{: data-lightbox="gallery"}
 
-  - If you are more familiar with Spanish, you can click on Spanish to view the manual in Spanish.
+  - **Spanish** — Click to switch the manual language to Spanish.
 
-  - On the right side of the window is that AI assistant. You can enter any question related to the module you are using, and even take a screenshot of where you are and ask…
+  - ❹ **AI assistant** — Ask any question related to the module you are working on. You can even take a screenshot of your current screen and include it in your question.
 
-  `Note: For a better experience, we recommend the following setup:`
-  - Use your secondary monitor (portrait orientation) to display the HOL guide.
+<br>
 
-    - Move the page you want to read or follow instructions on to this monitor.
-    - Keep your primary monitor in landscape orientation for active tasks.
+  > 💡 **Tip**:   
+  >
+  >{: .small-space}
+  > 
+  > For a better experience, we recommend the following setup:
+  >  - Use your secondary monitor (portrait orientation) to display the HOL guide.
+  >  - Move the page you want to read or follow instructions on to this monitor.
+  >  - Keep your primary monitor in landscape orientation for active tasks.
+
+<br>
 
 **Your primary display is usually the main monitor you use for work, while your secondary display refers to an additional monitor that can be set up vertically (portrait orientation).**
