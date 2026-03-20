@@ -448,7 +448,7 @@ also ensures that we can reset the lab and perform the necessary actions
 once your lab is complete, so **please do not miss this step** ⚠️:
 
   ```text
-  Add user admin@hpelabs.ddnsfree.com to the workspace
+  Add user admin@hpelabs.ddnsfree.com to the workspace using New-HPEGLUser
   ```
 
   Because the script is designed to be idempotent, Copilot should add a pre-check to verify the user does not already exist before attempting to add it.
