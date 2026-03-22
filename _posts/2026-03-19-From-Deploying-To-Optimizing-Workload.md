@@ -164,6 +164,7 @@ For example, for each module:
   >  - Move the page you want to read or follow instructions on to this monitor.
   >  - Keep your primary monitor in landscape orientation for active tasks.
 
+- At the end, please use the **logout** button (the top right corner). Thank you.
 <br>
 
 **Your primary display is usually the main monitor you use for work, while your secondary display refers to an additional monitor that can be set up vertically (portrait orientation).**
