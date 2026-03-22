@@ -115,10 +115,11 @@ Windows Server 2025 and SQL Server 2025:
 
   [![]( {{ site.baseurl }}/assets/images/HOLs/Deploy-Optimize-Workload/image4a.jpg){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/Deploy-Optimize-Workload/image4a.jpg){:class="img-900"}{: data-lightbox="gallery"}
 
-- You will first see a welcome message. Click on the **OK** to open the first lab guide. This guide walks you through the introduction and explains how to connect to the remote infrastructure. 
+- You will first see a welcome message. Click on the **OK** to open the first lab guide.
+This guide walks you through the introduction and explains how to connect to the remote infrastructure. 
 Be sure to **start** with **0 Intro connection guide** to establish connectivity to the lab environment.
 
-  [![]( {{ site.baseurl }}/assets/images/HOLs/Deploy-Optimize-Workload/image5b.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/Deploy-Optimize-Workload/image5b.png){:class="img-900"}{: data-lightbox="gallery"}
+ [![]( {{ site.baseurl }}/assets/images/HOLs/Deploy-Optimize-Workload/image5b.jpg){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/Deploy-Optimize-Workload/image5b.jpg){:class="img-900"}{: data-lightbox="gallery"}
 
 - After you have connected to the lab infrastructure, you can select the module(s) of your choice (one at a time) as depicted below:
 
