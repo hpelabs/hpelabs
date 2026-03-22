@@ -120,12 +120,18 @@ This guide walks you through the introduction and explains how to connect to the
 Be sure to **start** with **0 Intro connection guide** to establish connectivity to the lab environment.  
   
   The following screenshot depicts how the page looks like when a document is loaded (and this is the actual Module 0 - Introduction and connection guide)   
-
+  Review the available options on the page.  
+  
   [![]( {{ site.baseurl }}/assets/images/HOLs/Deploy-Optimize-Workload/image5c.jpg){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/Deploy-Optimize-Workload/image5c.jpg){:class="img-900"}{: data-lightbox="gallery"}
+    
 
-- After you have connected to the lab infrastructure, you can select the module(s) of your choice (one at a time) as depicted below:
+  The link at the top **HOL_Home** takes you back to the homepage, where you can navigate and select the module(s) to run next; it is equivalent to the clickable button at the end of the guide entitled **Back to HOL Home**.  
 
-  [![]( {{ site.baseurl }}/assets/images/HOLs/Deploy-Optimize-Workload/image6.jpeg){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/Deploy-Optimize-Workload/image6.jpeg){:class="img-900"}{: data-lightbox="gallery"}
+  [![]( {{ site.baseurl }}/assets/images/HOLs/Deploy-Optimize-Workload/image5end.jpg){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/Deploy-Optimize-Workload/image5end.jpg){:class="img-900"}{: data-lightbox="gallery"}
+
+- Use either one, once you have connected to the remote infrastucture, and pick the next module you would like to learn.
+
+  [![]( {{ site.baseurl }}/assets/images/HOLs/Deploy-Optimize-Workload/image6a.jpg){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/Deploy-Optimize-Workload/image6a.jpg){:class="img-900"}{: data-lightbox="gallery"}
 
 - Clicking on the module opens a new page. The page is divided into two main parts:
   - On the left is the manual
