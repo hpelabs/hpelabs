@@ -111,11 +111,7 @@ Windows Server 2025 and SQL Server 2025:
 
 - Go to **[https://hol.sshk2.com](https://hol.sshk2.com)**
 
-- Enter your credentials, replacing <span style="color:red">**#**</span> with your assigned team number:
-  - **Username**: holuser<span style="color:red">**#**</span> 
-  - **Password**: holuser<span style="color:red">**#**</span> 
-
-  > **Example — Team 1:** Username `holuser1` / Password `holuser1`
+- Enter your credentials according to the login sheet that was given by your instructors.
 
   [![]( {{ site.baseurl }}/assets/images/HOLs/Deploy-Optimize-Workload/image4.jpg){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/Deploy-Optimize-Workload/image4.jpg){:class="img-900"}{: data-lightbox="gallery"}
 
