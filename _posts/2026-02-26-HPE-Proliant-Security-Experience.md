@@ -4,7 +4,7 @@ title: "HPE ProLiant Security Experience"
 image: /assets/images/HOLs/Proliant-Security/banner.jpg
 post_end_promo: <i><b>Continue your journey with more HPE Compute Technical Enablement Hands-on Labs for infrastructure, security, technologies, and solutions.</b></i>
 excerpt: Explore HPE ProLiant Gen12 security with iLO 7 embedded management, GreenLake onboarding, firmware verification, ACME certificate automation, and Secure Gateway deployment in this hands-on lab experience.
-room: 2 # Set to 1 or 2
+room: 1 # Set to 1 or 2
 ---
 
 Hands on Lab Guide
