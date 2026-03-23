@@ -111,21 +111,27 @@ Windows Server 2025 and SQL Server 2025:
 
 - Go to **[https://hol.sshk2.com](https://hol.sshk2.com)**
 
-- Enter your credentials, replacing <span style="color:red">**#**</span> with your assigned team number:
-  - **Username**: holuser<span style="color:red">**#**</span> 
-  - **Password**: holuser<span style="color:red">**#**</span> 
+- Enter your credentials according to the login sheet that was given by your instructors.
 
-  > **Example — Team 1:** Username `holuser1` / Password `holuser1`
+  [![]( {{ site.baseurl }}/assets/images/HOLs/Deploy-Optimize-Workload/image4a.jpg){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/Deploy-Optimize-Workload/image4a.jpg){:class="img-900"}{: data-lightbox="gallery"}
 
-  [![]( {{ site.baseurl }}/assets/images/HOLs/Deploy-Optimize-Workload/image4.jpg){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/Deploy-Optimize-Workload/image4.jpg){:class="img-900"}{: data-lightbox="gallery"}
+- You will first see a welcome message. Click on the **OK** to open the first lab guide.  
+This guide walks you through the introduction and explains how to connect to the remote infrastructure.   
+Be sure to **start** with **0 Intro connection guide** to establish connectivity to the lab environment.  
+  
+  The following screenshot depicts how the page looks like when a document is loaded (and this is the actual Module 0 - Introduction and connection guide)   
+  Review the available options on the page.  
+  
+  [![]( {{ site.baseurl }}/assets/images/HOLs/Deploy-Optimize-Workload/image5c.jpg){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/Deploy-Optimize-Workload/image5c.jpg){:class="img-900"}{: data-lightbox="gallery"}
+    
 
-- Once on this page, you can access any of the available module/guide (displayed as tiles). However, you must **start** with **0 Intro connection guide** to establish connectivity to the lab infrastructure.
+  The link at the top **HOL_Home** takes you back to the homepage, where you can navigate and select the module(s) to run next; it is equivalent to the clickable button at the end of the guide entitled **Back to HOL Home**.  
 
-  [![]( {{ site.baseurl }}/assets/images/HOLs/Deploy-Optimize-Workload/image5a.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/Deploy-Optimize-Workload/image5a.png){:class="img-900"}{: data-lightbox="gallery"}
+  [![]( {{ site.baseurl }}/assets/images/HOLs/Deploy-Optimize-Workload/image5end.jpg){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/Deploy-Optimize-Workload/image5end.jpg){:class="img-900"}{: data-lightbox="gallery"}
 
-- After you have connected to the lab infrastructure, you can select the module(s) of your choice (one at a time) as depicted below:
+- Use either one, once you have connected to the remote infrastucture, and pick the next module you would like to learn.
 
-  [![]( {{ site.baseurl }}/assets/images/HOLs/Deploy-Optimize-Workload/image6.jpeg){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/Deploy-Optimize-Workload/image6.jpeg){:class="img-900"}{: data-lightbox="gallery"}
+  [![]( {{ site.baseurl }}/assets/images/HOLs/Deploy-Optimize-Workload/image6a.jpg){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/Deploy-Optimize-Workload/image6a.jpg){:class="img-900"}{: data-lightbox="gallery"}
 
 - Clicking on the module opens a new page. The page is divided into two main parts:
   - On the left is the manual
@@ -157,7 +163,10 @@ For example, for each module:
   >  - Use your secondary monitor (portrait orientation) to display the HOL guide.
   >  - Move the page you want to read or follow instructions on to this monitor.
   >  - Keep your primary monitor in landscape orientation for active tasks.
-
 <br>
 
 **Your primary display is usually the main monitor you use for work, while your secondary display refers to an additional monitor that can be set up vertically (portrait orientation).**
+<br>
+- At the end, please use the **logout** button (top right corner).  
+
+Thank you for your interest and participation.
