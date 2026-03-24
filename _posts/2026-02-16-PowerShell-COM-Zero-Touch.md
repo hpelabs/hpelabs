@@ -435,7 +435,7 @@ You may now leave this page open and begin your zero-touch automation experience
 
     **⚠️ Replace <span style="color:red">nn</span> with your team number** (e.g., `01` for team 1, `05` for team 5, `12` for team 12).
     
-    > Example, **team 5** should use: **$WorkspaceName = "HPEWorkspaceT<span style="color:red">05</span>_$(Get-Random)"**
+    > Example, <span style="color:red">Team 05</span> should use: **$WorkspaceName = "HPEWorkspaceT<span style="color:red">05</span>_$(Get-Random)"**
 
     ---
     > #### ⚠️ CRITICAL REQUIREMENT ⚠️
