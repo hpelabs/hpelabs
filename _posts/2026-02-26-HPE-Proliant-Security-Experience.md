@@ -910,8 +910,8 @@ monitor and manage security settings proactively.
       [![]( {{ site.baseurl }}/assets/images/HOLs/Proliant-Security/image76.png){: .img-600}]( {{ site.baseurl }}/assets/images/HOLs/Proliant-Security/image76.png){: data-lightbox="gallery"}
 
 5.  Switch between browser tabs to return to Compute Ops Management.
-    From your Server page in Compute Ops Management, the HPE iLO7
-    Security Status shows at risk. Click on the **Details** link.
+    From your Server page in Compute Ops Management, the iLO
+    security status shows At risk. Click on the **Details** link.
 
       [![]( {{ site.baseurl }}/assets/images/HOLs/Proliant-Security/image157a.png){: .img-600}]( {{ site.baseurl }}/assets/images/HOLs/Proliant-Security/image157a.png){: data-lightbox="gallery"}
 
@@ -925,21 +925,21 @@ monitor and manage security settings proactively.
 7.  **Cancel** out of the iLO security status screen.
 
 8.  Return to the HPE iLO7 **Security dashboard** screen**.** Select the
-    option for **Secure Boot** and toggle on the ability to **ignore
-    risk**. This is not a best practice for the “real world”, but we are
+    option for **Secure Boot** and toggle on the ability to **Ignore
+    Risk**. This is not a best practice for the “real world”, but we are
     demonstrating features in HPE iLO7 and COM.
 
-      [![]( {{ site.baseurl }}/assets/images/HOLs/Proliant-Security/image79.png){: .img-600}]( {{ site.baseurl }}/assets/images/HOLs/Proliant-Security/image79.png){: data-lightbox="gallery"}
+      [![]( {{ site.baseurl }}/assets/images/HOLs/Proliant-Security/image79a.png){: .img-600}]( {{ site.baseurl }}/assets/images/HOLs/Proliant-Security/image79a.png){: data-lightbox="gallery"}
 >
 > Note: This task can be easily automated using the **Enable-HPECOM HPE
 > iLO7IgnoreRiskSetting** cmdlet from the
 > [**HPECOMCmdlets**](https://www.powershellgallery.com/packages/HPECOMCmdlets/1.0.11)
 > PowerShell module.
 
-9.  Click **Configure** to make the change
-
 10. Back at the COM screens, you see that now we have an error that is
     being ignored.
+
+      [![]( {{ site.baseurl }}/assets/images/HOLs/Proliant-Security/image79.png){: .img-600}]( {{ site.baseurl }}/assets/images/HOLs/Proliant-Security/image79.png){: data-lightbox="gallery"}
 
 11. We will now fix the SNMPv1 error, click on the browser tab that
     returns you to your HPE iLO7 **Dashboard**.
