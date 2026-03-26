@@ -4,7 +4,7 @@ title: "HPE Compute Ops Management Zero-Touch Automation"
 image: /assets/images/HOLs/COM-ZeroTouch/banner.jpg
 post_end_promo: <i><b>Continue your journey with more HPE Compute Technical Enablement Hands-on Labs for infrastructure, security, technologies, and solutions.</b></i>
 excerpt: Learn to automate HPE server lifecycle management using the HPE Compute Ops Management PowerShell module—from workspace provisioning and device onboarding to policy enforcement, compliance monitoring, and sustainability insights within HPE GreenLake.
-room: 1 # Set to 1 or 2
+room: 2 # Set to 1 or 2
 ---
 
 Hands on Lab Guide
@@ -435,7 +435,7 @@ You may now leave this page open and begin your zero-touch automation experience
 
     **⚠️ Replace <span style="color:red">nn</span> with your team number** (e.g., `01` for team 1, `05` for team 5, `12` for team 12).
     
-    > Example, **team 5** should use: **$WorkspaceName = "HPEWorkspaceT<span style="color:red">05</span>_$(Get-Random)"**
+    > Example, <span style="color:red">Team 05</span> should use: **$WorkspaceName = "HPEWorkspaceT<span style="color:red">05</span>_$(Get-Random)"**
 
     ---
     > #### ⚠️ CRITICAL REQUIREMENT ⚠️

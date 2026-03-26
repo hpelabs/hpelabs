@@ -4,7 +4,7 @@ title: "AI Inferencing Solutions on HPE ProLiant Compute"
 image: /assets/images/HOLs/AI-Inferencing/banner.jpg
 post_end_promo: <i><b>Continue your journey with more HPE Compute Technical Enablement Hands-on Labs for infrastructure, security, technologies, and solutions.</b></i>
 excerpt: Gain hands on experience with three real world AI inferencing solutions powered by HPE ProLiant Compute. Explore Vision AI analytics using Vaidio, demonstrate text to image generation with SwarmUI, and deploy a RAG enabled AI assistant using Open WebUI.
-room: 2 # Set to 1 or 2
+room: 1 # Set to 1 or 2
 ---
 
 
@@ -77,14 +77,14 @@ In this lab we will be using Vaidio’s Vision AI Platform to experience Compute
 
 3. Login to the Vaidio computer vision application, with the following user credentials and then click on the Login button to continue.
 
-    Username:
-    ```text
-    HPEDemoUser
-    ```
-    Password:
-    ```text
-    Will2Win
-    ```
+   Username:
+   ```text
+   HPEDemoUser
+   ```
+   Password:
+   ```text
+   Will2Win
+   ```
 
     [![]( {{ site.baseurl }}/assets/images/HOLs/AI-Inferencing/img09.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/AI-Inferencing/img09.png){:class="img-300"}{: data-lightbox="gallery"}
 
@@ -204,9 +204,9 @@ We are going to do that pre-work first as it will allow the labs to flow more sm
 
 2. Copy and paste the following command into the terminal to initialize the Docker and NVIDIA Container toolkit installation. Lab support files will also be copied to the desktop.
 
-    ```bash
-    sudo /etc/init.d/docker_install.sh
-    ```
+   ```bash
+   sudo /etc/init.d/docker_install.sh
+   ```
 
     [![]( {{ site.baseurl }}/assets/images/HOLs/AI-Inferencing/img27.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/AI-Inferencing/img27.png){:class="img-600"}{: data-lightbox="gallery"}
 
@@ -222,17 +222,17 @@ We are going to do that pre-work first as it will allow the labs to flow more sm
 
 5. In terminal, copy and paste the following command and press Enter.
 
-    ```bash
-    cd SwarmUI
-    ```
+   ```bash
+   cd SwarmUI
+   ```
 
     [![]( {{ site.baseurl }}/assets/images/HOLs/AI-Inferencing/img31.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/AI-Inferencing/img31.png){:class="img-600"}{: data-lightbox="gallery"}
 
 6. Then run the following command and press Enter to launch SwarmUI.
 
-    ```bash
-    bash launch-linux.sh
-    ```
+   ```bash
+   bash launch-linux.sh
+   ```
 
     [![]( {{ site.baseurl }}/assets/images/HOLs/AI-Inferencing/img32.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/AI-Inferencing/img32.png){:class="img-600"}{: data-lightbox="gallery"}
 
@@ -269,16 +269,16 @@ Your environment has been set up in such a way that your VM has been configured 
 
 4. In the prompt section, copy and paste one of the following prompts and then press the Generate button to start the image generation process.
 
-    ```text
-    A realistic landscape painting of a cabin in the mountains, wet on wet oil painting, landscape, mountain lake, by Bob Ross.
-    ```
+   ```text
+   A realistic landscape painting of a cabin in the mountains, wet on wet oil painting, landscape, mountain lake, by Bob Ross.
+   ```
 
-    OR
+   OR
 
 
-    ```text
-    Profile of sad Socrates, full body, high detail, dramatic scene, Epic dynamic action, wide angle, cinematic, hyper-realistic, concept art, warm muted tones as painted by Bernie Wrightson, Frank Frazetta.
-    ```
+   ```text
+   Profile of sad Socrates, full body, high detail, dramatic scene, Epic dynamic action, wide angle, cinematic, hyper-realistic, concept art, warm muted tones as painted by Bernie Wrightson, Frank Frazetta.
+   ```
 
     [![]( {{ site.baseurl }}/assets/images/HOLs/AI-Inferencing/img37.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/AI-Inferencing/img37.png){:class="img-600"}{: data-lightbox="gallery"}
 
@@ -296,9 +296,9 @@ Your environment has been set up in such a way that your VM has been configured 
 
 9. To see the impact on GPU utilization while Stable Diffusion generates images, open a new Terminal session. Right-click on the Terminal and select New Window. Enter the following command to monitor GPU activity:
 
-    ```bash
-    nvtop
-    ```
+   ```bash
+   nvtop
+   ```
 
     [![]( {{ site.baseurl }}/assets/images/HOLs/AI-Inferencing/img40.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/AI-Inferencing/img40.png){:class="img-600"}{: data-lightbox="gallery"}
 
@@ -329,9 +329,9 @@ This concludes Task 2. Please proceed to the next task.
 
 2. Click the Pencil icon and edit the ExtraArgs field to only have the following:
 
-    ```bash
-    --cpu
-    ```
+   ```bash
+   --cpu
+   ```
 
     [![]( {{ site.baseurl }}/assets/images/HOLs/AI-Inferencing/img43.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/AI-Inferencing/img43.png){:class="img-400"}{: data-lightbox="gallery"}
 
@@ -381,10 +381,10 @@ Our first set of tasks is to download and install Open WebUI bundled with Ollama
 
 1. From a new Terminal session, copy and paste the following docker run command to start the Open WebUI installation script.
 
-    ```bash
-    docker run -d -p 3000:8080 --gpus=all -v ollama:/root/.ollama -v open-webui:/app/backend/data --name open-webui --restart always ghcr.io/open-webui/open-webui:ollama
-    ```
-    This docker run command sets up a highly available, GPU-accelerated container for the open-webui application, configured to use the host's network and persist data via a mounted volume.
+   ```bash
+   docker run -d -p 3000:8080 --gpus=all -v ollama:/root/.ollama -v open-webui:/app/backend/data --name open-webui --restart always ghcr.io/open-webui/open-webui:ollama
+   ```
+   This docker run command sets up a highly available, GPU-accelerated container for the open-webui application, configured to use the host's network and persist data via a mounted volume.
 
     [![]( {{ site.baseurl }}/assets/images/HOLs/AI-Inferencing/img47.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/AI-Inferencing/img47.png){:class="img-600"}{: data-lightbox="gallery"}
 
@@ -400,18 +400,18 @@ Our first set of tasks is to download and install Open WebUI bundled with Ollama
 
 6. On first startup, you are required to create an Admin account. Use the info below to create the Admin account.
 
-    Name:
-    ```text
-    Admin
-    ```
-    Email:
-    ```text   
-    admin@hpe.com
-    ```
-    Password:
-    ```text
-    hpe123
-    ```
+   Name:
+   ```text
+   Admin
+   ```
+   Email:
+   ```text   
+   admin@hpe.com
+   ```
+   Password:
+   ```text
+   hpe123
+   ```
 
     [![]( {{ site.baseurl }}/assets/images/HOLs/AI-Inferencing/img49.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/AI-Inferencing/img49.png){:class="img-400"}{: data-lightbox="gallery"}
 
@@ -470,9 +470,9 @@ This concludes Task 1. Please proceed to the next task.
 
 2. In the text box that says, “How can I help you today?”, copy and paste the following question and press Enter.
 
-    ```text
-    What is the weight of the HPE DL380a Gen12?
-    ```
+   ```text
+   What is the weight of the HPE DL380a Gen12?
+   ```
 
     [![]( {{ site.baseurl }}/assets/images/HOLs/AI-Inferencing/img58.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/AI-Inferencing/img58.png){:class="img-600"}{: data-lightbox="gallery"}
 
@@ -499,7 +499,7 @@ Open WebUI allows you to upload your own documents into a knowledge base that th
 
 In the following steps of this lab, you will deploy an AI Assistant with RAG capabilities.
 
-1. First we need to set the way Open WebUI will chuck the data we give it. With RAG, chunking is the process of splitting large documents into smaller, meaningful segments (chunks) so they can be efficiently indexed, retrieved, and used as context for a LLM. Click on the User Icon in the lower left corner of the browser. Then click on Admin Panel.
+1. First we need to set the way Open WebUI will chunck the data we give it. With RAG, chunking is the process of splitting large documents into smaller, meaningful segments (chunks) so they can be efficiently indexed, retrieved, and used as context for a LLM. Click on the User Icon in the lower left corner of the browser. Then click on Admin Panel.
 
     [![]( {{ site.baseurl }}/assets/images/HOLs/AI-Inferencing/img60.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/AI-Inferencing/img60.png){:class="img-600"}{: data-lightbox="gallery"}
 
@@ -521,13 +521,13 @@ In the following steps of this lab, you will deploy an AI Assistant with RAG cap
 
 6. Copy and paste the text below into the two text boxes, then change the Visibility from Private to Public and click Create Knowledge.
 
-    ```text
-    HPE ProLiant Compute Gen12 Servers
-    ```
+   ```text
+   HPE ProLiant Compute Gen12 Servers
+   ```
 
-    ```text
-    Configuration details and specifications for HPE ProLiant Compute Gen12 Servers
-    ```
+   ```text
+   Configuration details and specifications for HPE ProLiant Compute Gen12 Servers
+   ```
 
     [![]( {{ site.baseurl }}/assets/images/HOLs/AI-Inferencing/img65.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/AI-Inferencing/img65.png){:class="img-400"}{: data-lightbox="gallery"}
 
