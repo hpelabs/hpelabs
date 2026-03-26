@@ -278,8 +278,7 @@ be different even with the exact same prompts, that is the nature of AI.
 
   [![]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image9a.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image9a.png){:class="img-500"}{: data-lightbox="gallery"}
 
-- After a few seconds, you should see your Copilot's response in plain
-English, explaining what it did. 
+- After a few seconds, Copilot will respond in plain English, summarizing what it did. Your response may look slightly different — that's expected with AI.
 
   [![]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image9b.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image9b.png){:class="img-500"}{: data-lightbox="gallery"}
 
@@ -310,8 +309,15 @@ latest suggested change and write another prompt.
 
 You can see that with this simple first prompt, Copilot wrote fairly
 comprehensive code with comments (text in green), error handling
-(try/catch blocks), parameter binding, etc. If this looks like gibberish
-to you, that's OK, your Copilot assistant is here to handle the
+(try/catch blocks), parameter binding, etc. 
+
+ > ⚠️ **Note**
+ >
+ >{: .small-space}
+ >
+ > Do not run the script yet. The goal of this lab is to build it incrementally from Task 2 through Task 6, then review and polish it in Task 7, before finally executing it in Task 8.
+
+If this code looks like gibberish to you, that's OK, your Copilot assistant is here to handle the
 technical details!
 
 [↑ Back to Top](#)
@@ -339,9 +345,7 @@ it's vastly faster than with human beings.
   source code and examples at https://github.com/jullienl/HPE-COM-PowerShell-Library before generating any code.
   ```
 
-- Whenever you instruct Copilot to fetch information from the Internet, it
-may ask you for permission to do so with something like this in the
-prompt area. Click the down arrow next to **Allow Once**: 
+- When you instruct Copilot to fetch information from the Internet, it may ask for your permission. If you see a prompt like the one below, click the down arrow next to **Allow Once**:
 
   [![]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image14.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image14.png){:class="img-600"}{: data-lightbox="gallery"}
 
@@ -440,27 +444,6 @@ script file, click **Allow** and Copilot will delete the file.
   > [![]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image17a.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image17a.png){:class="img-600"}{: data-lightbox="gallery"}
 
 
-
-## Invite another user to the workspace
-
-- We want to invite another user to our workspace. In this lab context, it
-also ensures that we can reset the lab and perform the necessary actions
-once your lab is complete, so **please do not miss this step** ⚠️:
-
-  ```text
-  Add user admin@hpelabs.ddnsfree.com to the workspace using New-HPEGLUser
-  ```
-
-  Because the script is designed to be idempotent, Copilot should add a pre-check to verify the user does not already exist before attempting to add it.
-
-  > #### ⚠️ CRITICAL REQUIREMENT ⚠️
-  > {: .no_toc }
-  >
-  > You **MUST** add **admin@hpelabs.ddnsfree.com** to your workspace. This is essential for the lab reset scripts to function properly at the end of your session.
-  > <br>  
-  > **❌ Failure to add this user will prevent cleanup and break the lab for the next participant.**
-
-
 ## Provision Compute Ops Management in the workspace
 
 - We need to make Compute Ops Management available in our workspace, this
@@ -495,6 +478,9 @@ services for this device.
   State "none"
   Primary Contact Email the user's email
   ```
+
+Because the script is designed to be idempotent, Copilot should add a pre-check to verify the location does not already exist before attempting to create it.
+
 
 ## Add a subscription
 
