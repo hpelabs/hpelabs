@@ -4,7 +4,7 @@ title: "AI Inferencing Solutions on HPE ProLiant Compute"
 image: /assets/images/HOLs/AI-Inferencing/banner.jpg
 post_end_promo: <i><b>Continue your journey with more HPE Compute Technical Enablement Hands-on Labs for infrastructure, security, technologies, and solutions.</b></i>
 excerpt: Gain hands on experience with three real world AI inferencing solutions powered by HPE ProLiant Compute. Explore Vision AI analytics using Vaidio, demonstrate text to image generation with SwarmUI, and deploy a RAG enabled AI assistant using Open WebUI.
-room: 2 # Set to 1 or 2
+room: 1 # Set to 1 or 2
 ---
 
 
