@@ -1395,8 +1395,6 @@ function as the Secure Gateway for Compute Ops Management.
 
       [![]( {{ site.baseurl }}/assets/images/HOLs/Proliant-Security/image125.png){: .img-600}]( {{ site.baseurl }}/assets/images/HOLs/Proliant-Security/image125.png){: data-lightbox="gallery"}
 
-      [![]( {{ site.baseurl }}/assets/images/HOLs/Proliant-Security/image126.png){: .img-600}]( {{ site.baseurl }}/assets/images/HOLs/Proliant-Security/image126.png){: data-lightbox="gallery"}
-
 15. You can now navigate back to **Inventory Page** where you will see
     your **VM has been provisioned**. You will have to expand the host
     to see the deployed VMs
@@ -1495,7 +1493,6 @@ connect it to HPE Compute Ops Management.
 11. For the rest of the values use the table below.
 
       | **Prefix length** | 22           |
-      |-------------------|--------------|
       | **Gateway**       | 10.18.20.1   |
       | **Primary DNS**   | 10.18.20.111 |
       | **Secondary DNS** | 10.18.20.112 |
@@ -1504,11 +1501,17 @@ connect it to HPE Compute Ops Management.
 
       [![]( {{ site.baseurl }}/assets/images/HOLs/Proliant-Security/image133.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/Proliant-Security/image133.png){: data-lightbox="gallery"}{:class="img-700"}
 
+13. Leave it as the default of No and Tab until your at Next -> as our Device IP and SGW's are on the same network.
+
+      [![]( {{ site.baseurl }}/assets/images/HOLs/Proliant-Security/image133a.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/Proliant-Security/image133a.png){: data-lightbox="gallery"}{:class="img-700"}
+
 13. Leave the default options for **Time and Web Proxy** configuration
-    for step 3 of 5. Tab to **Next** and press **\<Enter\>** on your
+    for step 4 of 6. Tab to **Next** and press **\<Enter\>** on your
     keyboard to continue.
 
-14. For Step 4 of 5, continue below.
+      [![]( {{ site.baseurl }}/assets/images/HOLs/Proliant-Security/image133b.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/Proliant-Security/image133b.png){: data-lightbox="gallery"}{:class="img-700"}
+
+14. For Step 5 of 6, pause for now and continue with the next steps.
 
       [![]( {{ site.baseurl }}/assets/images/HOLs/Proliant-Security/image134.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/Proliant-Security/image134.png){: data-lightbox="gallery"}{:class="img-700"}
 
@@ -1538,7 +1541,7 @@ connect it to HPE Compute Ops Management.
 
       [![]( {{ site.baseurl }}/assets/images/HOLs/Proliant-Security/image139.png){: .img-600}]( {{ site.baseurl }}/assets/images/HOLs/Proliant-Security/image139.png){: data-lightbox="gallery"}
 
-21. Type this into the TUI Step 4 of 5, for the **Secure Gateway
+21. Type this into the TUI Step 5 of 6, for the **Secure Gateway
     Appliance** and tab to **Next** and hit **Enter** to continue.
 
 22. The Secure Gateway should now be **connected** and you can **Close**
