@@ -623,6 +623,10 @@ Management, we first need to obtain an Activation Key.
 
       [![]( {{ site.baseurl }}/assets/images/HOLs/Proliant-Security/image38.png){: .img-600}]( {{ site.baseurl }}/assets/images/HOLs/Proliant-Security/image38.png){: data-lightbox="gallery"}
 
+8.  Adding Server location and tags is optional, so we will click **Next** but generally this would be best practise to perform this task now.
+
+      [![]( {{ site.baseurl }}/assets/images/HOLs/Proliant-Security/image38a.png){: .img-600}]( {{ site.baseurl }}/assets/images/HOLs/Proliant-Security/image38a.png){: data-lightbox="gallery"}
+
 8.  Once you have reviewed the details, click **Finish and generate
     activation key.**
 
