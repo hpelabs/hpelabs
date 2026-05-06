@@ -163,7 +163,7 @@ setup for this lab.
 
 3.  Login with your provided credentials from the team assignment sheet.
 
-4.  Click the **VS Code** icon.
+4.  Click the **GitHub Copilot** icon.
 
 5.  At the warning message "You need to grant microphone and camera
     permission to use RTAV", click **OK**.
@@ -227,7 +227,7 @@ into GitHub, ensuring your rights to Copilot.
 
   [![]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image9.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image9.png){:class="img-500"}{: data-lightbox="gallery"}
 
-  It shows the mode you will be using **Agent** and the LLM (Large Language Model) set to **Claude Sonnet 4.5**. 
+  It shows the mode you will be using **Agent** and the LLM (Large Language Model) set to **Claude Sonnet 4.6**. 
 
   An LLM, or Large Language Model, is a
 type of artificial intelligence that uses deep learning to understand
@@ -275,13 +275,23 @@ be different even with the exact same prompts, that is the nature of AI.
 
 - You can then paste it into the Copilot prompt field then press the **Send** icon:
 
-  [![]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image9a.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image9a.png){:class="img-500"}{: data-lightbox="gallery"}
+  [![]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image9a.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image9a.png){:class="img-400"}{: data-lightbox="gallery"}
 
-- After a few seconds, Copilot will respond in plain English, summarizing what it did. Your response may look slightly different — that's expected with AI.
+- Copilot may ask for your permission to fetch some documentation about the module we want it to use. If you see a prompt like the one below, click the down arrow next to Allow Once:
 
-  [![]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image9b.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image9b.png){:class="img-500"}{: data-lightbox="gallery"}
+  [![]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image9c.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image9c.png){:class="img-400"}{: data-lightbox="gallery"}
 
-- Note that the code itself is in a file that Copilot created. Click on the tab it created in the main editing window,
+- Then click the response highlighted in red in the screenshot to give Copilot the widest permission.
+
+  [![]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image9d.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image9d.png){:class="img-600"}{: data-lightbox="gallery"}
+
+It may ask you for permission multiple times as it navigates through links to fetch information. Repeat the steps above to grant it permission to different sites
+
+- After a few seconds, Copilot will respond in plain English, summarizing what it did. Your response may look slightly different — that's expected with AI. 
+
+  [![]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image9b.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image9b.png){:class="img-400"}{: data-lightbox="gallery"}
+
+- Note that the code itself is in a file that Copilot created. Click on the file it created in the Explorer window,
 as depicted below:
 
   [![]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image10.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image10.png){:class="img-100pct"}{: data-lightbox="gallery"}
@@ -319,9 +329,29 @@ comprehensive code with comments (text in green), error handling
 If this code looks like gibberish to you, that's OK, your Copilot assistant is here to handle the
 technical details!
 
+- Get used to watching the bottom right of the prompt area, this will give
+you a clue whether Copilot is still thinking or if it's ready to accept
+the next prompt. When it's thinking it will show this icon:
+
+  [![]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image15.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image15.png){:class="img-500"}{: data-lightbox="gallery"}
+
+- When it's ready for your next prompt, it will show this icon instead,
+that you can click to submit your prompt (pressing **Enter** has the same
+effect):
+
+  [![]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image16.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image16.png){:class="img-500"}{: data-lightbox="gallery"}
+
+- Before moving on, instruct Copilot to make the script **idempotent** — meaning it can be safely re-run without side effects. This is essential: if the script fails midway and you need to restart it, steps that already succeeded will be skipped rather than repeated.
+
+  ```text
+  I want my script to be fully idempotent so it can be safely run multiple times.
+  From now on, apply this idempotency principle to every piece of code you generate:
+  always check whether a resource already exists before creating it, and skip creation if it does.
+  ```
+
 [↑ Back to Top](#)
 
-# Task 3 - Copilot can make mistakes
+<!-- # Task 3 - Copilot can make mistakes
 
 While Copilot is a great help, it is not perfect right from the start.
 You still need to be in control and check your assistant's work. In this
@@ -356,29 +386,9 @@ it's vastly faster than with human beings.
 repository. You should see it changes the cmdlet to connect to Greenlake
 to the proper one `Connect-HPEGL`. Click **Keep** to accept the changes.
 
-- Get used to watching the bottom right of the prompt area, this will give
-you a clue whether Copilot is still thinking or if it's ready to accept
-the next prompt. When it's thinking it will show this icon:
-
-  [![]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image15.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image15.png){:class="img-500"}{: data-lightbox="gallery"}
-
-- When it's ready for your next prompt, it will show this icon instead,
-that you can click to submit your prompt (pressing **Enter** has the same
-effect):
-
-  [![]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image16.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image16.png){:class="img-500"}{: data-lightbox="gallery"}
-
-- Before moving on, instruct Copilot to make the script **idempotent** — meaning it can be safely re-run without side effects. This is essential: if the script fails midway and you need to restart it, steps that already succeeded will be skipped rather than repeated.
-
-  ```text
-  I want my script to be fully idempotent so it can be safely run multiple times.
-  From now on, apply this idempotency principle to every piece of code you generate:
-  always check whether a resource already exists before creating it, and skip creation if it does.
-  ```
-
 [↑ Back to Top](#)
-
-# Task 4 - Create a workspace
+ -->
+# Task 3 - Create a workspace
 
 In HPE GreenLake, a workspace is an environment where users can organize
 and manage resources, such as servers, storage, and services, for
@@ -454,10 +464,10 @@ want.
   Provision service Compute Ops Management in region eu-central
   ```
 
-- We also need to give our 2 users Administrator roles for the COM service:
+- We also need to give our user Administrator role for the COM service:
 
   ```text
-  Add Compute Ops Management Administrator role to the 2 users in the workspace
+  Add Compute Ops Management Administrator role to the user in the workspace
   ```
 
 ## Create a location
@@ -499,7 +509,7 @@ submitting your prompt to Copilot!
 
 [↑ Back to Top](#)
 
-# Task 5 - Onboarding devices
+# Task 4 - Onboarding devices
 
 We are now ready to add a server to our COM workspace. We will use a
 method that would work just as well if we had dozens or even hundreds of
@@ -537,7 +547,7 @@ sheet:
   ```
 
   Make sure the data is on 2 lines like shown above, with no extra space
-at the beginning or end of either line (space after a comma is OK). Copy/paste tends to put everything on a single line. 
+at the beginning or end of either line (space after a comma is OK). 
 
 - Save the file with **Ctrl**-**S** or **File**-\>**Save** in VS Code's menu.
 
@@ -610,7 +620,7 @@ purpose, owner, environment, cost center, or other custom attributes.
 
 [↑ Back to Top](#)
 
-# Task 6 - Configuration of Compute Ops Management
+# Task 5 - Configuration of Compute Ops Management
 
 Now that we have a server onboarded, we are going to use some of the
 features that COM provides for server management.
@@ -698,7 +708,7 @@ coding skills by running the script we created.
 
 [↑ Back to Top](#)
 
-# Task 7 - Review the script
+# Task 6 - Review the script
 
 Before running the script, it is worth taking a moment to have Copilot review and validate what it has generated. AI models are often better at catching their own mistakes when given a second pass — this step can save you significant debugging time during execution.
 
@@ -722,14 +732,16 @@ red in the screenshot to give Copilot the widest permission.
 
   [![]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image14a.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image14a.png){:class="img-900"}{: data-lightbox="gallery"}
 
+- You may also get multiple prompts for permission to run specific commands as Copilot progresses through its understanding of the HPECOMCmdlets PowerShell module. Click Allow each time, or click the arrow to give a wider permission
+
+- At some point, Copilot may even present you the following prompt. Click Continue, the process can take a long time (10 minutes or more) but it should complete eventually and do a thorough job of reviewing and correcting the code it generated.
+
+  [![]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image14b.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image14b.png){:class="img-400"}{: data-lightbox="gallery"}
+
   You will likely see multiple edits throughout the file. Unlike humans,
 an AI agent can be quite good at fixing its own errors if we give it
 appropriate data. It may even create a `CORRECTIONS_NEEDED.md` file
 which lists all the corrections it made.
-
-- This step may take a while — Copilot may be fixing multiple issues. When it runs commands, it does so silently, but you can monitor its activity by clicking the **pwsh** terminal tab at the bottom of the VS Code window:
-
-  [![]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image21b.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image21b.png){:class="img-900"}{: data-lightbox="gallery"}
 
 - A scripting best practice is to halt execution as soon as a failure is detected, rather than letting the script continue in an error state. Ask Copilot to add this behavior:
 
@@ -749,7 +761,7 @@ which lists all the corrections it made.
 
 - Copilot may offer additional improvements at the end of its response — feel free to accept or skip them. The key point is that these last three prompts have already brought the script to a state where it is ready to run. 
 
-# Task 8 - Execute the script
+# Task 7 - Execute the script
 
 With all the code now generated and reviewed, it is time to put it to the test. In this section, you will run the script you built with Copilot's assistance and observe it automating the full workflow—from workspace creation and device onboarding to server configuration and firmware scheduling—all without writing a single line of code manually.
 
