@@ -403,7 +403,6 @@ monitor usage, and automate tasks within a defined scope.
   Create or reuse a workspace named GHCPWorkspaceTnn_random where random is a
   random numeric suffix generated once and hardcoded as a constant in the script.
   If the workspace already exists, connect to it instead of creating a new one.
-  IMPORTANT: when checking whether the workspace already exists, use the 'company_name' property, NOT the 'name' property.
   Use the following parameters:
   Type: Standard enterprise workspace
   Email: the email address used to connect
@@ -732,9 +731,9 @@ red in the screenshot to give Copilot the widest permission.
 
   [![]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image14a.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image14a.png){:class="img-900"}{: data-lightbox="gallery"}
 
-- You may also get multiple prompts for permission to run specific commands as Copilot progresses through its understanding of the HPECOMCmdlets PowerShell module. Click Allow each time, or click the arrow to give a wider permission
+- You may also get multiple prompts for permission to run specific commands as Copilot progresses through its understanding of the HPECOMCmdlets PowerShell module. Click **Allow each time**, or click the arrow to give a wider permission
 
-- At some point, Copilot may even present you the following prompt. Click Continue, the process can take a long time (10 minutes or more) but it should complete eventually and do a thorough job of reviewing and correcting the code it generated.
+- At some point, Copilot may even present you the following prompt. Click **Continue**, the process can take a long time (10 minutes or more) but it should complete eventually and do a thorough job of reviewing and correcting the code it generated.
 
   [![]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image14b.png){: .bordered-image-thin}]( {{ site.baseurl }}/assets/images/HOLs/COM-Copilot-With-HPECOMCmdlets/image14b.png){:class="img-400"}{: data-lightbox="gallery"}
 
@@ -760,6 +759,8 @@ which lists all the corrections it made.
   ```
 
 - Copilot may offer additional improvements at the end of its response — feel free to accept or skip them. The key point is that these last three prompts have already brought the script to a state where it is ready to run. 
+
+[↑ Back to Top](#)
 
 # Task 7 - Execute the script
 
